@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEF Toiture — Couvreur à Bourges | Disponible 24h/24</title>
+<meta name="description" content="JEF Toiture, artisan couvreur à Bourges. Couverture, zinguerie, étanchéité, isolation de combles et interventions d'urgence 24h/24, 7j/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1F22;
+    --slate:#23282D;
+    --slate-deep:#12151A;
+    --stone:#EDE8DF;
+    --stone-warm:#E2DACB;
+    --brick:#A8431F;
+    --brick-deep:#7E3016;
+    --amber:#E8A33D;
+    --amber-soft:#F2C879;
+    --white:#FDFCFA;
+
+    --display: 'Fraunces', serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--stone);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{display:block; max-width:100%;}
+
+  a{color:inherit;}
+
+  :focus-visible{
+    outline:3px solid var(--brick);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.08;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--brick);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--brick);
+    display:inline-block;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(237,232,223,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(28,31,34,0.08);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1160px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:1.22rem;
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .brand-mark{
+    width:34px; height:34px;
+    flex-shrink:0;
+  }
+  .brand small{
+    display:block;
+    font-family:var(--mono);
+    font-weight:400;
+    font-size:0.62rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brick);
+  }
+  .navlinks{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    font-size:0.94rem;
+    font-weight:500;
+  }
+  .navlinks a{
+    text-decoration:none;
+    position:relative;
+    padding-bottom:3px;
+  }
+  .navlinks a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%; height:1.5px;
+    background:var(--brick);
+    transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+
+  .call-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:var(--brick);
+    color:var(--white);
+    font-weight:600;
+    font-family:var(--mono);
+    font-size:0.88rem;
+    padding:11px 18px;
+    border-radius:3px;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:background .2s ease;
+  }
+  .call-btn:hover{background:var(--brick-deep);}
+  .call-btn svg{width:16px; height:16px; flex-shrink:0;}
+
+  .menu-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:78px 0 0;
+    color:var(--white);
+  }
+  .sky{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,#3a5a7a 0%, #7a8fa8 35%, #d9b183 62%, #e8c88f 100%);
+    animation: dayNight 26s ease-in-out infinite;
+  }
+  @keyframes dayNight{
+    0%   { background:linear-gradient(180deg,#1c2d45 0%, #24314a 30%, #3f3350 60%, #5a3b45 100%); }
+    25%  { background:linear-gradient(180deg,#3a5a7a 0%, #6f84a0 35%, #d9a877 62%, #e8c88f 100%); }
+    50%  { background:linear-gradient(180deg,#5f95c9 0%, #8fb6d9 40%, #cfe4ef 70%, #eef6f8 100%); }
+    75%  { background:linear-gradient(180deg,#345277 0%, #5c6f92 35%, #b9805f 62%, #d9a568 100%); }
+    100% { background:linear-gradient(180deg,#1c2d45 0%, #24314a 30%, #3f3350 60%, #5a3b45 100%); }
+  }
+  .stars{
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 26% 30%, #fff, transparent),
+      radial-gradient(1px 1px at 40% 12%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 58% 22%, #fff, transparent),
+      radial-gradient(1px 1px at 72% 15%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 86% 26%, #fff, transparent),
+      radial-gradient(1px 1px at 94% 10%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 6% 8%, #fff, transparent);
+    animation: starsFade 26s ease-in-out infinite;
+  }
+  @keyframes starsFade{
+    0%{opacity:0.9;} 20%{opacity:0.4;} 45%{opacity:0;} 75%{opacity:0.25;} 100%{opacity:0.9;}
+  }
+  .orb{
+    position:absolute;
+    top:14%; left:14%;
+    width:52px; height:52px;
+    border-radius:50%;
+    animation: orbPath 26s ease-in-out infinite;
+    box-shadow:0 0 40px 10px rgba(232,163,61,0.35);
+  }
+  @keyframes orbPath{
+    0%   { left:16%; top:20%; background:#eef1f6; box-shadow:0 0 30px 8px rgba(238,241,246,0.4);}
+    25%  { left:38%; top:8%;  background:#f3b25c; box-shadow:0 0 40px 12px rgba(243,178,92,0.45);}
+    50%  { left:64%; top:14%; background:#fff6df; box-shadow:0 0 46px 14px rgba(255,246,223,0.55);}
+    75%  { left:82%; top:24%; background:#f0955a; box-shadow:0 0 36px 10px rgba(240,149,90,0.4);}
+    100% { left:16%; top:20%; background:#eef1f6; box-shadow:0 0 30px 8px rgba(238,241,246,0.4);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sky, .stars, .orb{animation:none;}
+    .sky{background:linear-gradient(180deg,#2a4362 0%, #4c5f80 35%, #c98f5f 62%, #e0b578 100%);}
+    .stars{opacity:0.3;}
+    .orb{left:64%; top:14%; background:#fff6df;}
+  }
+
+  .skyline{
+    position:relative;
+    z-index:2;
+    width:100%;
+    display:block;
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:3;
+    max-width:1160px;
+    margin:0 auto;
+    padding:22px 28px 80px;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:rgba(18,21,26,0.42);
+    border:1px solid rgba(255,255,255,0.28);
+    padding:8px 14px;
+    border-radius:999px;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    margin-bottom:26px;
+    backdrop-filter:blur(4px);
+  }
+  .badge .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber-soft);
+    box-shadow:0 0 8px 2px rgba(242,200,121,0.7);
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 5vw, 3.6rem);
+    max-width:15ch;
+    text-shadow:0 2px 24px rgba(0,0,0,0.25);
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.12rem;
+    max-width:46ch;
+    color:rgba(253,252,250,0.92);
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:34px;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:var(--slate-deep);
+    font-weight:700;
+    padding:15px 26px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.98rem;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn-primary:hover{background:var(--amber-soft); transform:translateY(-1px);}
+  .btn-secondary{
+    border:1px solid rgba(255,255,255,0.5);
+    color:var(--white);
+    padding:15px 26px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.98rem;
+    transition:background .18s ease;
+  }
+  .btn-secondary:hover{background:rgba(255,255,255,0.12);}
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    padding:88px 0 70px;
+  }
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  .intro h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin-top:14px;
+    max-width:16ch;
+  }
+  .intro-text p{
+    font-size:1.02rem;
+    color:#3a3f43;
+    margin-top:18px;
+    max-width:56ch;
+  }
+  .intro-text a{color:var(--brick); font-weight:600;}
+  .facts{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-top:1px solid rgba(28,31,34,0.14);
+  }
+  .fact{
+    padding:22px 0;
+    border-bottom:1px solid rgba(28,31,34,0.14);
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+  }
+  .fact svg{width:26px; height:26px; flex-shrink:0; color:var(--brick); margin-top:2px;}
+  .fact h3{font-family:var(--body); font-weight:700; font-size:1rem;}
+  .fact p{font-size:0.92rem; color:#54595d; margin-top:4px;}
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    padding:70px 0 90px;
+    background:var(--white);
+    border-top:1px solid rgba(28,31,34,0.08);
+    border-bottom:1px solid rgba(28,31,34,0.08);
+  }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    margin-bottom:46px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-top:10px; max-width:18ch;}
+  .section-head p{max-width:38ch; color:#54595d; font-size:0.98rem;}
+
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(28,31,34,0.1);
+    border:1px solid rgba(28,31,34,0.1);
+  }
+  .service-card{
+    background:var(--white);
+    padding:34px 28px;
+    transition:background .2s ease;
+  }
+  .service-card:hover{background:var(--stone);}
+  .service-card svg{width:30px; height:30px; color:var(--brick); margin-bottom:18px;}
+  .service-card h3{font-size:1.08rem; font-family:var(--body); font-weight:700;}
+  .service-card p{margin-top:8px; font-size:0.92rem; color:#54595d;}
+
+  /* ---------- URGENCY BAND ---------- */
+  .urgency{
+    background:var(--slate-deep);
+    color:var(--white);
+    padding:80px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .urgency::before{
+    content:"";
+    position:absolute;
+    top:-40%; right:-10%;
+    width:520px; height:520px;
+    background:radial-gradient(circle, rgba(232,163,61,0.18), transparent 70%);
+  }
+  .urgency-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:50px;
+    align-items:center;
+  }
+  .urgency .eyebrow{color:var(--amber-soft);}
+  .urgency .eyebrow::before{background:var(--amber-soft);}
+  .urgency h2{
+    font-size:clamp(1.7rem,3vw,2.5rem);
+    margin-top:14px;
+    max-width:18ch;
+  }
+  .urgency p{
+    margin-top:16px;
+    color:rgba(253,252,250,0.78);
+    max-width:48ch;
+    font-size:1.02rem;
+  }
+  .urgency-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:6px;
+    padding:32px;
+  }
+  .urgency-card .clock{
+    font-family:var(--mono);
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    color:var(--amber-soft);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .urgency-card .clock svg{width:16px; height:16px;}
+  .urgency-card .phone-big{
+    display:block;
+    font-family:var(--mono);
+    font-size:1.9rem;
+    font-weight:600;
+    margin:14px 0 18px;
+    text-decoration:none;
+    color:var(--white);
+    letter-spacing:0.01em;
+  }
+  .urgency-card .phone-big:hover{color:var(--amber-soft);}
+  .urgency-card .btn-primary{width:100%; justify-content:center;}
+
+  /* ---------- WHY / VALUES ---------- */
+  .values{
+    padding:90px 0;
+  }
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:32px;
+    margin-top:46px;
+  }
+  .value{
+    border-top:2px solid var(--brick);
+    padding-top:18px;
+  }
+  .value h3{font-family:var(--body); font-weight:700; font-size:1.02rem;}
+  .value p{margin-top:8px; font-size:0.92rem; color:#54595d;}
+
+  /* ---------- CAPABILITIES LIST ---------- */
+  .capabilities{
+    background:var(--slate);
+    color:var(--stone);
+    padding:90px 0;
+  }
+  .capabilities .eyebrow{color:var(--amber-soft);}
+  .capabilities .eyebrow::before{background:var(--amber-soft);}
+  .capabilities h2{
+    color:var(--white);
+    font-size:clamp(1.7rem,3vw,2.3rem);
+    margin-top:14px;
+    max-width:20ch;
+  }
+  .cap-list{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:0 40px;
+  }
+  .cap-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    font-size:0.98rem;
+  }
+  .cap-item svg{width:17px; height:17px; color:var(--amber-soft); flex-shrink:0;}
+
+  /* ---------- ZONE ---------- */
+  .zone{
+    padding:90px 0;
+  }
+  .zone-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .zone h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-top:14px; max-width:16ch;}
+  .zone p{margin-top:16px; color:#3a3f43; max-width:46ch;}
+  .zone-map{
+    background:var(--white);
+    border:1px solid rgba(28,31,34,0.12);
+    border-radius:6px;
+    padding:36px;
+  }
+  .zone-map .center{
+    font-family:var(--mono);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--brick);
+    margin-bottom:16px;
+  }
+  .commune-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .commune-list span{
+    font-size:0.88rem;
+    padding:8px 13px;
+    border:1px solid rgba(28,31,34,0.16);
+    border-radius:999px;
+    background:var(--stone);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--white);
+    border-top:1px solid rgba(28,31,34,0.08);
+    padding:90px 0;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+  }
+  .contact h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-top:14px;}
+  .contact p.lede{margin-top:16px; color:#54595d; max-width:42ch;}
+  .contact-details{
+    margin-top:34px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .contact-row{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .contact-row svg{width:22px; height:22px; color:var(--brick); flex-shrink:0; margin-top:3px;}
+  .contact-row a, .contact-row span{
+    text-decoration:none;
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  .contact-row .label{
+    display:block;
+    font-family:var(--mono);
+    font-size:0.74rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#8a8f93;
+    margin-bottom:3px;
+  }
+  .contact-card{
+    background:var(--slate-deep);
+    color:var(--white);
+    border-radius:6px;
+    padding:40px;
+  }
+  .contact-card .eyebrow{color:var(--amber-soft); margin-bottom:16px;}
+  .contact-card .eyebrow::before{background:var(--amber-soft);}
+  .contact-card h3{font-family:var(--display); font-size:1.5rem; max-width:16ch;}
+  .contact-card p{margin-top:12px; color:rgba(253,252,250,0.75); font-size:0.95rem;}
+  .contact-card .btn-primary{margin-top:24px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--slate-deep);
+    color:rgba(253,252,250,0.6);
+    padding:44px 0;
+    font-size:0.88rem;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .footer-grid .brand{color:var(--white);}
+  footer nav{display:flex; gap:22px; flex-wrap:wrap;}
+  footer nav a{text-decoration:none; color:rgba(253,252,250,0.6);}
+  footer nav a:hover{color:var(--amber-soft);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .navlinks{display:none;}
+    .intro-grid, .urgency-grid, .zone-grid, .contact-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .value-grid{grid-template-columns:repeat(2,1fr);}
+    .cap-list{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .service-grid{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:1fr;}
+    .hero h1{max-width:100%;}
+    .call-btn span.txt{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 22L20 8L36 22" stroke="#A8431F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 20V33H31V20" stroke="#23282D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 33V25H23V33" stroke="#23282D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>JEF Toiture<small>Couvreur — Bourges</small></span>
+    </a>
+    <ul class="navlinks">
+      <li><a href="#prestations">Prestations</a></li>
+      <li><a href="#urgence">Urgences 24/7</a></li>
+      <li><a href="#zone">Zone d'intervention</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="call-btn" href="tel:+33624546480">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="txt">06 24 54 64 80</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ---------- HERO ---------- -->
+  <section class="hero">
+    <div class="sky"></div>
+    <div class="stars"></div>
+    <div class="orb"></div>
+
+    <svg class="skyline" viewBox="0 0 1160 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- distant low roofs -->
+      <path d="M0 220 L0 165 L40 165 L60 140 L80 165 L120 165 L120 220 Z" fill="#171B1F" opacity="0.55"/>
+      <path d="M1020 220 L1020 160 L1060 160 L1080 130 L1100 160 L1160 160 L1160 220 Z" fill="#171B1F" opacity="0.55"/>
+      <!-- mid rooftops -->
+      <path d="M60 220 L60 150 L130 150 L165 110 L200 150 L270 150 L270 220 Z" fill="#1B1F24" opacity="0.75"/>
+      <path d="M840 220 L840 145 L905 145 L940 105 L975 145 L1050 145 L1050 220 Z" fill="#1B1F24" opacity="0.75"/>
+      <!-- cathedral block (Bourges Saint-Étienne, simplified) -->
+      <path d="M430 220 L430 120 L455 120 L455 95 L470 60 L485 95 L485 120 L500 120 L500 90 L515 90 L515 60 L525 30 L535 60 L535 90 L550 90 L550 120 L565 120 L565 95 L580 95 L580 60 L590 30 L600 60 L600 95 L615 95 L615 120 L640 120 L640 220 Z" fill="#12151A"/>
+      <rect x="518" y="18" width="4" height="16" fill="#12151A"/>
+      <rect x="528" y="10" width="3" height="24" fill="#12151A"/>
+      <!-- front roofline -->
+      <path d="M0 220 L0 190 L90 190 L150 140 L210 190 L340 190 L410 200 L410 220 Z" fill="var(--slate-deep)"/>
+      <path d="M640 220 L640 200 L710 190 L800 190 L870 145 L940 190 L1060 190 L1160 190 L1160 220 Z" fill="var(--slate-deep)"/>
+      <!-- tuile texture strokes -->
+      <g stroke="#2A2F35" stroke-width="1.4" opacity="0.6">
+        <path d="M0 190 L90 190"/><path d="M150 140 L210 190"/><path d="M90 190 L150 140"/>
+        <path d="M710 190 L800 190"/><path d="M800 190 L870 145"/><path d="M870 145 L940 190"/>
+      </g>
+    </svg>
+
+    <div class="hero-content">
+      <div class="badge">
+        <span class="dot"></span>
+        Urgence toiture — disponible 24h/24, 7j/7
+      </div>
+      <h1>Une toiture qui tient tête au ciel du Berry.</h1>
+      <p class="lede">JEF Toiture est votre couvreur artisan à Bourges : couverture, zinguerie, étanchéité et isolation de combles, réalisés avec soin — et une équipe joignable à toute heure en cas d'urgence.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="tel:+33624546480">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 24 54 64 80
+        </a>
+        <a class="btn-secondary" href="#contact">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- INTRO ---------- -->
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div class="intro-text">
+        <div class="eyebrow">À Bourges et alentours</div>
+        <h2>L'artisan couvreur de confiance à Bourges</h2>
+        <p>Basé au 22 rue Émile Martin à Bourges, JEF Toiture intervient sur tous les travaux de couverture, de zinguerie et d'isolation, en neuf comme en rénovation.</p>
+        <p>Qu'il s'agisse d'une réfection complète de toiture, d'une réparation ponctuelle ou d'une urgence après tempête, nous étudions chaque projet avec la même exigence : une toiture étanche, durable, et un chantier mené sans mauvaise surprise.</p>
+        <p>Notre différence : une équipe <a href="#urgence">joignable 24h/24</a>, pour intervenir dès qu'une fuite ou un dégât menace votre toit.</p>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <h3>Disponible 24h/24, 7j/7</h3>
+            <p>Une urgence toiture ne prévient pas — notre équipe répond présent de jour comme de nuit.</p>
+          </div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          <div>
+            <h3>Un interlocuteur unique</h3>
+            <p>Du diagnostic au dernier réglage, vous suivez votre chantier avec un seul contact.</p>
+          </div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <div>
+            <h3>Devis clair, sans surprise</h3>
+            <p>Un diagnostic honnête et un prix annoncé avant toute intervention sur votre toiture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SERVICES ---------- -->
+  <section class="services" id="prestations">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Nos prestations</div>
+          <h2>Des travaux de toiture complets à Bourges</h2>
+        </div>
+        <p>De la pose à l'entretien, nous prenons en charge chaque étape de votre projet de couverture.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12L12 4l9 8"/><path d="M5 10v10h14V10"/></svg>
+          <h3>Couverture</h3>
+          <p>Pose et rénovation de toitures en tuiles, ardoises naturelles ou artificielles, et bac acier.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M6 8v8a4 4 0 0 0 4 4h2"/><path d="M12 20v-6"/></svg>
+          <h3>Zinguerie</h3>
+          <p>Gouttières, chéneaux et noues en zinc ou cuivre, pour une évacuation d'eau sans faille.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.9 4.9l2.8 2.8"/><path d="M16.3 16.3l2.8 2.8"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.9 19.1l2.8-2.8"/><path d="M16.3 7.7l2.8-2.8"/></svg>
+          <h3>Étanchéité toiture-terrasse</h3>
+          <p>Traitement des toits plats et terrasses en membrane EPDM, pour une étanchéité durable.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <h3>Isolation de combles</h3>
+          <p>Combles perdus ou aménagés : une isolation soignée pour le confort thermique de la maison.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4.5 8-11V5l-8-3-8 3v6c0 6.5 8 11 8 11z"/></svg>
+          <h3>Réparation & recherche de fuites</h3>
+          <p>Diagnostic rapide et intervention ciblée dès les premiers signes d'infiltration.</p>
+        </div>
+        <div class="service-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M12 3a9 9 0 0 0-9 9c3 0 5 1 6 3 1-3 2-4 5-4a9 9 0 0 0-2-8z"/></svg>
+          <h3>Démoussage & entretien</h3>
+          <p>Traitement hydrofuge, nettoyage et contrôle régulier pour préserver votre toiture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- URGENCY ---------- -->
+  <section class="urgency" id="urgence">
+    <div class="wrap urgency-grid">
+      <div>
+        <div class="eyebrow">Intervention d'urgence</div>
+        <h2>Une fuite en pleine nuit ? Une tempête a soulevé vos tuiles ?</h2>
+        <p>JEF Toiture intervient à Bourges et dans tout le Cher, à n'importe quelle heure du jour ou de la nuit. Pas d'attente jusqu'au lendemain matin : on décroche, on se déplace, on sécurise votre toiture.</p>
+      </div>
+      <div class="urgency-card">
+        <div class="clock">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          24h/24 · 7j/7
+        </div>
+        <a class="phone-big" href="tel:+33624546480">06 24 54 64 80</a>
+        <a class="btn-primary" href="tel:+33624546480">Appeler maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- VALUES ---------- -->
+  <section class="values">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Pourquoi JEF Toiture</div>
+          <h2>Un couvreur réactif et rigoureux</h2>
+        </div>
+        <p>Nous mettons un point d'honneur à travailler proprement, dans les délais annoncés, et à rester joignables quand ça compte.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value">
+          <h3>Réactivité</h3>
+          <p>Une équipe disponible 24h/24 pour les urgences toiture à Bourges et alentours.</p>
+        </div>
+        <div class="value">
+          <h3>Savoir-faire artisanal</h3>
+          <p>Des techniques éprouvées, adaptées aux toitures anciennes comme aux constructions récentes.</p>
+        </div>
+        <div class="value">
+          <h3>Transparence</h3>
+          <p>Un diagnostic honnête et un devis détaillé avant toute intervention.</p>
+        </div>
+        <div class="value">
+          <h3>Travail garanti</h3>
+          <p>Des chantiers réalisés dans les règles de l'art, pour une toiture qui dure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CAPABILITIES ---------- -->
+  <section class="capabilities">
+    <div class="wrap">
+      <div class="eyebrow">Nos savoir-faire</div>
+      <h2>Tout ce qu'on peut faire sur votre toit</h2>
+      <div class="cap-list">
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Pose de tuiles terre cuite et béton</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Ardoises naturelles et artificielles</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Couverture en bac acier</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Zinguerie zinc et cuivre</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Gouttières, chéneaux et descentes</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Faîtage, rives et arêtiers</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Pose de fenêtres de toit (Velux)</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Démoussage et traitement hydrofuge</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Isolation sous toiture</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Recherche et réparation de fuites</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Intervention après tempête</div>
+        <div class="cap-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Rénovation de toitures anciennes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- ZONE ---------- -->
+  <section class="zone" id="zone">
+    <div class="wrap zone-grid">
+      <div>
+        <div class="eyebrow">Zone d'intervention</div>
+        <h2>À Bourges et dans les communes voisines</h2>
+        <p>Notre équipe se déplace à Bourges et dans tout le Cher pour vos travaux de couverture comme pour vos urgences toiture.</p>
+      </div>
+      <div class="zone-map">
+        <div class="center">Basés à Bourges — 22 rue Émile Martin</div>
+        <div class="commune-list">
+          <span>Bourges</span>
+          <span>Saint-Doulchard</span>
+          <span>Trouy</span>
+          <span>Fussy</span>
+          <span>Saint-Germain-du-Puy</span>
+          <span>Marmagne</span>
+          <span>Le Subdray</span>
+          <span>Plaimpied-Givaudins</span>
+          <span>La Chapelle-Saint-Ursin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT ---------- -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="eyebrow">Contact</div>
+        <h2>Parlons de votre toiture</h2>
+        <p class="lede">Un projet de couverture, une question, ou une urgence ? Contactez-nous, nous répondons rapidement — à toute heure en cas d'urgence.</p>
+        <div class="contact-details">
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><span class="label">Téléphone</span><a href="tel:+33624546480">06 24 54 64 80</a></div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <div><span class="label">E-mail</span><a href="mailto:jeftoiturecouvreurbourges@gmail.com">jeftoiturecouvreurbourges@gmail.com</a></div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span class="label">Adresse</span><span>22 rue Émile Martin, 18000 Bourges</span></div>
+          </div>
+          <div class="contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div><span class="label">Disponibilité</span><span>24h/24 — 7j/7</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="eyebrow">Urgence toiture</div>
+        <h3>On vous répond, même en pleine nuit.</h3>
+        <p>Fuite, tuiles envolées, dégât des eaux : appelez directement, on s'organise pour intervenir au plus vite.</p>
+        <a class="btn-primary" href="tel:+33624546480">Appeler le 06 24 54 64 80</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <a class="brand" href="#top">JEF Toiture</a>
+    <nav>
+      <a href="#prestations">Prestations</a>
+      <a href="#urgence">Urgences 24/7</a>
+      <a href="#zone">Zone d'intervention</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span>22 rue Émile Martin, 18000 Bourges — 06 24 54 64 80</span>
+  </div>
+</footer>
+
+</body>
+</html>
