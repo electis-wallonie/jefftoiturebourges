@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Révision Current Issues in Logistics</title>
+<style>
+:root{
+  --bg:#f6f5f1;--card:#ffffff;--ink:#1d1d1b;--muted:#6b6a65;--line:#e3e1da;
+  --c1:#2f6fd6;--c2:#b0442f;--c3:#2f8a57;--c4:#8a4fc2;
+  --ok:#2f8a57;--ko:#c0392b;--okbg:#e6f4ec;--kobg:#fbe9e7;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141413;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a19a;--line:#33322f;
+  --c1:#6c9cf0;--c2:#e07a63;--c3:#5cc08a;--c4:#b48be6;
+  --ok:#5cc08a;--ko:#ef7b6e;--okbg:#1d3326;--kobg:#3a1f1c;}}
+:root[data-theme="dark"]{
+  --bg:#141413;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a19a;--line:#33322f;
+  --c1:#6c9cf0;--c2:#e07a63;--c3:#5cc08a;--c4:#b48be6;
+  --ok:#5cc08a;--ko:#ef7b6e;--okbg:#1d3326;--kobg:#3a1f1c;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0}
+h1{font-size:18px;margin:0;flex:1;min-width:200px}
+.tabs{display:flex;gap:6px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}
+.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button{font:inherit}
+.view{display:none;padding:20px 0 60px}.view.on{display:block}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+.btn:hover{border-color:var(--muted)}
+input[type=search]{flex:1;min-width:180px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+/* mind map */
+.root{text-align:center;margin:4px auto 0}
+.root span{display:inline-block;background:var(--ink);color:var(--bg);padding:10px 22px;border-radius:14px;font-weight:700;font-size:17px}
+.trunk{width:2px;height:18px;background:var(--line);margin:0 auto}
+.branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;border-top:2px solid var(--line);padding-top:18px}
+.branch{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--bc);border-radius:12px;padding:12px 12px 14px}
+.branch h2{margin:0 0 2px;font-size:16px;color:var(--bc)}
+.branch .who{font-size:12px;color:var(--muted);margin-bottom:10px}
+ul.tree,ul.tree ul{list-style:none;margin:0;padding:0}
+ul.tree ul{margin-left:9px;padding-left:12px;border-left:2px solid color-mix(in srgb,var(--bc) 35%,transparent)}
+li.n{margin:3px 0}
+.lbl{display:flex;gap:6px;align-items:flex-start;cursor:default;padding:3px 6px;border-radius:6px}
+.has>.lbl{cursor:pointer;font-weight:600}
+.has>.lbl:hover{background:color-mix(in srgb,var(--bc) 10%,transparent)}
+.car{flex:none;width:14px;color:var(--bc);transition:transform .15s;font-size:11px;margin-top:3px}
+.has.open>.lbl .car{transform:rotate(90deg)}
+.has:not(.open)>ul{display:none}
+.leaf>.lbl .car::before{content:"•"}
+.note{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.hl{background:#ffe58a;color:#1d1d1b;border-radius:3px}
+.key{font-weight:700;color:var(--bc)}
+li.hide{display:none}
+/* cheat */
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.box h3{margin:0 0 8px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{white-space:nowrap;font-weight:700;width:1%}
+.trap li{margin:6px 0}
+/* quiz */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer;font-size:13px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;max-width:760px;margin:0 auto}
+.qmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--ink);width:0;transition:width .2s}
+.qtext{font-size:17px;font-weight:600;margin-bottom:14px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:11px 14px;border-radius:10px;margin:8px 0;cursor:pointer;font-size:15px}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.good{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--ko);background:var(--kobg)}
+.opt:disabled{cursor:default}
+.expl{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--bg);border-left:4px solid var(--muted);font-size:14px;display:none}
+.expl.show{display:block}
+.nav{display:flex;justify-content:space-between;margin-top:16px;gap:8px}
+.primary{background:var(--ink);color:var(--bg);border:none;padding:9px 18px;border-radius:9px;cursor:pointer;font-weight:600}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff}
+.score{font-size:40px;font-weight:800;text-align:center;margin:8px 0}
+.res td:first-child{white-space:normal}
+@media (max-width:600px){h1{font-size:16px}.qcard{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="wrap top">
+  <h1>ITR313 · Current Issues in Logistics — Révision</h1>
+  <div class="tabs">
+    <button class="tab on" data-v="map">Mind map</button>
+    <button class="tab" data-v="cheat">Fiche dates & chiffres</button>
+    <button class="tab" data-v="quiz">Quiz</button>
+  </div>
+</div></header>
+
+<main class="wrap">
+<!-- MIND MAP -->
+<section id="map" class="view on">
+  <div class="tools">
+    <input type="search" id="search" placeholder="Chercher un mot-clé (ex : CBAM, deployer, MVP…)">
+    <button class="btn" id="openAll">Tout déplier</button>
+    <button class="btn" id="closeAll">Tout replier</button>
+  </div>
+  <div class="root"><span>Current Issues in Logistics</span></div>
+  <div class="trunk"></div>
+  <div class="branches" id="branches"></div>
+</section>
+
+<!-- CHEAT SHEET -->
+<section id="cheat" class="view">
+  <div class="cheat" id="cheatGrid"></div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="view">
+  <div class="tools">
+    <div class="chips" id="topicChips"></div>
+    <button class="btn" id="restart">↻ Recommencer (mélangé)</button>
+  </div>
+  <div id="quizBox"></div>
+</section>
+</main>
+
+<script>
+/* ============ DATA : MIND MAP ============ */
+// [label, note, children]
+const MAP = [
+{title:"1 · Digitalization & AI in Logistics",who:"Prof. Dr. Alev Taşkın — Yıldız Technical University",color:"--c1",nodes:[
+ ["Industrial revolutions",null,[
+  ["Industry 1.0","Steam-powered machines, mechanization"],
+  ["Industry 2.0","Widespread adoption of electricity"],
+  ["Industry 3.0","Computers & information technology"],
+  ["Industry 4.0","Cyber-physical systems + real-time technologies"],
+  ["Society 5.0 (5th revolution)","AI, IoT, biotechnology, space industry → technological, economic & societal impact"]
+ ]],
+ ["History of AI",null,[
+  ["1950s–60s: initial discoveries","Puzzles, chess/checkers, theorem proving, simple Q&A, image classification; intertwined with cognitive psychology"],
+  ["1960s–70s: rapid progress","New computer languages; labs at MIT, Carnegie Mellon, Stanford, SRI; hot topic = Computer Vision (2D images of 3D world)"],
+  ["1980s: AI winter","Unrealistic expectations + misplaced optimism → failures & criticism"],
+  ["1990s–2000s: Computer Revolution","Semiconductors, PCs, internet, digitization of information"],
+  ["Industry 4.0 term","First introduced at the Hannover Fair, 2011"]
+ ]],
+ ["Logistics 4.0 (= digital logistics)",null,[
+  ["The 4 'rights'","Right price, product, place and time — while staying competitive"],
+  ["Smart factory","Smart grid & mobility, interoperability, integrated process with suppliers & customers"],
+  ["Definition","Transformation via automation & digitalization + interaction of Industry 4.0 with coordinated transport tasks"],
+  ["AI supports…","Purchasing, transport network design, warehousing, shipping, demand forecasting & planning, inventory, CRM"]
+ ]],
+ ["Circular economy & sustainable supply chains",null,[
+  ["Circular economy","Framework minimizing resource waste; supply networks → value chains"],
+  ["Sustainable value chain","Fully integrates moral & eco-friendly behaviour into a profitable, competitive framework (incl. recycling & reverse logistics)"],
+  ["Weak link idea","Clean company process is useless if a supplier's semi-finished product or the vehicles are not"],
+  ["Voluntary → mandatory","Green used to be 'CSR/marketing'; now rules + fines (limited resources, population growth, urbanization)"],
+  ["CBAM (Taşkın)","Adopted 14 July 2021; implementation started 2023; from 2026 tax per tonne of GHG from production of goods exported to EU; EU goal = first carbon-neutral continent by 2050"],
+  ["Textile waste","From 2025: separate collection; burning or mixing with household waste forbidden (Green Deal)"],
+  ["4 basic elements",null,[
+   ["LCA – Life Cycle Assessment","Value-chain-wide, 'cradle to grave'"],
+   ["LCC – Life Cycle Cost","Traditional costs + environmental harm (energy, water, CO₂) over life cycle"],
+   ["PEF – Product Environmental Footprint","Environmental effects of a product/service (beyond carbon footprint, incl. production processes)"],
+   ["OEF – Organisation Environmental Footprint","Effects of the organisation's general operations"]
+  ]]
+ ]],
+ ["AI in sustainable value chains (6 uses)",null,[
+  ["Key condition","Big data + accuracy. High initial cost (sensors, GPUs, storage) but low operating costs"],
+  ["1. Traceability & secure info flow","Labelling: telematics, RFID, NFC, QR, barcode → connected via IoT → security via blockchain + IoT (decentralized, immutable, secure)"],
+  ["2. Digital Product Passport (DPP)","Initiated by European Commission, still conceptual; records eco-costs/eco-credits; benefits: less bureaucracy, proof of certification, priority in tenders, trade facilities, loyalty"],
+  ["3. Telematics on vehicles","Product info, CO₂, road/traffic, driver behaviour → traffic forecasting, dynamic routing, risk assessment (esp. valuable, hazardous, perishable goods)"],
+  ["4. Digital twins","Dynamic simulation of value chain; AI predictions sent as signals to real system → warn/stop before obstacles"],
+  ["5. Smart warehouses","Dynamic classification replaces ABC & XYZ; cameras for safety & lean storage; drones/image processing for inventory counts"],
+  ["6. Other","NLP commands (call centres), profiling from text/images, anomaly detection in ERP, last-mile GIS planning, revenue management, warehouse location & routing"],
+  ["Automation → autonomation","Unmanned, traceable, instantly intervened processes. Duty: be developers of AI, direct it to good purposes"]
+ ]],
+ ["EU AI Act — basics",null,[
+  ["Legal text","Regulation (EU) 2024/1689 — first comprehensive AI law; in force 1 Aug 2024"],
+  ["Digital Omnibus on AI","Regulation (EU) 2026/1744, in force 27 July 2026 → moved high-risk dates"],
+  ["4 design principles",null,[
+   ["Risk-based","Higher potential harm (health, safety, fundamental rights) → stricter duties"],
+   ["Whole value chain","Providers, deployers, importers, distributors all have obligations"],
+   ["Extraterritorial","Applies if AI placed on EU market or its output used in EU"],
+   ["Product-safety logic","CE marking, conformity assessment, post-market monitoring, market surveillance"]
+  ]],
+  ["Roles",null,[
+   ["Provider","Develops AI & places it on market under own name (e.g. AI TMS/WMS vendors)"],
+   ["Deployer","Uses AI under own authority — role of MOST logistics firms"],
+   ["Importer & distributor","Bring non-EU AI / AI equipment (e.g. AMRs) into EU"],
+   ["MYTH vs REALITY","'We just buy SaaS, it's the vendor's problem' → FALSE. You become provider if you put your name on it, substantially modify it or repurpose it for high-risk (Art. 25)"]
+  ]],
+  ["Scope (Art. 2(1))","1) AI placed on EU market 2) AI used inside EU 3) AI output used in EU → a Türkiye 3PL can be in scope. Türkiye AI Action Plan 2026–2030 (Official Gazette 18 Aug 2026)"]
+ ]],
+ ["EU AI Act — risk pyramid",null,[
+  ["UNACCEPTABLE (banned since 2 Feb 2025)","Emotion inference of drivers/staff (except medical/safety), manipulative techniques, social scoring, biometric categorisation by sensitive traits"],
+  ["HIGH RISK (from 2 Dec 2027*)","Recruitment/CV screening, algorithmic task allocation & performance evaluation, AI safety components in road-traffic management. *Embedded in products (Annex I): 2 Aug 2028"],
+  ["LIMITED RISK (since 2 Aug 2026)","Transparency: chatbots/voice assistants must disclose AI; synthetic content must be marked"],
+  ["MINIMAL RISK (no new duties)","Demand forecasting, inventory analytics, route optimisation, predictive maintenance — voluntary codes; GDPR still applies"]
+ ]],
+ ["EU AI Act — sanctions",null,[
+  ["€35M or 7%","Prohibited practices (e.g. worker emotion recognition)"],
+  ["€15M or 3%","Other obligations (high-risk, deployer, transparency)"],
+  ["€7.5M or 1%","Misleading/incorrect info to authorities"],
+  ["Rule","Whichever is HIGHER; for SMEs whichever is LOWER. GDPR max = €20M or 4%"],
+  ["System lock-down","Since 2 Aug 2026 authorities can order correction, restriction, withdrawal, recall → can cost more than the fine"]
+ ]],
+ ["EU AI Act — timeline",null,[
+  ["2 Feb 2025","Bans + AI literacy duty (Art. 4)"],
+  ["2 Aug 2025","General-purpose AI (LLMs) rules; governance & penalties"],
+  ["2 Aug 2026","Transparency duties (Art. 50); national enforcement begins"],
+  ["2 Dec 2026","Marking AI content for legacy genAI; new ban on 'nudifier' AI"],
+  ["20 Jan 2027","EU Machinery Regulation: ML safety functions of robots, AGVs, AMRs"],
+  ["2 Dec 2027","High-risk stand-alone AI (Annex III): recruitment, workforce mgmt, critical infrastructure"],
+  ["2 Aug 2028","High-risk AI embedded in regulated products (Annex I)"],
+  ["Motto","'The deadlines moved, the obligations did not.'"]
+ ]],
+ ["4 logistics scenarios",null,[
+  ["1. Fleet & driver monitoring","Emotion from cameras → PROHIBITED (Art. 5(1)(f)); scores to reward/dismiss → HIGH (Annex III pt 4); fatigue/lane alerts → MINIMAL (fatigue = physical state, not emotion)"],
+  ["2. Smart warehouses & robots","Machinery Regulation (EU) 2023/1230: notified-body assessment from 20 Jan 2027; machinery excluded from direct AI Act high-risk (Omnibus); CE marking, emergency stops; scoring workers stays high-risk"],
+  ["3. Algorithmic workforce mgmt = HIGH-RISK HOTSPOT","Deployer duties (Art. 26): follow instructions, trained human oversight, relevant data, monitor & report incidents, keep logs ≥ 6 months, inform workers' reps. Platform Work Directive by 2 Dec 2026"],
+  ["4. Dynamic routing & pricing","Usually MINIMAL (B2B); risk of bias → bias & drift tests, log versions, dispatchers approve high-impact changes"]
+ ]],
+ ["Human oversight by design (Art. 14)","AI = decision-support, not final authority. Overseer must: understand capabilities/limits, watch for automation bias, override/reverse/stop (stop button)"],
+ ["Regulatory web",null,[
+  ["AI Act","Risk-based rules for AI"],["GDPR","Personal data, automated decisions (Art. 22)"],
+  ["Green Deal: CBAM & DPP","Emissions & product data"],["Data Act","Access to IoT/telematics data (since Sep 2025)"],
+  ["Platform Work Directive","Algorithmic mgmt of couriers (by 2 Dec 2026)"],["NIS2","Cybersecurity for transport, postal, courier"],
+  ["Product Liability Directive","Software & AI as products (from 9 Dec 2026)"],["Machinery Regulation","Robots, AGVs, AMRs (from 20 Jan 2027)"]
+ ]],
+ ["Compliance → advantage",null,[
+  ["Trusted brand","Transparent, auditable, ethical AI"],
+  ["Operational resilience","Audits reveal cyber gaps, data drift, model errors early"],
+  ["Priority in tenders","EU OEMs push requirements down; ISO/IEC 42001 differentiates bids"]
+ ]],
+ ["5-step roadmap",null,[
+  ["1. Inventory & classify","List every AI system (incl. inside SaaS/TMS/WMS), risk tier + your role"],
+  ["2. Revise contracts","Require conformity, logging, documentation, incident reporting, audit rights"],
+  ["3. Build the oversight loop","Human approval & escalation for high-impact decisions"],
+  ["4. Invest in AI literacy","Train staff (Art. 4, since Feb 2025)"],
+  ["5. Institutionalise governance","AI management system (ISO/IEC 42001), owners, KPIs, reviews"]
+ ]],
+ ["Key takeaways","AI = engine of Logistics 4.0; AI Act = licence to operate (also non-EU); most logistics AI = minimal; red zones = workforce mgmt & emotion analysis; multidisciplinary (IT, Legal, Ops, HR)"]
+]},
+
+{title:"2 · Ethics in Logistics",who:"Günnur Diker, FCILT (Chartered Institute of Logistics and Transport)",color:"--c2",nodes:[
+ ["Part 1 · Definitions",null,[
+  ["Ethics","'Moral philosophy', 'science of morals': what is morally good/bad, right/wrong. Also any system of moral values"],
+  ["Origin","From 'Ta Ethika', title of Aristotle's work"],
+  ["Merriam-Webster","Discipline dealing with good and bad and with moral duty and obligation"],
+  ["Einstein","'Relativity applies to physics, not ethics!'"],
+  ["Key ideas","Not subject to change with time & place (unlike customs); doing right when nobody is watching; most visible in times of crisis"],
+  ["Philosophical discipline","Fundamental question: 'What should I do?'"],
+  ["Practical application","Everyday morality · Professional ethics · Corporate & social responsibility"],
+  ["Ethics vs morality","Ethics = systematic STUDY of moral principles; Morality = actual beliefs/practices of people & societies"],
+  ["Also","Cultural differences · Modern perspective: bioethics"],
+  ["Leadership quote","'Ethics must be at the top of an organisation… the manager must set an example.'"]
+ ]],
+ ["Part 2 · Case study: Global Code of Ethics for Tourism (UNWTO, 10 articles)",null,[
+  ["1","Mutual understanding & respect between peoples"],["2","Vehicle for individual & collective fulfilment"],
+  ["3","Factor of sustainable development"],["4","User & enricher of cultural heritage"],
+  ["5","Beneficial activity for host countries & communities"],["6","Obligations of stakeholders"],
+  ["7","Right to tourism"],["8","Freedom of tourist movements"],
+  ["9","Rights of workers & entrepreneurs"],["10","Implementation of the Code"]
+ ]],
+ ["Part 3 · 10 ethical principles in logistics","Fairness, transparency, responsibility, respect for all stakeholders → trust, lower risk, sustainability",[
+  ["1. Transparency & integrity","Open communication · Regulatory compliance · Contractual clarity"],
+  ["2. Fairness","Fair selection of service providers · Fair pricing · Non-discrimination (gender, ethnicity, nationality, background)"],
+  ["3. Environmental responsibility","Reduce carbon footprint · Eco-friendly accommodation · Respect for nature"],
+  ["4. Employee rights & safety","Safety training · Fair wages & working conditions · Employee well-being"],
+  ["5. Data management & privacy","Data security · Compliance with KVKK (Turkish Personal Data Protection Law) · Confidentiality agreements"],
+  ["6. Social responsibility & community","Use of local resources · Community support initiatives · Disaster relief"],
+  ["7. Prevent corruption & bribery","Clear anti-bribery policies · Whistleblower protection · Training programmes"],
+  ["8. Accountability & continuous improvement","Ethics audits · Feedback mechanisms · Continuous training"],
+  ["9. Customer focus & service excellence","Transparency in customer service · Complaint resolution · Respect for customer rights"],
+  ["10. Ethical technology & automation","Ethical AI (routing/inventory algorithms without bias or harm) · Digital transparency (how customer data is used) · Ethical assessment"]
+ ]],
+ ["Crisis rule (no legal/crisis expert available)",null,[
+  ["1","Be open & truthful — transparency"],["2","Prioritise those most affected"],
+  ["3","Apologise / express regret"],["4","Resolve the problem"]
+ ]],
+ ["Ethical Decision Management (decisive leader)","Identify the right course → Make a plan → Take action & implement → Review & monitor → Repeat what is right"],
+ ["Key questions to ask myself","Define the common good (customers, employees, community, investors) · How to make right decisions for all stakeholders · Influence ethical character · Structures/policies for ethical culture · Monitor it · Correct unethical behaviour"],
+ ["Part 4 · Conclusion","Ethics protects reputation, builds trust with customers & partners, contributes to a sustainable, responsible global service chain. 'It is easy to be good.'"]
+]},
+
+{title:"3 · Sustainability in Logistics",who:"ITR313 — Key trends, technologies & EU developments",color:"--c3",nodes:[
+ ["Big picture",null,[
+  ["Chain","Factory → Transport → Hub/Port → Customer"],
+  ["3 impact areas","Environment (emissions, energy, air, waste) · Operations (cost, speed, reliability, resilience) · People (safety, conditions, communities)"],
+  ["Unit of analysis","The WHOLE logistics chain — not one vehicle or warehouse"]
+ ]],
+ ["5 themes of 2026","1 Reducing carbon emissions · 2 Digitalization & AI · 3 Regulatory developments · 4 Circular economy · 5 Measurable performance"],
+ ["3 pillars, one decision",null,[
+  ["Planet (E)","Reduce emissions, pollution, energy, waste"],
+  ["Performance (€)","Efficiency, total cost, service, resilience"],
+  ["People (P)","Protect workers, rights, communities (drivers' hours)"],
+  ["Warnings","Greener ≠ automatically better if it shifts costs/harm. Not sustainable because marketed green → must be measurable & verifiable"],
+  ["EV example","Electric fleet cuts operational emissions but depends on: electricity source, vehicle manufacturing emissions, battery lifespan, total cost of ownership"]
+ ]],
+ ["Transport emissions in EU",null,[
+  ["31%","of EU-27 GHG emissions come from transport (2023)"],
+  ["72.9%","of transport emissions come from ROAD transport (2023)"],
+  ["Source","European Environment Agency 2025 report"],
+  ["Implication","Redesign operations, don't rely only on alternative fuels"]
+ ]],
+ ["5 practices to cut transport emissions","Route optimization · Load consolidation · Fewer empty miles · Modal shift (road → rail/sea) · Alternative energy"],
+ ["Transport mix",null,[
+  ["Road","+ flexible, first/last mile; – congestion & emissions"],
+  ["Rail / Sea","+ efficient for volumes, lower emissions per tonne-km; – terminals, transfers, schedules"],
+  ["Multimodal","+ combines modes, less long-haul road; – coordination & transshipment"],
+  ["No single mode wins","Depends on distance, cargo type, load factor, transshipment, energy used. Compare door-to-door"]
+ ]],
+ ["EU 2026 timeline",null,[
+  ["1 Jan 2026","CBAM definitive phase begins"],
+  ["4 Mar 2026","EU Ports Strategy announced"],
+  ["16 Mar → 30 Mar 2026","Sustainable transport state-aid rules adopted → apply (rail, inland waterways, multimodal)"],
+  ["1 Jun 2026","CountEmissionsEU enters into force"],
+  ["Rule","Distinguish announcement / entry into force / obligations for a specific company"]
+ ]],
+ ["CBAM (scope!)",null,[
+  ["IS","Embedded emissions from PRODUCTION of imported goods covered by the mechanism"],
+  ["IS NOT","A general tax on transport emissions of every shipment"],
+  ["Supply-chain implications","Reliable supplier emissions data · traceability exporter↔importer · applicability depends on product scope"],
+  ["Türkiye → EU","Needs embedded-emissions data; impact depends on product coverage & thresholds"]
+ ]],
+ ["EU Ports Strategy","Competitiveness, security, resilience, sustainability: equipment electrification, flow optimization, shorter waiting times, rail/road links, renewable & alt-fuel infrastructure. Port performance = energy, emissions, congestion, reliability, hinterland connectivity (not only speed)"],
+ ["CountEmissionsEU","Common EU methodology for GHG of passenger & freight transport; aligned with EN ISO 14083:2023 → consistent, comparable data, carrier selection"],
+ ["Multimodal",null,[
+  ["Benefits","Less long road freight, energy efficiency for volumes, more carbon options, less congestion"],
+  ["Limits","Inadequate transshipment facilities, extra handling, delays, infrastructure limits"]
+ ]],
+ ["AI & technology",null,[
+  ["Predict / Optimize / Monitor","Forecasting & inventory · routes & consolidation · IoT & cold chain"],
+  ["Rebound effects!","More small deliveries, data processing & energy can offset gains — judge net outcomes"],
+  ["Tech table","AI (forecast, routing) · IoT (cold chain, less spoilage) · Big data (inefficiencies) · Digital twins (test before investing) · Smart warehouses (space, energy, labour)"]
+ ]],
+ ["Warehousing, packaging, reverse logistics",null,[
+  ["Energy-efficient warehouses","LED, solar, smart temperature, insulation, energy monitoring"],
+  ["Sustainable packaging","Lighter, reusable containers, recyclable"],
+  ["Reverse logistics","Collect, sort, repair, resell/recycle returns → key to circular economy"],
+  ["E-commerce problems","Oversized packaging, low load factors, repeated failed deliveries → integrate packaging, consolidation, delivery planning, returns"]
+ ]],
+ ["KPIs",null,[
+  ["Carbon intensity","kg CO₂e ÷ tonne-km. Ex: 1,000 km × 100 t = 100,000 t-km; 8,000 kg → 0.08; 6,000 kg → 0.06 = −25%"],
+  ["Vehicle load factor","Used / total capacity × 100"],
+  ["Empty-mile ratio","Empty km / total km × 100"],
+  ["Warehouse energy intensity","kWh / m² or per order"],
+  ["Packaging waste intensity","kg waste / order"],
+  ["On-time delivery rate","On-time / total × 100"],
+  ["Occupational safety","Recorded accidents & rates"]
+ ]],
+ ["Türkiye","EU market access (CBAM data) · rail/maritime/multimodal · ports & hubs · digital data infrastructure · SME transformation (funding & expertise)"],
+ ["5 priorities","1 Standardized emissions data · 2 Integrated transport planning · 3 Digital supply chains · 4 Circular logistics · 5 Verified sustainability claims"],
+ ["Discussion Qs","Fast vs low-carbon? EV always better? Less carbon = less cost? AI creates new costs? Where should an exporter start?"]
+]},
+
+{title:"4 · 0→1: Turning a Problem into a Company",who:"Founder of Troy Depo — real-world entrepreneurship",color:"--c4",nodes:[
+ ["Session approach","Not a formula: how founders think when the answer is not obvious. 4 lenses: Problems · Customers · Trade-offs · Systems. Goal = better decisions under uncertainty"],
+ ["Idea ≠ Problem",null,[
+  ["Idea (our view)","'Let's start a storage company.'"],
+  ["Problem (customer view)","'Where can I safely keep my things for a while?'"],
+  ["Not every problem = opportunity","Who has it? · How often? · Will they pay?"],
+  ["Chain","Problem → Frequency → Pain → Willingness to pay"]
+ ]],
+ ["10-question checklist",null,[
+  ["1–5: is the opportunity REAL?","01 Problem · 02 Customer · 03 Market (demand + timing) · 04 Value (why switch/trust/pay) · 05 MVP"],
+  ["6–10: can the business WORK?","06 Product–market fit (customers pull) · 07 Business model · 08 Go-to-market (first 100 customers) · 09 Unit economics & cash · 10 Team"],
+  ["Idea","You keep returning to them; a venture = a system of answers that fit together"]
+ ]],
+ ["MVP",null,[
+  ["MVP ≠ smaller final product","Its job is to REDUCE UNCERTAINTY"],
+  ["Loop","Assumption → Smallest test → Evidence → Next move (build, change or stop)"],
+  ["Minimum ≠ low quality","Minimum effort to learn something important"]
+ ]],
+ ["Market- vs product-oriented",null,[
+  ["Market-oriented","Need → Customer → Offer. Default for services, consumer, marketplaces; reduces demand risk"],
+  ["Product-oriented","Capability → Product → Market. New tech/research; breakthroughs before market knows"],
+  ["Rule","Market-first lowers risk; product-first can unlock breakthroughs. Know which game you play"]
+ ]],
+ ["How a problem becomes a company","We SAW people need extra space → ASSUMED need = 'storage space' → LEARNED real need = trust + peace of mind → CHANGED service, process, experience. Not a straight line"],
+ ["What customers really buy",null,[
+  ["Visible","Storage space"],
+  ["Real value","Trust · Peace of mind · Less uncertainty → they buy the OUTCOME"],
+  ["Product ≠ Value","Storage→more space · Moving→less time & stress · Insurance→shared risk · Brand→confidence. They remember what changed"]
+ ]],
+ ["The journey","Plan will change · unpredicted problems are normal · people see the outcome, not the process"],
+ ["First customer","Gives EVIDENCE (more valuable than revenue). Assumption → Customer → Evidence → Change. Listen to behaviour, questions, friction, objections — not only compliments"],
+ ["Pricing","Same service, different price: customers compare risk & peace of mind. Trust, convenience, communication, speed, assurance, experience → PRICE FOLLOWS PERCEIVED VALUE"],
+ ["Defensibility Q","If a competitor copies everything tomorrow, why would customers still choose you?"],
+ ["Founder's job evolves",null,[
+  ["1 person","'I'll do it' → Founder as DOER"],
+  ["10 people","'Who should do it?' → DELEGATOR"],
+  ["100 people","'How should the system work?' → SYSTEM DESIGNER"],
+  ["Same problem","1st time: solve it · 2nd: find the cause · 3rd: build a system"]
+ ]],
+ ["Case 1 · Investor","3-yr company; investor wants 40% for potential 3× in 2 yrs + board influence. New info: competitor raised capital; valuation +30% but say in replacing CEO. → Speed & capital vs ownership & control"],
+ ["Trade-offs","Growth↔Control · Speed↔Quality · Capital↔Independence · Today↔Long term. Big decisions are rarely good vs bad; they are trade-offs"],
+ ["Case 2 · Toxic big customer","35% of revenue; late payments, last-minute requests, disruption, poor treatment of team. Finance: lose money · Ops: lose good people. New info: best manager will leave; +20% price, 3-yr contract → 'The money changed. Did the underlying problem change?'"],
+ ["7 principles","01 Fall in love with the problem · 02 Sell early · 03 Listen but don't do all they ask · 04 Build systems (not in founder's head) · 05 People decisions seriously · 06 Question growth · 07 Start with market by default"],
+ ["Quotes","Arthur C. Clarke (limits of the possible) · Seneca ('no wind is favorable' without a port) · Zig Ziglar ('start to be great') · If nothing fails, not enough risk"],
+ ["Closing","Do not look for ideas. Look for problems. Find one worth solving."]
+]}
+];
+
+/* ============ CHEAT SHEET ============ */
+const CHEAT = [
+ {h:"EU AI Act — dates",rows:[
+  ["1 Aug 2024","AI Act (Reg. 2024/1689) in force"],["2 Feb 2025","Bans + AI literacy (Art. 4)"],
+  ["2 Aug 2025","General-purpose AI rules"],["27 Jul 2026","Digital Omnibus (Reg. 2026/1744) in force"],
+  ["2 Aug 2026","Transparency (Art. 50) + enforcement, lock-down"],["2 Dec 2026","AI content marking, nudifier ban; Platform Work Directive transposition"],
+  ["20 Jan 2027","Machinery Regulation (robots, AGVs, AMRs)"],["2 Dec 2027","High-risk stand-alone (Annex III)"],
+  ["2 Aug 2028","High-risk embedded (Annex I)"]]},
+ {h:"Sustainability — dates & figures",rows:[
+  ["14 Jul 2021","CBAM adopted (Taşkın)"],["2023","CBAM implementation starts"],["1 Jan 2026","CBAM definitive phase"],
+  ["4 Mar 2026","EU Ports Strategy"],["16/30 Mar 2026","State-aid rules adopted / apply"],["1 Jun 2026","CountEmissionsEU (EN ISO 14083:2023)"],
+  ["2050","EU carbon-neutral goal"],["2025","Separate textile waste collection"],
+  ["31%","EU GHG from transport (2023)"],["72.9%","Transport emissions from road"]]},
+ {h:"Sanctions & articles (AI Act)",rows:[
+  ["€35M / 7%","Prohibited practices"],["€15M / 3%","Other obligations"],["€7.5M / 1%","Misleading info"],
+  ["€20M / 4%","GDPR (comparison)"],["Art. 2(1)","Scope / extraterritorial"],["Art. 4","AI literacy"],
+  ["Art. 5(1)(f)","Workplace emotion recognition ban"],["Art. 14","Human oversight"],["Art. 25","Deployer becomes provider"],
+  ["Art. 26","Deployer duties (logs ≥ 6 months)"],["Art. 50","Transparency"],["Annex III pt 4","Employment / workforce mgmt"]]},
+ {h:"Acronyms",rows:[
+  ["CBAM","Carbon Border Adjustment Mechanism"],["DPP","Digital Product Passport"],["LCA","Life Cycle Assessment (cradle to grave)"],
+  ["LCC","Life Cycle Cost"],["PEF","Product Environmental Footprint"],["OEF","Organisation Environmental Footprint"],
+  ["KVKK","Turkish Personal Data Protection Law"],["AGV/AMR","Automated guided vehicle / Autonomous mobile robot"],
+  ["MVP","Minimum Viable Product"],["TCO","Total cost of ownership"],["ISO/IEC 42001","AI management system standard"],["FCILT","Chartered Fellow, CILT"]]},
+ {h:"Pièges classiques à l'examen",list:[
+  "CBAM = émissions <b>de production</b> des biens importés, PAS une taxe sur les émissions de transport.",
+  "Fatigue du chauffeur = état <b>physique</b> → minimal. Émotion (colère, tristesse) → <b>interdit</b>.",
+  "Acheter une IA en SaaS ne décharge pas : le <b>deployer</b> a ses propres obligations.",
+  "Amendes : le montant le <b>plus élevé</b> s'applique… sauf PME : le <b>plus bas</b>.",
+  "Les dates high-risk ont bougé (2027/2028) mais les interdictions, l'AI literacy et la transparence s'appliquent <b>déjà</b>.",
+  "Ethics = <b>étude systématique</b> ; morality = croyances/pratiques réelles.",
+  "MVP ≠ petite version du produit : son but est de <b>réduire l'incertitude</b>.",
+  "« Green » ne suffit pas : bénéfices <b>mesurables et vérifiables</b>.",
+  "Rail/mer souvent moins émetteurs par t-km, mais <b>aucun mode ne gagne toujours</b>."
+ ]},
+ {h:"Les listes à connaître par cœur",list:[
+  "<b>Crisis rule</b> : Open & truthful → Prioritise most affected → Apologise → Resolve.",
+  "<b>Ethical decision mgmt</b> : Identify → Plan → Act → Review & monitor → Repeat.",
+  "<b>3 pillars</b> : Planet · Performance · People.",
+  "<b>Roadmap IA</b> : Inventory & classify → Contracts → Oversight loop → AI literacy → Governance.",
+  "<b>Problem filter</b> : Problem → Frequency → Pain → Willingness to pay.",
+  "<b>MVP loop</b> : Assumption → Smallest test → Evidence → Next move.",
+  "<b>Founder</b> : Doer (1) → Delegator (10) → System designer (100).",
+  "<b>Same problem</b> : Solve → Find cause → Build system."
+ ]}
+];
+
+/* ============ QUIZ (option 0 = correct, shuffled at runtime) ============ */
+const T = {ai:"Digitalization & AI",eth:"Ethics",sus:"Sustainability",ent:"Entrepreneurship 0→1"};
+const TC = {ai:"--c1",eth:"--c2",sus:"--c3",ent:"--c4"};
+const Q = [
+["ai","Where was the concept of Industry 4.0 first introduced?",["Hannover Fair, 2011","World Economic Forum, Davos 2016","MIT conference, 1956","European Commission, 2021"],"Industry 4.0 was introduced at the Hannover Fair in 2011."],
+["ai","Industry 4.0 is characterized by…",["Cyber-physical systems and real-time technologies","Steam power and mechanization","Widespread electricity","Computers and information technology"],"1.0 steam, 2.0 electricity, 3.0 computers/IT, 4.0 cyber-physical systems + real time."],
+["ai","What was the 'AI winter' of the 1980s?",["A period of disillusion after unrealistic expectations led to failures","A period when computer vision was invented","The launch of Industry 4.0","A ban on AI research in Europe"],"Misplaced optimism + failures + criticism in the mid/late 1980s = AI winter."],
+["ai","Which element is a 'cradle to grave' assessment across the value chain?",["LCA – Life Cycle Assessment","LCC – Life Cycle Cost","OEF – Organisation Environmental Footprint","DPP – Digital Product Passport"],"LCA = cradle to grave. LCC adds environmental costs; OEF = organisation's operations."],
+["ai","The Organisation Environmental Footprint (OEF) measures…",["The environmental effects of the organisation's general operations","The carbon footprint of one product only","Life-cycle costs including CO₂","Emissions of imported goods"],"PEF = product/service; OEF = whole organisation."],
+["ai","According to Taşkın, data security issues in traceability are mostly solved by combining…",["Blockchain and IoT","QR codes and barcodes","NLP and chatbots","ABC and XYZ classification"],"Labels (RFID, NFC, QR…) → IoT → blockchain (decentralized, immutable, secure)."],
+["ai","In warehouses, AI enables dynamic classification of goods, replacing…",["ABC and XYZ classification","FIFO and LIFO","Kanban","EOQ models"],"AI classifies goods dynamically instead of traditional ABC/XYZ."],
+["ai","A digital twin in the value chain allows…",["A dynamic simulation that can warn or stop the system before obstacles arise","Replacing all human workers","Calculating CBAM taxes automatically","Classifying AI risk tiers"],"AI predictions are sent as signals to the real system to anticipate problems."],
+["ai","When did the EU AI Act (Regulation (EU) 2024/1689) enter into force?",["1 August 2024","2 February 2025","27 July 2026","2 December 2027"],"In force 1 Aug 2024; the Digital Omnibus (2026/1744) entered into force 27 July 2026."],
+["ai","What is the role of most logistics firms under the AI Act?",["Deployer","Provider","Importer","Notified body"],"Deployers use AI under their own authority (TMS, WMS, driver monitoring…)."],
+["ai","A logistics firm puts its own name on a high-risk AI system it bought. It becomes…",["A provider (Art. 25)","Still only a deployer","A distributor","Exempt from the Act"],"Name on it, substantial modification or repurposing for high-risk → provider (Art. 25)."],
+["ai","In-cab cameras inferring a driver's anger or sadness (non-medical) are…",["Prohibited","High-risk","Limited risk","Minimal risk"],"Emotion recognition at the workplace is banned since 2 Feb 2025 (Art. 5(1)(f))."],
+["ai","Fatigue and lane-departure alerts based on eyelid closure are classified as…",["Minimal risk — fatigue is a physical state, not an emotion","Prohibited — it is emotion recognition","High-risk — it evaluates drivers","Limited risk — transparency duty"],"Calibrate cameras to physical-safety signals only."],
+["ai","Telematics scores used to reward, discipline or dismiss drivers are…",["High-risk (Annex III, point 4)","Minimal risk","Prohibited","Limited risk"],"Workforce evaluation = high-risk, applies from 2 Dec 2027."],
+["ai","A chatbot in customer service or customs support falls under…",["Limited risk: must disclose that people deal with AI","Minimal risk: no duties","High-risk: conformity assessment","Prohibited"],"Transparency duties (Art. 50) since 2 Aug 2026."],
+["ai","Demand forecasting and route optimisation are typically…",["Minimal risk — no new duties, but GDPR still applies","High-risk","Limited risk","Prohibited"],"Voluntary codes of conduct; other laws still apply."],
+["ai","After the Digital Omnibus, stand-alone high-risk AI (Annex III) rules apply from…",["2 December 2027","2 August 2026","2 August 2028","2 February 2025"],"2 Dec 2027 for Annex III; 2 Aug 2028 for AI embedded in regulated products (Annex I)."],
+["ai","Maximum fine for prohibited AI practices?",["€35M or 7% of worldwide annual turnover","€20M or 4%","€15M or 3%","€7.5M or 1%"],"€20M/4% is the GDPR maximum; €15M/3% other obligations; €7.5M/1% misleading info."],
+["ai","For SMEs, the AI Act fine is…",["Whichever is lower (fixed amount or % of turnover)","Whichever is higher","Always the fixed amount","Always zero"],"Normally the higher one; for SMEs the lower one."],
+["ai","How long must deployers of high-risk AI keep automatically generated logs?",["At least six months","At least one month","At least five years","No obligation"],"Art. 26 deployer duty."],
+["ai","Which article requires human oversight for high-risk systems?",["Art. 14","Art. 4","Art. 50","Art. 25"],"Art. 4 = AI literacy, Art. 50 = transparency, Art. 25 = becoming provider."],
+["ai","The AI literacy duty (Art. 4) applies since…",["2 February 2025","2 August 2026","2 December 2027","1 August 2024"],"Applied together with the bans on prohibited practices."],
+["ai","A Türkiye-based 3PL can fall under the AI Act when…",["Its AI outputs are used for EU shipments, customers or staff","Only if its HQ is in the EU","Never — it is outside the EU","Only if it has more than 250 employees"],"Extraterritorial scope, Art. 2(1)."],
+["ai","The EU Machinery Regulation (robots, AGVs, AMRs) applies from…",["20 January 2027","1 June 2026","2 August 2025","9 December 2026"],"9 Dec 2026 is the Product Liability Directive."],
+["ai","Which voluntary standard is cited for an AI management system?",["ISO/IEC 42001","EN ISO 14083","ISO 9001","ISO 14001"],"ISO 14083 is for transport emissions accounting."],
+["ai","What is the first step of the 5-step roadmap for logistics firms?",["Inventory & classify every AI system","Invest in AI literacy","Institutionalise governance","Build the oversight loop"],"Inventory & classify → Revise contracts → Oversight loop → AI literacy → Governance."],
+["ai","Which area is described as the 'high-risk hotspot' in logistics?",["Algorithmic workforce management","Dynamic B2B pricing","Traceability with RFID","Demand forecasting"],"Recruitment, task allocation, performance monitoring."],
+["ai","Since when does the Data Act give access to IoT and telematics data?",["September 2025","January 2027","August 2024","December 2027"],"Part of the regulatory web around logistics AI."],
+
+["eth","The word 'ethics' traces back to…",["Ta Ethika, the title of Aristotle's work","Plato's Republic","A Latin legal code","Merriam-Webster's dictionary"],"Ethics = moral philosophy / science of morals."],
+["eth","What is the difference between ethics and morality?",["Ethics = systematic study of moral principles; morality = actual beliefs and practices","They are exactly the same","Morality is the study, ethics the practice","Ethics only concerns law"],"Often used interchangeably but subtly different."],
+["eth","Which quote does the course attribute to Albert Einstein?",["'Relativity applies to physics, not ethics!'","'Winning is good as long as you remain honest.'","'It is easy to be good.'","'Dare to say no.'"],"Ethics is not relative to time and place."],
+["eth","Unlike social customs and conventions, ethics…",["Is not subject to change according to time and place","Changes in every culture","Only applies in crises","Is defined by each company"],"Ethics gives a stable foundation for morality."],
+["eth","When immediate action is needed and no expert is available, the general rule is:",["Be open & truthful, prioritise those most affected, apologise, resolve the problem","Wait for lawyers, say nothing","Blame the supplier, then fix","Fix silently without communicating"],"Same 4 points in the final thought slide."],
+["eth","The Ethical Decision Management process is:",["Identify right course → plan → act → review & monitor → repeat","Plan → act → apologise → forget","Act → review → identify → plan","Audit → fine → train"],"The stance of a decisive leader."],
+["eth","KVKK, cited under data management & privacy, is…",["The Turkish Personal Data Protection Law","An EU AI regulation","A carbon tax","A tourism code"],"Principle 5: data security, KVKK compliance, confidentiality agreements."],
+["eth","Whistleblower protection belongs to which principle?",["Preventing corruption and bribery","Environmental responsibility","Customer focus","Fair pricing"],"With clear anti-bribery policies and training programmes."],
+["eth","Non-discrimination (gender, ethnicity, nationality) belongs to…",["Fairness","Transparency & integrity","Data privacy","Social responsibility"],"With fair selection of providers and fair pricing."],
+["eth","Ethics audits, feedback mechanisms and continuous training belong to…",["Accountability & continuous improvement","Customer focus","Employee safety","Environmental responsibility"],"Principle 8."],
+["eth","'Ethical use of AI and data' in logistics means…",["Routing, delivery or inventory algorithms must not cause unintended bias or harm","Using AI as much as possible","Never using AI","Hiding how customer data is used"],"Plus digital transparency and ethical assessment."],
+["eth","The case study in Part 2 is the Global Code of Ethics for Tourism. How many articles?",["10","5","7","12"],"From 'mutual understanding' (1) to 'implementation of the Code' (10)."],
+["eth","Use of local resources, community support and disaster relief belong to…",["Social responsibility & community engagement","Fairness","Accountability","Transparency"],"Principle 6."],
+
+["sus","What share of EU-27 GHG emissions came from transport in 2023?",["31%","72.9%","15%","50%"],"And 72.9% of transport emissions come from road (EEA)."],
+["sus","What does CBAM focus on?",["Embedded emissions from the production of imported goods covered","A tax on transport emissions of every shipment","Emissions of EU ports","AI systems in logistics"],"Classic trap: CBAM is NOT a general transport tax."],
+["sus","CBAM's definitive phase began on…",["1 January 2026","4 March 2026","1 June 2026","14 July 2021"],"14 July 2021 = adoption (Taşkın); 2023 = start of implementation."],
+["sus","CountEmissionsEU (in force 1 June 2026) is aligned with…",["EN ISO 14083:2023","ISO/IEC 42001","ISO 9001","GDPR"],"Common methodology → comparable emissions data across modes."],
+["sus","1,000 km, 100 tonnes, 6,000 kg CO₂e. Carbon intensity?",["0.06 kg CO₂e/tonne-km","0.08 kg CO₂e/tonne-km","6 kg CO₂e/tonne-km","0.6 kg CO₂e/tonne-km"],"100,000 t-km; 6,000 / 100,000 = 0.06 (vs 0.08 before = −25%)."],
+["sus","The empty-mile ratio is calculated as…",["Empty km / total km × 100","Used capacity / total capacity × 100","kg CO₂e / tonne-km","On-time / total deliveries × 100"],"Second option is the vehicle load factor."],
+["sus","The three pillars of sustainable logistics in the course are…",["Planet, Performance, People","Profit, Price, Product","Road, Rail, Sea","Predict, Optimize, Monitor"],"Predict/Optimize/Monitor = AI uses."],
+["sus","A 'rebound effect' of AI in logistics is…",["More small deliveries and data-processing energy that offset gains","Lower emissions per tonne-km","Better load consolidation","Fewer empty miles"],"Judge technology by net outcomes."],
+["sus","Which is NOT one of the factors deciding the real outcome of an electric fleet?",["The brand reputation of the truck maker","Electricity source","Battery lifespan","Total cost of ownership"],"4 factors: electricity source, manufacturing emissions, battery lifespan, TCO."],
+["sus","The EU Ports Strategy was announced on…",["4 March 2026","1 January 2026","30 March 2026","1 June 2026"],"Electrification, flow optimization, shorter waiting times, rail/road links, renewables."],
+["sus","What is the unit of analysis in sustainable logistics?",["The whole logistics chain","A single vehicle","A single warehouse","The customer only"],"Factory → Transport → Hub/Port → Customer."],
+["sus","Which is a limit of multimodal transport?",["Inadequate transshipment facilities","Less long-distance road freight","Less congestion","More options to cut carbon"],"Also: additional handling, delays, infrastructure limitations."],
+["sus","Collecting, sorting, repairing and reselling/recycling returns is…",["Reverse logistics","Modal shift","Load consolidation","Carbon intensity"],"A key part of the circular economy."],
+["sus","Which of these is the BEST statement about transport modes?",["No single mode wins every shipment — compare door-to-door","Rail is always the greenest","Road is always the cheapest","Sea is always the slowest and worst"],"Depends on distance, cargo, load factor, transshipment, energy."],
+["sus","Sustainable transport state-aid rules were adopted on 16 March 2026 and applied from…",["30 March 2026","1 June 2026","1 January 2027","4 March 2026"],"Rail, inland waterways and sustainable multimodal transport."],
+
+["ent","'Where can I safely keep my things for a while?' is an example of…",["A problem (customer's perspective)","An idea (our perspective)","An MVP","A business model"],"'Let's start a storage company' = the idea."],
+["ent","The problem-filter sequence in the course is:",["Problem → Frequency → Pain → Willingness to pay","Idea → Product → Market → Price","Pain → Problem → Price → Frequency","Customer → Offer → Need → Pay"],"Who has it? How often? Will they pay?"],
+["ent","What is the job of an MVP?",["To reduce uncertainty","To be a smaller version of the final product","To be low quality and cheap","To impress investors"],"Assumption → Smallest test → Evidence → Next move."],
+["ent","The market-oriented approach follows…",["Need → Customer → Offer","Capability → Product → Market","Product → Price → Promotion","Idea → Funding → Launch"],"Product-oriented = Capability → Product → Market."],
+["ent","For the storage company, what is the customer really buying?",["Trust, peace of mind and less uncertainty","Square metres of storage","The cheapest price","The brand logo"],"Customers buy the outcome, not the service."],
+["ent","At the 100-person stage, the founder acts as…",["System designer","Doer","Delegator","Investor"],"1 = doer, 10 = delegator, 100 = system designer."],
+["ent","The third time the same problem reaches the founder, they should…",["Build a system","Solve it","Find the cause","Ignore it"],"1st solve, 2nd find cause, 3rd build a system."],
+["ent","What does the first customer give you that is even more valuable than revenue?",["Evidence","Compliments","Investor interest","A brand"],"The first customer turns assumptions into evidence."],
+["ent","According to the course, price follows…",["Perceived value","Production cost","Competitor prices","Market size"],"Trust, convenience, communication, speed, assurance, experience."],
+["ent","Questions 1–5 of the checklist (Problem, Customer, Market, Value, MVP) check…",["Whether the opportunity is real","Unit economics and cash","Whether the team can execute","Go-to-market"],"6–10 = repeatability, economics, execution (PMF, model, GTM, unit economics, team)."],
+["ent","In Case 2, a customer is 35% of revenue but harms operations. The key lesson is…",["A customer can be economically valuable and operationally destructive; money changing doesn't change the underlying problem","Always keep the biggest customer","Always fire difficult customers","Only finance should decide"],"'The money changed. Did the underlying problem change?'"],
+["ent","Big decisions in business are rarely 'good vs bad'; they are…",["Trade-offs","Mistakes","Formulas","Legal issues"],"Growth↔Control, Speed↔Quality, Capital↔Independence, Today↔Long term."],
+["ent","Principle 07 says:",["Start with the market by default, unless the business calls for product/tech-led discovery","Always start with the product","Never sell before perfection","Grow at any cost"],"Market-first often lowers risk."],
+["ent","'If one does not know to which port one is sailing, no wind is favorable' is from…",["Seneca the Younger","Arthur C. Clarke","Zig Ziglar","Aristotle"],"Clarke = limits of the possible; Ziglar = start to be great."],
+["ent","In Case 1, the investor wants how much of the company?",["40%","35%","30%","20%"],"40% for a potential 3× in 2 years, with board influence."]
+];
+
+/* ============ MIND MAP RENDER ============ */
+const $=s=>document.querySelector(s);
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function nodeHTML(n){
+  const [l,note,kids]=n;
+  const has=kids&&kids.length;
+  let h=`<li class="n ${has?'has':'leaf'}" data-txt="${esc((l+' '+(note||'')).toLowerCase())}"><div class="lbl"><span class="car">${has?'▶':''}</span><span><span class="t">${esc(l)}</span>${note?`<span class="note">${esc(note)}</span>`:''}</span></div>`;
+  if(has)h+=`<ul>${kids.map(nodeHTML).join('')}</ul>`;
+  return h+'</li>';
+}
+$('#branches').innerHTML=MAP.map(b=>`<div class="branch" style="--bc:var(${b.color})"><h2>${esc(b.title)}</h2><div class="who">${esc(b.who)}</div><ul class="tree">${b.nodes.map(nodeHTML).join('')}</ul></div>`).join('');
+document.querySelectorAll('.branch>ul.tree>li.has').forEach(li=>li.classList.add('open'));
+$('#branches').addEventListener('click',e=>{const l=e.target.closest('.has>.lbl');if(l)l.parentElement.classList.toggle('open')});
+$('#openAll').onclick=()=>document.querySelectorAll('li.has').forEach(l=>l.classList.add('open'));
+$('#closeAll').onclick=()=>document.querySelectorAll('li.has').forEach(l=>l.classList.remove('open'));
+const origHTML=new Map();
+document.querySelectorAll('.lbl > span:last-child').forEach(s=>origHTML.set(s,s.innerHTML));
+$('#search').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  origHTML.forEach((h,s)=>s.innerHTML=h);
+  const all=[...document.querySelectorAll('li.n')];
+  if(!q){all.forEach(l=>l.classList.remove('hide'));return}
+  all.forEach(l=>l.classList.add('hide'));
+  all.forEach(l=>{
+    if(l.dataset.txt.includes(q)){
+      l.classList.remove('hide');
+      l.querySelectorAll('li.n').forEach(c=>c.classList.remove('hide'));
+      let p=l.parentElement.closest('li.n');
+      while(p){p.classList.remove('hide');p.classList.add('open');p=p.parentElement.closest('li.n')}
+      const s=l.querySelector(':scope>.lbl>span:last-child');
+      const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      s.querySelectorAll('.t,.note').forEach(x=>x.innerHTML=x.innerHTML.replace(re,'<mark class="hl">$1</mark>'));
+    }
+  });
+});
+
+/* ============ CHEAT RENDER ============ */
+$('#cheatGrid').innerHTML=CHEAT.map(c=>`<div class="box"><h3>${c.h}</h3>${c.rows?`<table>${c.rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>`:`<ul class="trap">${c.list.map(x=>`<li>${x}</li>`).join('')}</ul>`}</div>`).join('');
+
+/* ============ TABS ============ */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===t.dataset.v));
+  window.scrollTo(0,0);
+});
+
+/* ============ QUIZ ============ */
+let topic='all',deck=[],idx=0,answers=[];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function chips(){
+  const counts={all:Q.length};Q.forEach(q=>counts[q[0]]=(counts[q[0]]||0)+1);
+  const opts=[['all','Tous']].concat(Object.entries(T));
+  $('#topicChips').innerHTML=opts.map(([k,v])=>`<button class="chip ${k===topic?'on':''}" data-k="${k}">${v} (${counts[k]})</button>`).join('');
+  $('#topicChips').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{topic=c.dataset.k;start()});
+}
+function start(list){
+  chips();
+  const base=list||Q.filter(q=>topic==='all'||q[0]===topic);
+  deck=shuffle(base).map(q=>({q,order:shuffle([0,1,2,3])}));
+  idx=0;answers=new Array(deck.length).fill(null);render();
+}
+function render(){
+  if(idx>=deck.length)return results();
+  const {q,order}=deck[idx],a=answers[idx];
+  const done=answers.filter(x=>x!==null).length,good=answers.filter(x=>x===0).length;
+  $('#quizBox').innerHTML=`<div class="qcard">
+   <div class="qmeta"><span>Question ${idx+1} / ${deck.length}</span><span>Score : ${good} / ${done}</span></div>
+   <div class="bar"><i style="width:${idx/deck.length*100}%"></i></div>
+   <span class="tag" style="background:var(${TC[q[0]]})">${T[q[0]]}</span>
+   <div class="qtext" style="margin-top:10px">${esc(q[1])}</div>
+   ${order.map(o=>`<button class="opt ${a!==null?(o===0?'good':(o===a?'bad':'')):''}" data-o="${o}" ${a!==null?'disabled':''}>${esc(q[2][o])}</button>`).join('')}
+   <div class="expl ${a!==null?'show':''}" style="border-color:var(${a===0?'--ok':'--ko'})"><b>${a===0?'✓ Correct':'✗ Réponse : '+esc(q[2][0])}</b><br>${esc(q[3])}</div>
+   <div class="nav"><button class="btn" id="prev" ${idx===0?'disabled':''}>← Précédent</button>
+   <button class="primary" id="next" ${a===null?'style="opacity:.4" disabled':''}>${idx===deck.length-1?'Voir le résultat':'Suivant →'}</button></div></div>`;
+  $('#quizBox').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{answers[idx]=+b.dataset.o;render()});
+  $('#prev').onclick=()=>{idx--;render()};
+  $('#next').onclick=()=>{idx++;render()};
+}
+function results(){
+  const good=answers.filter(x=>x===0).length,pct=Math.round(good/deck.length*100);
+  const by={};deck.forEach((d,i)=>{const k=d.q[0];by[k]=by[k]||[0,0];by[k][1]++;if(answers[i]===0)by[k][0]++});
+  const wrong=deck.filter((d,i)=>answers[i]!==0).map(d=>d.q);
+  $('#quizBox').innerHTML=`<div class="qcard"><div style="text-align:center;color:var(--muted)">Résultat</div>
+   <div class="score">${good} / ${deck.length} · ${pct}%</div>
+   <p style="text-align:center">${pct>=85?'Excellent, tu es prêt.':pct>=65?'Bien — revois les erreurs ci-dessous.':'Repasse sur la mind map pour les thèmes faibles, puis refais les erreurs.'}</p>
+   <table class="res">${Object.entries(by).map(([k,v])=>`<tr><td><span class="tag" style="background:var(${TC[k]})">${T[k]}</span></td><td>${v[0]} / ${v[1]}</td></tr>`).join('')}</table>
+   ${wrong.length?`<h3 style="margin:18px 0 6px;font-size:15px">À revoir</h3><ul class="trap">${wrong.map(q=>`<li><b>${esc(q[1])}</b><br>→ ${esc(q[2][0])}</li>`).join('')}</ul>`:''}
+   <div class="nav">${wrong.length?'<button class="primary" id="redo">Refaire uniquement les erreurs</button>':'<span></span>'}<button class="btn" id="again">Tout recommencer</button></div></div>`;
+  if(wrong.length)$('#redo').onclick=()=>start(wrong);
+  $('#again').onclick=()=>start();
+}
+$('#restart').onclick=()=>start();
+start();
+</script>
+</body>
+</html>
