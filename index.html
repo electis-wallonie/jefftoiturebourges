@@ -1,926 +1,626 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marketing Strategy Exam Map</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Révision Current Issues in Logistics</title>
 <style>
-/* Layout: mind map = root in the middle, 3 branches each side, leaves fan out; details open in a side drawer. Quiz = one card at a time. */
 :root{
-  --bg:#f3f5fa; --surface:#ffffff; --surface2:#eef1f8; --ink:#141829; --muted:#586079; --line:#d6dbe8;
-  --accent:#2f54d4; --good:#16865a; --good-t:#e3f5ec; --bad:#c62f3f; --bad-t:#fbe7ea; --warn:#9a6200; --warn-t:#fdf1d8;
-  --c1:#2f63d8; --c1-t:#e5ecfc; --c2:#0d8a6a; --c2-t:#dff3ec; --c3:#c46a12; --c3-t:#fbeedd;
-  --c4:#be2f68; --c4-t:#fbe4ee; --c5:#6b46cf; --c5-t:#ece6fb; --c6:#8a7206; --c6-t:#f6f0d4;
-  --f-display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --bg:#f6f5f1;--card:#ffffff;--ink:#1d1d1b;--muted:#6b6a65;--line:#e3e1da;
+  --c1:#2f6fd6;--c2:#b0442f;--c3:#2f8a57;--c4:#8a4fc2;
+  --ok:#2f8a57;--ko:#c0392b;--okbg:#e6f4ec;--kobg:#fbe9e7;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0e1120; --surface:#171b2d; --surface2:#1e2338; --ink:#e7eaf5; --muted:#9aa2bd; --line:#2c3352;
-  --accent:#8ea6ff; --good:#4fd39a; --good-t:#123326; --bad:#ff7d8a; --bad-t:#3a1820; --warn:#f2c060; --warn-t:#352a10;
-  --c1:#7ea3ff; --c1-t:#1c2647; --c2:#4fd1ac; --c2-t:#123129; --c3:#f3a35a; --c3-t:#35260f;
-  --c4:#ff7fae; --c4-t:#3a1527; --c5:#b39aff; --c5-t:#271d45; --c6:#e0c64f; --c6-t:#2f2a0e; color-scheme:dark}}
+  --bg:#141413;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a19a;--line:#33322f;
+  --c1:#6c9cf0;--c2:#e07a63;--c3:#5cc08a;--c4:#b48be6;
+  --ok:#5cc08a;--ko:#ef7b6e;--okbg:#1d3326;--kobg:#3a1f1c;}}
 :root[data-theme="dark"]{
-  --bg:#0e1120; --surface:#171b2d; --surface2:#1e2338; --ink:#e7eaf5; --muted:#9aa2bd; --line:#2c3352;
-  --accent:#8ea6ff; --good:#4fd39a; --good-t:#123326; --bad:#ff7d8a; --bad-t:#3a1820; --warn:#f2c060; --warn-t:#352a10;
-  --c1:#7ea3ff; --c1-t:#1c2647; --c2:#4fd1ac; --c2-t:#123129; --c3:#f3a35a; --c3-t:#35260f;
-  --c4:#ff7fae; --c4-t:#3a1527; --c5:#b39aff; --c5-t:#271d45; --c6:#e0c64f; --c6-t:#2f2a0e; color-scheme:dark}
+  --bg:#141413;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a19a;--line:#33322f;
+  --c1:#6c9cf0;--c2:#e07a63;--c3:#5cc08a;--c4:#b48be6;
+  --ok:#5cc08a;--ko:#ef7b6e;--okbg:#1d3326;--kobg:#3a1f1c;}
 *{box-sizing:border-box}
-[hidden]{display:none!important}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 40px}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
-.top{max-width:1320px;margin:0 auto;padding-block:22px 10px;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:end;justify-content:space-between}
-.top h1{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
-.top .sub{color:var(--muted);margin-top:6px;font-size:14px}
-.tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:12px;border:1px solid var(--line)}
-.tabs button{border:0;background:none;padding:9px 18px;border-radius:9px;font-weight:600;cursor:pointer;color:var(--muted)}
-.tabs button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-.wrap{max-width:1320px;margin:0 auto}
-.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-block:10px 14px}
-.search{flex:1 1 240px;min-width:0;position:relative}
-.search input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.btn{border:1px solid var(--line);background:var(--surface);padding:8px 14px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-:root[data-theme="dark"] .btn.primary{color:#0e1120}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0e1120}}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);align-items:center}
-.progress{font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
-/* importance dots */
-.imp{display:inline-flex;gap:2px;flex:none}
-.imp i{width:6px;height:6px;border-radius:50%;background:var(--line)}
-.imp.i3 i{background:var(--bc,var(--ink))}
-.imp.i2 i:nth-child(-n+2){background:var(--bc,var(--ink))}
-.imp.i1 i:nth-child(1){background:var(--bc,var(--ink))}
-/* map */
-.mm-scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 18px}
-.mm{position:relative;display:grid;gap:0 40px;align-items:center;margin:0 auto;width:max-content}
-.mm svg.lines{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
-.mm.two{grid-template-columns:auto auto auto}
-.mm.two .side-l{grid-column:1;grid-row:1}
-.mm.two .root{grid-column:2;grid-row:1}
-.mm.two .side-r{grid-column:3;grid-row:1}
-.mm.one{grid-template-columns:auto auto}
-.mm.one .root{grid-column:1;grid-row:1 / span 2}
-.mm.one .side-r{grid-column:2;grid-row:1}
-.mm.one .side-l{grid-column:2;grid-row:2}
-.side{display:flex;flex-direction:column;gap:22px;position:relative;z-index:1}
-.root{position:relative;z-index:1;background:var(--ink);color:var(--bg);border-radius:18px;padding:18px 20px;width:190px;text-align:center}
-.root h2{font-size:22px;line-height:1.1;font-weight:800}
-.root p{margin:6px 0 0;font-size:12px;opacity:.75;font-family:var(--f-mono)}
-.br-row{display:flex;align-items:center;gap:36px}
-.mm.two .side-l .br-row{flex-direction:row-reverse}
-.br-node{width:178px;flex:none;text-align:left;border:2px solid var(--bc);background:var(--bt);border-radius:14px;padding:10px 12px;cursor:pointer;display:grid;gap:2px}
-.br-node .wk{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--bc);font-weight:600}
-.br-node .bt{font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.15}
-.br-node .cnt{font-size:11.5px;color:var(--muted)}
-.kids{display:flex;flex-direction:column;gap:5px}
-.br-row.collapsed .kids{display:none}
-.leaf{width:250px;text-align:left;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:6px 10px;font-size:13px;line-height:1.25;cursor:pointer;transition:border-color .15s,transform .15s}
-.leaf:hover{border-color:var(--bc);transform:translateX(2px)}
-.mm.two .side-l .leaf:hover{transform:translateX(-2px)}
-.leaf .lt{flex:1;min-width:0}
-.leaf .ok{font-size:12px;color:var(--good);font-weight:700;visibility:hidden}
-.leaf.known .ok{visibility:visible}
-.leaf.known{background:var(--good-t)}
-.leaf.dim,.br-row.dim .br-node{opacity:.28}
-.leaf.hit{border-color:var(--bc);box-shadow:0 0 0 2px var(--bt)}
-.leaf.active{border-color:var(--bc);box-shadow:0 0 0 3px var(--bc)}
-/* outline (phone) */
-.mm.outline{display:block;width:auto}
-.mm.outline .root{width:auto;margin-bottom:18px}
-.mm.outline .side{gap:16px}
-.mm.outline .side + .side{margin-top:16px}
-.mm.outline .br-row{flex-direction:column;align-items:stretch;gap:8px}
-.mm.outline .br-node{width:auto}
-.mm.outline .kids{border-left:2px solid var(--bc);margin-left:14px;padding-left:12px}
-.mm.outline .leaf{width:auto}
-.mm.outline svg.lines{display:none}
-/* drawer */
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(500px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:50;display:flex;flex-direction:column;
-  box-shadow:-12px 0 40px rgba(0,0,0,.18);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
-.dr-head{padding:18px 20px 12px;border-bottom:1px solid var(--line);display:grid;gap:6px}
-.dr-meta{display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--bc);font-weight:600}
-.dr-head h3{font-size:22px;line-height:1.15}
-.dr-x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));border:1px solid var(--line);background:var(--surface);width:34px;height:34px;border-radius:9px;cursor:pointer;font-size:18px}
-.dr-body{overflow-y:auto;padding:16px 20px 24px;flex:1;font-size:14.5px}
-.dr-body p{margin:0 0 10px}
-.dr-body ul,.dr-body ol{margin:0 0 12px;padding-left:20px}
-.dr-body li{margin-bottom:4px}
-.dr-body h4{font-family:var(--f-display);font-size:15px;margin:16px 0 6px}
-.dr-body .k{font-weight:700}
-.dr-body .def{background:var(--surface2);border-radius:10px;padding:10px 12px;margin:0 0 12px}
-.trap{background:var(--warn-t);border-radius:10px;padding:10px 12px;margin:12px 0;font-size:13.5px}
-.trap::before{content:"EXAM TRAP";display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;font-weight:600;color:var(--warn);margin-bottom:3px}
-.tip{background:var(--bt,var(--surface2));border-radius:10px;padding:10px 12px;margin:12px 0;font-size:13.5px}
-.tip::before{content:"MEMORY HOOK";display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;font-weight:600;color:var(--bc,var(--accent));margin-bottom:3px}
-.tbw{overflow-x:auto;margin:0 0 12px}
-table.tb{border-collapse:collapse;font-size:13px;width:100%;font-variant-numeric:tabular-nums}
-table.tb th,table.tb td{border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}
-table.tb th{background:var(--surface2);font-weight:600}
-.seq{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;font-size:13px}
-.seq span{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:4px 8px}
-.seq b{color:var(--muted);font-weight:400}
-.dr-foot{border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between}
-.scrim{position:fixed;inset:0;background:rgba(10,12,25,.35);z-index:40}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0}
+h1{font-size:18px;margin:0;flex:1;min-width:200px}
+.tabs{display:flex;gap:6px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;font-weight:600;font-size:14px}
+.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button{font:inherit}
+.view{display:none;padding:20px 0 60px}.view.on{display:block}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+.btn:hover{border-color:var(--muted)}
+input[type=search]{flex:1;min-width:180px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+/* mind map */
+.root{text-align:center;margin:4px auto 0}
+.root span{display:inline-block;background:var(--ink);color:var(--bg);padding:10px 22px;border-radius:14px;font-weight:700;font-size:17px}
+.trunk{width:2px;height:18px;background:var(--line);margin:0 auto}
+.branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;border-top:2px solid var(--line);padding-top:18px}
+.branch{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--bc);border-radius:12px;padding:12px 12px 14px}
+.branch h2{margin:0 0 2px;font-size:16px;color:var(--bc)}
+.branch .who{font-size:12px;color:var(--muted);margin-bottom:10px}
+ul.tree,ul.tree ul{list-style:none;margin:0;padding:0}
+ul.tree ul{margin-left:9px;padding-left:12px;border-left:2px solid color-mix(in srgb,var(--bc) 35%,transparent)}
+li.n{margin:3px 0}
+.lbl{display:flex;gap:6px;align-items:flex-start;cursor:default;padding:3px 6px;border-radius:6px}
+.has>.lbl{cursor:pointer;font-weight:600}
+.has>.lbl:hover{background:color-mix(in srgb,var(--bc) 10%,transparent)}
+.car{flex:none;width:14px;color:var(--bc);transition:transform .15s;font-size:11px;margin-top:3px}
+.has.open>.lbl .car{transform:rotate(90deg)}
+.has:not(.open)>ul{display:none}
+.leaf>.lbl .car::before{content:"•"}
+.note{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.hl{background:#ffe58a;color:#1d1d1b;border-radius:3px}
+.key{font-weight:700;color:var(--bc)}
+li.hide{display:none}
+/* cheat */
+.cheat{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.box h3{margin:0 0 8px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td{padding:5px 6px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{white-space:nowrap;font-weight:700;width:1%}
+.trap li{margin:6px 0}
 /* quiz */
-.qz{max-width:820px;margin:0 auto}
-.qz-setup{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:16px}
-.qz-setup h2{font-size:24px}
-.qz-setup .row{display:grid;gap:8px}
-.lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
-.qtop{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
-.qtag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--bc);background:var(--bt);padding:3px 8px;border-radius:6px}
-.bar{height:6px;background:var(--surface2);border-radius:99px;overflow:hidden;margin-bottom:16px}
-.bar i{display:block;height:100%;background:var(--accent);transition:width .25s}
-.qtext{font-size:17.5px;font-weight:600;line-height:1.45;margin:0 0 16px}
-.opts{display:grid;gap:8px}
-.opt{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 14px;cursor:pointer;display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
-.opt:hover:not([disabled]){border-color:var(--accent)}
-.opt .l{font-family:var(--f-mono);font-weight:600;color:var(--muted);flex:none}
-.opt.right{border-color:var(--good);background:var(--good-t)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-t)}
-.opt[disabled]{cursor:default}
-.expl{margin-top:14px;border-radius:12px;padding:12px 14px;font-size:14px;background:var(--surface2)}
-.expl strong{display:block;margin-bottom:3px}
-.expl.ok strong{color:var(--good)} .expl.ko strong{color:var(--bad)}
-.qnav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:16px;flex-wrap:wrap}
-.score{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-.res h2{font-size:30px}
-.big{font-family:var(--f-display);font-size:56px;font-weight:800;line-height:1}
-.topicbars{display:grid;gap:8px;margin:16px 0}
-.tbar{display:grid;grid-template-columns:minmax(0,190px) 1fr 60px;gap:10px;align-items:center;font-size:13px}
-.tbar .t{height:10px;background:var(--surface2);border-radius:99px;overflow:hidden}
-.tbar .t i{display:block;height:100%;background:var(--bc)}
-.tbar .n{font-family:var(--f-mono);text-align:right}
-.miss{border-top:1px solid var(--line);padding:12px 0;font-size:14px}
-.miss .mq{font-weight:600;margin-bottom:4px}
-.miss .ma{color:var(--good);font-weight:600}
-@media (max-width:640px){.qcard,.qz-setup{padding:16px}.qtext{font-size:16px}.tbar{grid-template-columns:1fr 70px}.tbar .t{grid-column:1 / -1;grid-row:2}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 11px;border-radius:999px;cursor:pointer;font-size:13px}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;max-width:760px;margin:0 auto}
+.qmeta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:var(--ink);width:0;transition:width .2s}
+.qtext{font-size:17px;font-weight:600;margin-bottom:14px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:11px 14px;border-radius:10px;margin:8px 0;cursor:pointer;font-size:15px}
+.opt:hover:not(:disabled){border-color:var(--muted)}
+.opt.good{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--ko);background:var(--kobg)}
+.opt:disabled{cursor:default}
+.expl{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--bg);border-left:4px solid var(--muted);font-size:14px;display:none}
+.expl.show{display:block}
+.nav{display:flex;justify-content:space-between;margin-top:16px;gap:8px}
+.primary{background:var(--ink);color:var(--bg);border:none;padding:9px 18px;border-radius:9px;cursor:pointer;font-weight:600}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff}
+.score{font-size:40px;font-weight:800;text-align:center;margin:8px 0}
+.res td:first-child{white-space:normal}
+@media (max-width:600px){h1{font-size:16px}.qcard{padding:14px}}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div>
-    <h1>Marketing Strategy — Exam Map</h1>
-    <div class="sub">All four decks: Strategic thinking · Opportunities &amp; environment · Segmentation &amp; targeting · Positioning · Branding · Packaging</div>
+<header><div class="wrap top">
+  <h1>ITR313 · Current Issues in Logistics — Révision</h1>
+  <div class="tabs">
+    <button class="tab on" data-v="map">Mind map</button>
+    <button class="tab" data-v="cheat">Fiche dates & chiffres</button>
+    <button class="tab" data-v="quiz">Quiz</button>
   </div>
-  <div class="tabs" role="tablist">
-    <button role="tab" id="tab-map" aria-selected="true">Mind map</button>
-    <button role="tab" id="tab-quiz" aria-selected="false">Hard quiz</button>
-  </div>
-</header>
+</div></header>
 
 <main class="wrap">
-  <section id="view-map">
-    <div class="toolbar">
-      <div class="search"><input id="q" type="search" placeholder="Search any concept (e.g. SOM, reflection, Chipotle, PESTELE)…" aria-label="Search the map"></div>
-      <div class="chips" id="impf">
-        <button class="chip" data-imp="1" aria-pressed="true">Everything</button>
-        <button class="chip" data-imp="2" aria-pressed="false">Important +</button>
-        <button class="chip" data-imp="3" aria-pressed="false">Must-know only</button>
-      </div>
-      <button class="btn" id="traps">All exam traps</button>
-      <button class="btn" id="toggleAll">Collapse all</button>
-    </div>
-    <div class="toolbar" style="padding-top:0">
-      <div class="legend">
-        <span><span class="imp i3" style="--bc:var(--ink)"><i></i><i></i><i></i></span> must-know</span>
-        <span><span class="imp i2" style="--bc:var(--ink)"><i></i><i></i><i></i></span> important</span>
-        <span><span class="imp i1" style="--bc:var(--ink)"><i></i><i></i><i></i></span> detail</span>
-        <span>Click a branch to fold it · click a topic for full notes</span>
-      </div>
-      <span class="progress" id="prog"></span>
-    </div>
-    <div class="mm-scroll"><div class="mm two" id="mm">
-      <svg class="lines" id="lines"></svg>
-      <div class="side side-l" id="sideL"></div>
-      <div class="root"><h2>Marketing Strategy</h2><p>Midterm · weeks 2–7</p></div>
-      <div class="side side-r" id="sideR"></div>
-    </div></div>
-  </section>
+<!-- MIND MAP -->
+<section id="map" class="view on">
+  <div class="tools">
+    <input type="search" id="search" placeholder="Chercher un mot-clé (ex : CBAM, deployer, MVP…)">
+    <button class="btn" id="openAll">Tout déplier</button>
+    <button class="btn" id="closeAll">Tout replier</button>
+  </div>
+  <div class="root"><span>Current Issues in Logistics</span></div>
+  <div class="trunk"></div>
+  <div class="branches" id="branches"></div>
+</section>
 
-  <section id="view-quiz" hidden>
-    <div class="qz" id="qz"></div>
-  </section>
+<!-- CHEAT SHEET -->
+<section id="cheat" class="view">
+  <div class="cheat" id="cheatGrid"></div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="view">
+  <div class="tools">
+    <div class="chips" id="topicChips"></div>
+    <button class="btn" id="restart">↻ Recommencer (mélangé)</button>
+  </div>
+  <div id="quizBox"></div>
+</section>
 </main>
 
-<div class="scrim" id="scrim" hidden></div>
-<aside class="drawer" id="drawer" hidden aria-live="polite">
-  <button class="dr-x" id="drx" aria-label="Close">×</button>
-  <div class="dr-head" id="drHead"></div>
-  <div class="dr-body" id="drBody"></div>
-  <div class="dr-foot" id="drFoot"></div>
-</aside>
-
 <script>
-/* ======================= MIND MAP DATA ======================= */
-const BR = [
-{id:"strat", c:"c1", week:"Week 2", name:"Marketing & Strategic Thinking", side:"R", nodes:[
-{id:"def", t:"What is marketing strategy?", imp:3, h:`
-<div class="def"><span class="k">Marketing strategy</span> = “a business's overall <span class="k">game plan</span> for reaching prospective consumers and <span class="k">turning them into customers</span> of their products.” (Investopedia definition used in class)</div>
-<p>The strategy is <span class="k">also called the marketing plan</span> — in the wheel diagram the arrow “Also called Marketing Plan” points to the <span class="k">Execution Plan</span> step.</p>
-<p>Course textbooks: <span class="k">Ferrell, Hartline &amp; Hochstein</span> – <i>Marketing Strategy: Text and Cases</i> (8e, Cengage) and <span class="k">George S. Day</span> – <i>Advanced Introduction to Marketing Strategy</i> (Elgar).</p>`},
-{id:"orient", t:"Orientation towards the marketplace (5 concepts)", imp:3, h:`
-<div class="seq"><span>Production</span><b>→</b><span>Product</span><b>→</b><span>Selling</span><b>→</b><span>Marketing</span><b>→</b><span>Holistic marketing</span></div>
-<div class="tbw"><table class="tb"><tr><th>Concept</th><th>Core idea (slide wording)</th></tr>
-<tr><td>Production concept</td><td>Emphasis on <b>producing goods</b> (availability, efficiency)</td></tr>
-<tr><td>Product concept</td><td>Producing <b>quality goods</b></td></tr>
-<tr><td>Selling concept</td><td><b>Aggressive selling &amp; promotion</b></td></tr>
-<tr><td>Marketing concept</td><td><b>Right products for customers</b> (start from needs)</td></tr>
-<tr><td>Holistic marketing concept</td><td><b>Do everything possible</b> (integrated, whole-company view)</td></tr></table></div>
-<div class="trap">“Producing goods” = Production concept; “producing <i>quality</i> goods” = Product concept. Selling comes <b>after</b> Product and <b>before</b> Marketing.</div>
-<div class="tip">P-P-S-M-H: “<b>P</b>lease <b>P</b>ush <b>S</b>ales, <b>M</b>arket <b>H</b>olistically.”</div>`},
-{id:"decades", t:"Evolution of marketing by decade (80s → 20s)", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>Decade</th><th>What the customer does</th></tr>
-<tr><td>1980s</td><td>Customers <b>pay attention to your ads</b></td></tr>
-<tr><td>1990s</td><td>“If we create the <b>website</b>, customers will come to us.”</td></tr>
-<tr><td>2000s</td><td>Customer wants to <b>become our friends and like us on Facebook</b></td></tr>
-<tr><td>2010s</td><td>Customer wishes to <b>follow us using their personal details</b></td></tr>
-<tr><td>2020s</td><td>Customer wants to <b>hang out with our brand in the virtual world</b> (VR / metaverse)</td></tr></table></div>
-<div class="trap">Facebook “like” = 2000s, not 2010s. “Personal details” (data-driven following) = 2010s.</div>`},
-{id:"pushpull", t:"Marketing-Evolution timeline: push → pull", imp:2, h:`
-<p>Long-run shift from <span class="k">PUSH marketing (above-the-line)</span> to <span class="k">PULL marketing (below-the-line)</span>.</p>
-<h4>Orientations in order (1950 → 2020)</h4>
-<div class="seq"><span>Product (1950)</span><b>→</b><span>Distribution (1960)</span><b>→</b><span>Market (1970)</span><b>→</b><span>Competitive (1980)</span><b>→</b><span>Environment (1990)</span><b>→</b><span>Performance + Dialog (2000)</span><b>→</b><span>Network (2010)</span><b>→</b><span>Below-the-line &amp; Content (2020)</span></div>
-<h4>Channel families (left → right on the chart)</h4>
-<ul>
-<li><b>Advertising &amp; Sponsoring</b>: print, radio, TV advertising, sponsoring</li>
-<li><b>Below-the-line (offline)</b>: PR, event marketing, product placement</li>
-<li><b>Online Marketing 1.0 (push advertising)</b>: display advertising according to <b>TKP</b> (cost per thousand contacts ≈ CPM), e-mail marketing</li>
-<li><b>Online Marketing 2.0 (performance marketing)</b>: display advertising according to <b>CPC</b>, SEO, SEA, e-mail, affiliate marketing</li>
-<li><b>Social-media marketing</b>: social-network marketing</li>
-<li><b>Below-the-line (online)</b>: content marketing, viral marketing, word-of-mouth marketing</li></ul>
-<div class="trap">PR, events and product placement are <b>below-the-line</b> (offline), not above-the-line. Performance marketing is priced by <b>CPC</b>; Online Marketing 1.0 by <b>TKP</b> (per thousand contacts).</div>`},
-{id:"mix", t:"Marketing mix: 4P → 7P → 9P", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Model</th><th>Elements</th></tr>
-<tr><td><b>4P</b></td><td>Product, Price, Place, Promotion</td></tr>
-<tr><td><b>7P</b> (+3)</td><td>4P + <b>People, Physical Evidence, Processes</b></td></tr>
-<tr><td><b>9P</b> (+2)</td><td>7P + <b>Packaging, Public Relations</b></td></tr></table></div>
-<div class="trap">9P adds exactly <b>Packaging</b> and <b>Public Relations</b> — not “Positioning”, “Partnerships” or “Purpose”. The 7P extension is the services mix.</div>`},
-{id:"wheel", t:"Services mix wheel (what sits under each P)", imp:2, h:`
-<p>Customer at the centre, 7 Ps around it:</p>
-<div class="tbw"><table class="tb">
-<tr><th>P</th><th>Items on the slide</th></tr>
-<tr><td>Product</td><td>Total service product, core product, supplementary services, facilitating services, supporting services</td></tr>
-<tr><td>Price</td><td>Cost-based, demand-based, operations-based, competition-based, relationship-based</td></tr>
-<tr><td>Place</td><td>Access, location, delivery services, electronic delivery</td></tr>
-<tr><td>Promotion</td><td><b>Internal marketing</b>, direct marketing, advertising, other promotional methods</td></tr>
-<tr><td>People</td><td>Customers, employees, social interactions, <b>roles &amp; scripts</b>, relationships</td></tr>
-<tr><td>Physical evidence</td><td>Facilities &amp; equipment, uniforms, livery &amp; artefacts, signage, symbols</td></tr>
-<tr><td>Process</td><td>Service design, standardization, customization, operational efficiency</td></tr></table></div>
-<div class="trap">“Internal marketing” is listed under <b>Promotion</b>, not People. “Roles &amp; scripts” is <b>People</b>, not Process. “Uniforms” is <b>Physical evidence</b>. “Supplementary services” is <b>Product</b>.</div>`},
-{id:"swheel", t:"Marketing strategy wheel (7 steps)", imp:3, h:`
-<div class="seq"><span>1 Understand customer / identify potential customers</span><b>→</b><span>2 Analyze market</span><b>→</b><span>3 Analyze competition</span><b>→</b><span>4 Define marketing mix</span><b>→</b><span>5 Determine market position</span><b>→</b><span>6 Marketing budget</span><b>→</b><span>7 Execution plan</span></div>
-<p>The execution plan is “also called <b>marketing plan</b>”.</p>
-<div class="trap">On this wheel the mix is defined <b>before</b> the market position, and the budget comes <b>right after</b> the position and <b>right before</b> the execution plan.</div>`},
-{id:"eight", t:"8-step marketing strategy process", imp:2, h:`
-<div class="seq"><span>1 Go through your existing marketing plan</span><b>→</b><span>2 Perform marketing research</span><b>→</b><span>3 Develop value proposition</span><b>→</b><span>4 Set marketing goals</span><b>→</b><span>5 Define marketing strategies</span><b>→</b><span>6 Define marketing mix</span><b>→</b><span>7 Marketing plan</span><b>→</b><span>8 Review &amp; reassess</span> <b>↺</b></div>
-<div class="trap">Here the value proposition comes <b>before</b> goals, and strategies come <b>before</b> the mix. It is a loop: review &amp; reassess feeds back into step 1.</div>`},
-{id:"mdev", t:"Benefits of a market development strategy", imp:1, h:`
-<p>Six benefits on the slide:</p>
-<ol><li>Improves product quality</li><li>Acquires new users</li><li>Up-sells current users</li><li>Helps to develop new products</li><li>Increases revenue margins</li><li>Helps to lessen production cost per unit</li></ol>
-<div class="trap">“Reduces dependence on intermediaries” or “guarantees market leadership” are NOT on the list.</div>`},
-{id:"course", t:"Course facts (assessment, project)", imp:1, h:`
-<ul><li>Assessment: participation &amp; in-class activities <b>15%</b>, midterm <b>25%</b>, final exam <b>40%</b>, final group project <b>20%</b>.</li>
-<li>AI content must not exceed <b>20%</b> of any assignment (checked via Turnitin and Quillbot).</li>
-<li>Group project: 5–7 members, strategic marketing plan for a brand of choice — market analysis, target audience, 4P strategies, AI-powered solutions, “What are their mistakes in marketing? Offer a solution.” Uses a <b>SWOT</b>. Poster + visual board at a Project Fair, <b>5-minute</b> pitch, 10 Dec. Late = 20-point deduction.</li>
-<li>Midterm: 12 Nov (week 8). Topics covered in class but not in the book are also examinable.</li></ul>`}
+/* ============ DATA : MIND MAP ============ */
+// [label, note, children]
+const MAP = [
+{title:"1 · Digitalization & AI in Logistics",who:"Prof. Dr. Alev Taşkın — Yıldız Technical University",color:"--c1",nodes:[
+ ["Industrial revolutions",null,[
+  ["Industry 1.0","Steam-powered machines, mechanization"],
+  ["Industry 2.0","Widespread adoption of electricity"],
+  ["Industry 3.0","Computers & information technology"],
+  ["Industry 4.0","Cyber-physical systems + real-time technologies"],
+  ["Society 5.0 (5th revolution)","AI, IoT, biotechnology, space industry → technological, economic & societal impact"]
+ ]],
+ ["History of AI",null,[
+  ["1950s–60s: initial discoveries","Puzzles, chess/checkers, theorem proving, simple Q&A, image classification; intertwined with cognitive psychology"],
+  ["1960s–70s: rapid progress","New computer languages; labs at MIT, Carnegie Mellon, Stanford, SRI; hot topic = Computer Vision (2D images of 3D world)"],
+  ["1980s: AI winter","Unrealistic expectations + misplaced optimism → failures & criticism"],
+  ["1990s–2000s: Computer Revolution","Semiconductors, PCs, internet, digitization of information"],
+  ["Industry 4.0 term","First introduced at the Hannover Fair, 2011"]
+ ]],
+ ["Logistics 4.0 (= digital logistics)",null,[
+  ["The 4 'rights'","Right price, product, place and time — while staying competitive"],
+  ["Smart factory","Smart grid & mobility, interoperability, integrated process with suppliers & customers"],
+  ["Definition","Transformation via automation & digitalization + interaction of Industry 4.0 with coordinated transport tasks"],
+  ["AI supports…","Purchasing, transport network design, warehousing, shipping, demand forecasting & planning, inventory, CRM"]
+ ]],
+ ["Circular economy & sustainable supply chains",null,[
+  ["Circular economy","Framework minimizing resource waste; supply networks → value chains"],
+  ["Sustainable value chain","Fully integrates moral & eco-friendly behaviour into a profitable, competitive framework (incl. recycling & reverse logistics)"],
+  ["Weak link idea","Clean company process is useless if a supplier's semi-finished product or the vehicles are not"],
+  ["Voluntary → mandatory","Green used to be 'CSR/marketing'; now rules + fines (limited resources, population growth, urbanization)"],
+  ["CBAM (Taşkın)","Adopted 14 July 2021; implementation started 2023; from 2026 tax per tonne of GHG from production of goods exported to EU; EU goal = first carbon-neutral continent by 2050"],
+  ["Textile waste","From 2025: separate collection; burning or mixing with household waste forbidden (Green Deal)"],
+  ["4 basic elements",null,[
+   ["LCA – Life Cycle Assessment","Value-chain-wide, 'cradle to grave'"],
+   ["LCC – Life Cycle Cost","Traditional costs + environmental harm (energy, water, CO₂) over life cycle"],
+   ["PEF – Product Environmental Footprint","Environmental effects of a product/service (beyond carbon footprint, incl. production processes)"],
+   ["OEF – Organisation Environmental Footprint","Effects of the organisation's general operations"]
+  ]]
+ ]],
+ ["AI in sustainable value chains (6 uses)",null,[
+  ["Key condition","Big data + accuracy. High initial cost (sensors, GPUs, storage) but low operating costs"],
+  ["1. Traceability & secure info flow","Labelling: telematics, RFID, NFC, QR, barcode → connected via IoT → security via blockchain + IoT (decentralized, immutable, secure)"],
+  ["2. Digital Product Passport (DPP)","Initiated by European Commission, still conceptual; records eco-costs/eco-credits; benefits: less bureaucracy, proof of certification, priority in tenders, trade facilities, loyalty"],
+  ["3. Telematics on vehicles","Product info, CO₂, road/traffic, driver behaviour → traffic forecasting, dynamic routing, risk assessment (esp. valuable, hazardous, perishable goods)"],
+  ["4. Digital twins","Dynamic simulation of value chain; AI predictions sent as signals to real system → warn/stop before obstacles"],
+  ["5. Smart warehouses","Dynamic classification replaces ABC & XYZ; cameras for safety & lean storage; drones/image processing for inventory counts"],
+  ["6. Other","NLP commands (call centres), profiling from text/images, anomaly detection in ERP, last-mile GIS planning, revenue management, warehouse location & routing"],
+  ["Automation → autonomation","Unmanned, traceable, instantly intervened processes. Duty: be developers of AI, direct it to good purposes"]
+ ]],
+ ["EU AI Act — basics",null,[
+  ["Legal text","Regulation (EU) 2024/1689 — first comprehensive AI law; in force 1 Aug 2024"],
+  ["Digital Omnibus on AI","Regulation (EU) 2026/1744, in force 27 July 2026 → moved high-risk dates"],
+  ["4 design principles",null,[
+   ["Risk-based","Higher potential harm (health, safety, fundamental rights) → stricter duties"],
+   ["Whole value chain","Providers, deployers, importers, distributors all have obligations"],
+   ["Extraterritorial","Applies if AI placed on EU market or its output used in EU"],
+   ["Product-safety logic","CE marking, conformity assessment, post-market monitoring, market surveillance"]
+  ]],
+  ["Roles",null,[
+   ["Provider","Develops AI & places it on market under own name (e.g. AI TMS/WMS vendors)"],
+   ["Deployer","Uses AI under own authority — role of MOST logistics firms"],
+   ["Importer & distributor","Bring non-EU AI / AI equipment (e.g. AMRs) into EU"],
+   ["MYTH vs REALITY","'We just buy SaaS, it's the vendor's problem' → FALSE. You become provider if you put your name on it, substantially modify it or repurpose it for high-risk (Art. 25)"]
+  ]],
+  ["Scope (Art. 2(1))","1) AI placed on EU market 2) AI used inside EU 3) AI output used in EU → a Türkiye 3PL can be in scope. Türkiye AI Action Plan 2026–2030 (Official Gazette 18 Aug 2026)"]
+ ]],
+ ["EU AI Act — risk pyramid",null,[
+  ["UNACCEPTABLE (banned since 2 Feb 2025)","Emotion inference of drivers/staff (except medical/safety), manipulative techniques, social scoring, biometric categorisation by sensitive traits"],
+  ["HIGH RISK (from 2 Dec 2027*)","Recruitment/CV screening, algorithmic task allocation & performance evaluation, AI safety components in road-traffic management. *Embedded in products (Annex I): 2 Aug 2028"],
+  ["LIMITED RISK (since 2 Aug 2026)","Transparency: chatbots/voice assistants must disclose AI; synthetic content must be marked"],
+  ["MINIMAL RISK (no new duties)","Demand forecasting, inventory analytics, route optimisation, predictive maintenance — voluntary codes; GDPR still applies"]
+ ]],
+ ["EU AI Act — sanctions",null,[
+  ["€35M or 7%","Prohibited practices (e.g. worker emotion recognition)"],
+  ["€15M or 3%","Other obligations (high-risk, deployer, transparency)"],
+  ["€7.5M or 1%","Misleading/incorrect info to authorities"],
+  ["Rule","Whichever is HIGHER; for SMEs whichever is LOWER. GDPR max = €20M or 4%"],
+  ["System lock-down","Since 2 Aug 2026 authorities can order correction, restriction, withdrawal, recall → can cost more than the fine"]
+ ]],
+ ["EU AI Act — timeline",null,[
+  ["2 Feb 2025","Bans + AI literacy duty (Art. 4)"],
+  ["2 Aug 2025","General-purpose AI (LLMs) rules; governance & penalties"],
+  ["2 Aug 2026","Transparency duties (Art. 50); national enforcement begins"],
+  ["2 Dec 2026","Marking AI content for legacy genAI; new ban on 'nudifier' AI"],
+  ["20 Jan 2027","EU Machinery Regulation: ML safety functions of robots, AGVs, AMRs"],
+  ["2 Dec 2027","High-risk stand-alone AI (Annex III): recruitment, workforce mgmt, critical infrastructure"],
+  ["2 Aug 2028","High-risk AI embedded in regulated products (Annex I)"],
+  ["Motto","'The deadlines moved, the obligations did not.'"]
+ ]],
+ ["4 logistics scenarios",null,[
+  ["1. Fleet & driver monitoring","Emotion from cameras → PROHIBITED (Art. 5(1)(f)); scores to reward/dismiss → HIGH (Annex III pt 4); fatigue/lane alerts → MINIMAL (fatigue = physical state, not emotion)"],
+  ["2. Smart warehouses & robots","Machinery Regulation (EU) 2023/1230: notified-body assessment from 20 Jan 2027; machinery excluded from direct AI Act high-risk (Omnibus); CE marking, emergency stops; scoring workers stays high-risk"],
+  ["3. Algorithmic workforce mgmt = HIGH-RISK HOTSPOT","Deployer duties (Art. 26): follow instructions, trained human oversight, relevant data, monitor & report incidents, keep logs ≥ 6 months, inform workers' reps. Platform Work Directive by 2 Dec 2026"],
+  ["4. Dynamic routing & pricing","Usually MINIMAL (B2B); risk of bias → bias & drift tests, log versions, dispatchers approve high-impact changes"]
+ ]],
+ ["Human oversight by design (Art. 14)","AI = decision-support, not final authority. Overseer must: understand capabilities/limits, watch for automation bias, override/reverse/stop (stop button)"],
+ ["Regulatory web",null,[
+  ["AI Act","Risk-based rules for AI"],["GDPR","Personal data, automated decisions (Art. 22)"],
+  ["Green Deal: CBAM & DPP","Emissions & product data"],["Data Act","Access to IoT/telematics data (since Sep 2025)"],
+  ["Platform Work Directive","Algorithmic mgmt of couriers (by 2 Dec 2026)"],["NIS2","Cybersecurity for transport, postal, courier"],
+  ["Product Liability Directive","Software & AI as products (from 9 Dec 2026)"],["Machinery Regulation","Robots, AGVs, AMRs (from 20 Jan 2027)"]
+ ]],
+ ["Compliance → advantage",null,[
+  ["Trusted brand","Transparent, auditable, ethical AI"],
+  ["Operational resilience","Audits reveal cyber gaps, data drift, model errors early"],
+  ["Priority in tenders","EU OEMs push requirements down; ISO/IEC 42001 differentiates bids"]
+ ]],
+ ["5-step roadmap",null,[
+  ["1. Inventory & classify","List every AI system (incl. inside SaaS/TMS/WMS), risk tier + your role"],
+  ["2. Revise contracts","Require conformity, logging, documentation, incident reporting, audit rights"],
+  ["3. Build the oversight loop","Human approval & escalation for high-impact decisions"],
+  ["4. Invest in AI literacy","Train staff (Art. 4, since Feb 2025)"],
+  ["5. Institutionalise governance","AI management system (ISO/IEC 42001), owners, KPIs, reviews"]
+ ]],
+ ["Key takeaways","AI = engine of Logistics 4.0; AI Act = licence to operate (also non-EU); most logistics AI = minimal; red zones = workforce mgmt & emotion analysis; multidisciplinary (IT, Legal, Ops, HR)"]
 ]},
-{id:"env", c:"c2", week:"Week 3", name:"Market Opportunities & Environment", side:"R", nodes:[
-{id:"cycle", t:"Marketing process cycle (8 steps around the consumer)", imp:2, h:`
-<div class="seq"><span>1 Market research</span><b>→</b><span>2 Product development</span><b>→</b><span>3 Promotion</span><b>→</b><span>4 Sales</span><b>→</b><span>5 Distribution</span><b>→</b><span>6 Customer feedback</span><b>→</b><span>7 Analysis</span><b>→</b><span>8 Adjustment</span><b>↺</b></div>
-<div class="trap">Promotion comes <b>before</b> Sales, and Distribution <b>after</b> Sales in this cycle. Analysis sits between feedback and adjustment.</div>`},
-{id:"envlayers", t:"Marketing environment: internal · micro · macro", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Layer</th><th>Contents</th></tr>
-<tr><td><b>Internal</b> (centre)</td><td>The company itself</td></tr>
-<tr><td><b>Micro</b> (middle ring)</td><td>Suppliers, customers, competitors, intermediaries, distributors, publics</td></tr>
-<tr><td><b>Macro</b> (outer ring)</td><td>Technological, social/cultural, demographic, environmental, economic, political/legal</td></tr></table></div>
-<div class="tip">Micro = actors with names you can phone (a supplier, a distributor). Macro = forces nobody controls (inflation, a law, a demographic shift).</div>
-<div class="trap">Competitors and publics are <b>micro</b>. Demographic is <b>macro</b>.</div>`},
-{id:"opp", t:"Market opportunity: definition + 4 types", imp:3, h:`
-<div class="def">A <span class="k">market opportunity</span> is a need or want for a product, service, or feature that is either <b>not being met</b> or is <b>underserved</b>. Identifying one lets you launch new offerings or improve existing ones, which may boost sales and profits.</div>
-<h4>Four types</h4>
-<ol><li><b>Untapped or underserved audience</b></li><li><b>Technological innovations</b></li><li><b>Societal changes</b></li><li><b>Regulatory interventions</b></li></ol>
-<div class="trap">A new law that forces demand (e.g. mandatory EV chargers) = <b>regulatory intervention</b>, not a societal change.</div>`},
-{id:"whymoa", t:"Why run a market opportunity analysis (6 benefits)", imp:2, h:`
-<p>MOA gives a <b>competitive advantage</b> by finding new business areas with growth potential or where to expand in the current market. It lets you:</p>
-<ol><li>Make better-informed decisions</li><li>Improve long-term marketing strategies</li><li>Evaluate product or service demand</li><li>Identify potential for business growth</li><li>Uncover strengths, weaknesses and areas for further research</li><li>Find and mitigate potential risks</li></ol>`},
-{id:"whatmoa", t:"What can be assessed (7 opportunity examples)", imp:1, h:`
-<p>First step: <b>identify the opportunities you want to analyze</b>. Examples:</p>
-<ul><li>A new product or service</li><li>A new market to expand into</li><li>A business partnership</li><li>An unmet customer need</li><li>An improvement of something already in your offer or on the market</li><li><b>Horizontal improvement for multiple operations</b></li><li>A new niche uncovered by a shift in external factors</li></ul>`},
-{id:"moasteps", t:"Market opportunity analysis — 5 steps", imp:3, h:`
-<div class="seq"><span>1 Identify what's currently happening in the business environment</span><b>→</b><span>2 Define the industry and determine the outlook</span><b>→</b><span>3 Dive into the details of your competitors</span><b>→</b><span>4 Describe your target market</span><b>→</b><span>5 Create your projections</span></div>
-<div class="trap">Competitors (step 3) come <b>before</b> the target market (step 4). Projections are always last.</div>
-<div class="tip">“<b>E</b>very <b>I</b>ndustry <b>C</b>an <b>T</b>arget <b>P</b>rofit” — Environment, Industry, Competitors, Target, Projections.</div>`},
-{id:"anmarket", t:"Analyze the market", imp:2, h:`
-<p>Collect and analyze information on the <b>dynamics, size, market trends and overall demand</b> of your target market, to reveal <b>unmet needs and untapped niches</b>.</p>
-<ul><li>How big is the market?</li><li>Is it growing or shrinking?</li><li>How many potential customers are there?</li><li>How strong is the competition?</li><li>Are alternative products or services about to enter the market?</li></ul>`},
-{id:"comp", t:"Direct vs indirect competitors", imp:3, h:`
-<div class="def"><b>Direct</b> competitors offer <b>similar products or services</b> — Netflix and Disney+.<br><b>Indirect</b> competitors sell <b>different products but satisfy the same customer need</b> — Netflix and cable TV.</div>
-<p>Competitor research helps you identify <b>market gaps</b>, learn from others' successes and failures, and refine your <b>USP</b> (unique selling proposition).</p>
-<h4>Questions to ask</h4>
-<ul><li>Who are your direct and indirect competitors?</li><li>Which competitors are growing and why?</li><li>What competitive advantage do they have?</li><li>How are competitors marketing their products or services?</li><li>What do reviews say about competitors' offerings?</li><li>What do competitors offer that you don't?</li></ul>`},
-{id:"internal", t:"Analyze internal factors", imp:2, h:`
-<p>Look into your company's capabilities — <b>workforce, skills, finances</b> and other internal factors that can give you a competitive edge.</p>
-<ul><li>What are your core technological strengths and unique capabilities?</li><li>How effective are your current operations and processes?</li><li>Which skills do your employees lack?</li><li>Which unique skills do your employees have?</li><li>What is your company culture and employee engagement like?</li><li>How cash-rich are you compared to the competition?</li></ul>
-<div class="trap">“How cash-rich are you <i>compared to the competition</i>?” is still an <b>internal</b> question (it is about your finances).</div>`},
-{id:"pest", t:"External factors: PEST table + PESTELE", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Factor</th><th>Items on the course slide</th></tr>
-<tr><td><b>Political</b></td><td>Political stability &amp; regime; <b>labor laws</b>; tax/trade/tariff legislation; consumer protection laws; state of antitrust regulation; level of bureaucracy and corruption</td></tr>
-<tr><td><b>Economic</b></td><td>Economy growth rates; fiscal factors (inflation and interest rates); foreign currency regulations &amp; restrictions; <b>labor costs</b>; customers' average disposable income</td></tr>
-<tr><td><b>Socio-cultural</b></td><td>Population numbers (growth rate, age); <b>job market freedoms</b>; employment patterns &amp; lifestyle choices; overall social beliefs &amp; values; social taboos</td></tr>
-<tr><td><b>Technological</b></td><td>Technologization rates; availability of Internet; R&amp;D &amp; communication costs; technology transfer regulations; <b>copyright &amp; intellectual property regulations</b></td></tr></table></div>
-<p><b>PESTELE</b> = Political, Economic, Social, Technological, <b>Environmental</b>, <b>Legal</b>, <b>Ethical</b>.</p>
-<h4>External questions from the slide</h4>
-<ul><li>Domestic government policies that could impact the business?</li><li>Stable economic relations with other states?</li><li>Effect of inflation or economic growth?</li><li>Social trends (demographic shifts, lifestyle changes)?</li><li>Technological advancements?</li><li>Regulations, compliance rules, legal challenges?</li><li>Climate change effects and environmental policies?</li></ul>
-<div class="trap">On the PEST slide, <b>copyright &amp; IP regulations</b> sit under <b>Technological</b>; <b>labor laws</b> under <b>Political</b> but <b>labor costs</b> under <b>Economic</b>; <b>job market freedoms</b> under <b>Socio-cultural</b>. The last E of PESTELE is <b>Ethical</b>.</div>`},
-{id:"audience", t:"Understand your target audience", imp:2, h:`
-<p>Create a <b>detailed profile</b> of the consumers you aim to reach — behaviors, preferences and challenges — to identify unmet needs.</p>
-<ul><li>Where, when and why do people buy certain products or services?</li><li>How do they pay?</li><li>What devices do they use most?</li><li>What is their profession?</li><li>Why do they think your competitors are better than you?</li><li>How did they hear about your brand?</li><li>Which specific features do they particularly like?</li></ul>`}
+
+{title:"2 · Ethics in Logistics",who:"Günnur Diker, FCILT (Chartered Institute of Logistics and Transport)",color:"--c2",nodes:[
+ ["Part 1 · Definitions",null,[
+  ["Ethics","'Moral philosophy', 'science of morals': what is morally good/bad, right/wrong. Also any system of moral values"],
+  ["Origin","From 'Ta Ethika', title of Aristotle's work"],
+  ["Merriam-Webster","Discipline dealing with good and bad and with moral duty and obligation"],
+  ["Einstein","'Relativity applies to physics, not ethics!'"],
+  ["Key ideas","Not subject to change with time & place (unlike customs); doing right when nobody is watching; most visible in times of crisis"],
+  ["Philosophical discipline","Fundamental question: 'What should I do?'"],
+  ["Practical application","Everyday morality · Professional ethics · Corporate & social responsibility"],
+  ["Ethics vs morality","Ethics = systematic STUDY of moral principles; Morality = actual beliefs/practices of people & societies"],
+  ["Also","Cultural differences · Modern perspective: bioethics"],
+  ["Leadership quote","'Ethics must be at the top of an organisation… the manager must set an example.'"]
+ ]],
+ ["Part 2 · Case study: Global Code of Ethics for Tourism (UNWTO, 10 articles)",null,[
+  ["1","Mutual understanding & respect between peoples"],["2","Vehicle for individual & collective fulfilment"],
+  ["3","Factor of sustainable development"],["4","User & enricher of cultural heritage"],
+  ["5","Beneficial activity for host countries & communities"],["6","Obligations of stakeholders"],
+  ["7","Right to tourism"],["8","Freedom of tourist movements"],
+  ["9","Rights of workers & entrepreneurs"],["10","Implementation of the Code"]
+ ]],
+ ["Part 3 · 10 ethical principles in logistics","Fairness, transparency, responsibility, respect for all stakeholders → trust, lower risk, sustainability",[
+  ["1. Transparency & integrity","Open communication · Regulatory compliance · Contractual clarity"],
+  ["2. Fairness","Fair selection of service providers · Fair pricing · Non-discrimination (gender, ethnicity, nationality, background)"],
+  ["3. Environmental responsibility","Reduce carbon footprint · Eco-friendly accommodation · Respect for nature"],
+  ["4. Employee rights & safety","Safety training · Fair wages & working conditions · Employee well-being"],
+  ["5. Data management & privacy","Data security · Compliance with KVKK (Turkish Personal Data Protection Law) · Confidentiality agreements"],
+  ["6. Social responsibility & community","Use of local resources · Community support initiatives · Disaster relief"],
+  ["7. Prevent corruption & bribery","Clear anti-bribery policies · Whistleblower protection · Training programmes"],
+  ["8. Accountability & continuous improvement","Ethics audits · Feedback mechanisms · Continuous training"],
+  ["9. Customer focus & service excellence","Transparency in customer service · Complaint resolution · Respect for customer rights"],
+  ["10. Ethical technology & automation","Ethical AI (routing/inventory algorithms without bias or harm) · Digital transparency (how customer data is used) · Ethical assessment"]
+ ]],
+ ["Crisis rule (no legal/crisis expert available)",null,[
+  ["1","Be open & truthful — transparency"],["2","Prioritise those most affected"],
+  ["3","Apologise / express regret"],["4","Resolve the problem"]
+ ]],
+ ["Ethical Decision Management (decisive leader)","Identify the right course → Make a plan → Take action & implement → Review & monitor → Repeat what is right"],
+ ["Key questions to ask myself","Define the common good (customers, employees, community, investors) · How to make right decisions for all stakeholders · Influence ethical character · Structures/policies for ethical culture · Monitor it · Correct unethical behaviour"],
+ ["Part 4 · Conclusion","Ethics protects reputation, builds trust with customers & partners, contributes to a sustainable, responsible global service chain. 'It is easy to be good.'"]
 ]},
-{id:"stp", c:"c3", week:"Week 3", name:"Segmentation & Targeting", side:"R", nodes:[
-{id:"crel", t:"Positive customer relations chain", imp:2, h:`
-<div class="seq"><span>Customer acquisition</span><b>→</b><span>Customer satisfaction</span><b>→</b><span>Customer retention</span><b>→</b><span>Customer loyalty</span></div>
-<p>In-class activity: for a chosen market (health &amp; wellness, tech &amp; software, automotive, smart home devices, food &amp; beverage) — choose a product, segment, pick a target group, then plan acquisition (tactics to attract), satisfaction (personalized service / emotional connection), retention (keep engaged), loyalty (turn satisfied customers into <b>brand advocates</b>).</p>
-<div class="trap">Retention comes <b>before</b> loyalty; satisfaction comes <b>before</b> retention.</div>`},
-{id:"perso", t:"Personalized marketing strategy — 6 tactics", imp:1, h:`
-<ol><li>Targeted emails</li><li>Custom video messages</li><li>Product recommendations</li><li>Social media marketing</li><li>Omnichannel marketing</li><li>Fear of missing out (FOMO)</li></ol>`},
-{id:"tam", t:"Market concepts: PAM ⊃ TAM ⊃ SAM ⊃ SOM", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Circle</th><th>Name</th><th>Meaning</th></tr>
-<tr><td>PAM</td><td>Potential Addressable Market</td><td>Widest theoretical pool</td></tr>
-<tr><td>TAM</td><td>Total Addressable Market / Total Available Market</td><td>Total demand for the product category</td></tr>
-<tr><td>SAM</td><td>Serviceable Available Market</td><td>Part of TAM your offer and channels can actually serve</td></tr>
-<tr><td>SOM</td><td>Serviceable &amp; Obtainable Market, or <b>Share of Market</b></td><td>Part of SAM you can realistically win</td></tr></table></div>
-<div class="trap">SOM is the <b>smallest</b> circle and its second name is “Share of Market”. TAM has two expansions: <b>Addressable</b> or <b>Available</b>.</div>`},
-{id:"stpmodel", t:"STP + target-marketing stages table", imp:3, h:`
-<div class="seq"><span>Segmenting</span><b>→</b><span>Targeting</span><b>→</b><span>Positioning</span></div>
-<div class="tbw"><table class="tb"><tr><th>Informed by</th><th>Stage</th><th>Informs</th></tr>
-<tr><td>Market research &amp; analysis of customer data</td><td><b>Segmentation</b> — identify customer needs and segment the market</td><td>Market segment definition; personal development; customer experience requirements</td></tr>
-<tr><td><b>Demand analysis</b></td><td><b>Target marketing</b> — evaluate and select target segments</td><td>Select online targeting; target segments; online revenue contribution per segment; customer lifecycle targeting</td></tr>
-<tr><td><b>Competitor analysis + internal analysis</b></td><td><b>Positioning</b> — identify proposition for each segment</td><td>Core brand proposition; online value proposition; online marketing mix; lifecycle brand development &amp; proposition messaging</td></tr>
-<tr><td><b>Evaluation of resources</b></td><td><b>Planning</b> — deploy resources to achieve plan</td><td>Online marketing mix; restructuring; automated online customer contact strategy</td></tr></table></div>
-<div class="trap">Positioning is informed by <b>competitor + internal</b> analysis, targeting by <b>demand</b> analysis. “Online marketing mix” appears as an output of <b>both</b> Positioning and Planning.</div>`},
-{id:"segsteps", t:"Steps in the market segmentation process (6)", imp:2, h:`
-<div class="seq"><span>1 Identify market segments</span><b>→</b><span>2 Develop profiles for each segment</span><b>→</b><span>3 Evaluate market segments</span><b>→</b><span>4 Select best market segment</span><b>→</b><span>5 Develop a positioning strategy</span><b>→</b><span>6 Focus on marketing program</span></div>`},
-{id:"bases", t:"6 bases of customer segmentation", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Type</th><th>Simple Q</th><th>What it is</th><th>Examples</th><th>Why use it</th></tr>
-<tr><td><b>Geographic</b></td><td>Where</td><td>Groups by location</td><td>Countries, cities, urban/suburban/rural, <b>IP addresses</b></td><td>Dynamic pricing, ease of use, country/language differences, localized offers (stores)</td></tr>
-<tr><td><b>Demographic</b></td><td>Who</td><td>Groups by <b>census data</b></td><td>Age, income, family/single/couple, gender, education</td><td>Easy to use, store profiling, ideal for life stages, supplements other data</td></tr>
-<tr><td><b>Psychographic</b></td><td>Why</td><td>Personal interests &amp; motivations</td><td>Interests, personality, lifestyle, social status, AIO (activities, interests, opinions), attitudes</td><td>Uncovers motivations and reasons for product &amp; brand purchases</td></tr>
-<tr><td><b>Behavioural</b></td><td>What</td><td>What they do, online/offline</td><td>Benefits sought, occasion, usage rate, loyalty, buyer readiness, online actions</td><td>Patterns &amp; triggers in the buying process; tailor marketing to stages</td></tr>
-<tr><td><b>Persona</b></td><td>Who, What, Why, Where</td><td>Blended data + customer goals</td><td>Jobs to be done, pains/gains, demographic + psychographic + behavioural data</td><td>Rich profile; foundation to test hypotheses and optimize results</td></tr>
-<tr><td><b>Predictive</b></td><td>Who and When</td><td>Historical behaviour patterns to predict &amp; influence future behaviour</td><td>Unsupervised, supervised, reinforcement learning</td><td>Uncovers hidden buying clusters; customer discovery</td></tr></table></div>
-<div class="trap">“Benefits sought” and “loyalty” = <b>Behavioural</b> (not psychographic). “Social status” = <b>Psychographic</b> (not demographic). “Jobs to be done” = <b>Persona</b>. Predictive answers <b>Who and When</b>.</div>
-<p>The k-means chart in the Positioning deck (annual income vs annual spend on site, 6 clusters + red centroids) is a data-driven / predictive clustering example.</p>`},
-{id:"family", t:"Family life-stage segment profiles (worked numbers)", imp:1, h:`
-<div class="tbw"><table class="tb"><tr><th>Segment</th><th>Share</th><th>Frequency</th><th>Destination</th><th>$/outing</th><th>≈ $/month per person</th></tr>
-<tr><td>Young singles</td><td>10%</td><td>4×/week</td><td>Bars, clubs, movies, restaurants</td><td>25</td><td>≈ 400</td></tr>
-<tr><td>Young couples, no kids</td><td>8%</td><td>2×/week</td><td>Restaurants, movies, live music</td><td>43</td><td>≈ 344</td></tr>
-<tr><td>Young families</td><td>28%</td><td>3×/month</td><td>Parks, movies, museums, family restaurants</td><td>57</td><td>171</td></tr>
-<tr><td>Families with older kids</td><td><b>31%</b></td><td>4×/month</td><td>Movies, restaurants, sporting events</td><td><b>64</b></td><td>256</td></tr>
-<tr><td>Empty nesters</td><td>23%</td><td>3×/week</td><td>Movies, restaurants, cultural events</td><td>12</td><td>≈ 144</td></tr></table></div>
-<p>Weighted value (share × monthly spend): families with older kids ≈ 79 &gt; young families ≈ 48 &gt; young singles 40 &gt; empty nesters ≈ 33 &gt; young couples ≈ 28 → <b>families with older kids</b> are the most valuable segment overall, while <b>young singles</b> spend the most per person.</p>
-<div class="trap">Highest spend per outing ($64) ≠ highest spend per month per person (young singles, by frequency). Empty nesters go out often (3×/week) but spend least per outing ($12).</div>`},
-{id:"pmmap", t:"Product-market map: grouping individuals", imp:1, h:`
-<p>“Each individual has a unique position in the market. Thus, similar locations can be combined in the market for potential target markets.”</p>
-<p>Example axes: <b>status dimension</b> (vertical) × <b>reliability factor</b> (horizontal). The same market can be cut into <b>3 segments</b> (A, B, C) or more finely into <b>6 segments</b> (A–F). Dots left outside circles are customers not assigned to any target.</p>`},
-{id:"evaltable", t:"Segment evaluation scoring table", imp:2, h:`
-<p>Criteria: market size · growth rate · price sensitivity · competition intensity · access to distribution channel · ease of communication · competency fit · alignment with organizational goals (scored, higher = more attractive).</p>
-<div class="tbw"><table class="tb"><tr><th>Criterion</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th></tr>
-<tr><td>Market size</td><td>2</td><td>3</td><td>4</td><td>4</td></tr><tr><td>Growth rate</td><td>4</td><td>4</td><td>1</td><td>5</td></tr>
-<tr><td>Price sensitivity</td><td>5</td><td>3</td><td>3.5</td><td>3.5</td></tr><tr><td>Competition intensity</td><td>3</td><td>3</td><td>4</td><td>3</td></tr>
-<tr><td>Access to distribution</td><td>3</td><td>5</td><td>3</td><td>5</td></tr><tr><td>Ease of communication</td><td>2</td><td>4</td><td>3</td><td>4</td></tr>
-<tr><td>Competency fit</td><td>2</td><td>5</td><td>5</td><td>2</td></tr><tr><td>Alignment with goals</td><td>2</td><td>4</td><td>4</td><td>3</td></tr>
-<tr><th>Correct sum</th><th>23</th><th>31</th><th>27.5</th><th>29.5</th></tr>
-<tr><td>Printed on slide</td><td>31.0</td><td>27.5</td><td>29.5</td><td>23.0</td></tr></table></div>
-<div class="trap">The slide's “Total” row does not match its own columns (it is shifted one column). Recomputed, <b>Segment 2 (31)</b> is the best and <b>Segment 1 (23)</b> the worst. If a table like this appears in the exam, add the column yourself. (“one” in S3 growth rate = 1.)</div>`},
-{id:"targeting", t:"4 targeting strategies (broad → narrow)", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Strategy</th><th>Also called</th><th>Who is targeted</th></tr>
-<tr><td><b>Undifferentiated</b></td><td>Mass marketing</td><td>The entire mass of the market is perceived as the target customer</td></tr>
-<tr><td><b>Differentiated</b></td><td>Segmented marketing</td><td>Certain segments, each with <b>dedicated strategies</b></td></tr>
-<tr><td><b>Concentrated</b></td><td>Niche marketing</td><td>A smaller, specific subset of the larger market</td></tr>
-<tr><td><b>Micromarketing</b></td><td>—</td><td>An <b>individual or a specific location</b></td></tr></table></div>
-<div class="trap">Several segments with separate programs = <b>differentiated</b>, not concentrated. Targeting one neighbourhood or one person = <b>micromarketing</b>.</div>`},
-{id:"niche", t:"A special segment: the niche", imp:2, h:`
-<ul><li>Markets that <b>no one noticed at first</b>, or that were noticed but <b>not found worth entering</b></li>
-<li>A <b>small group</b> of consumers who seek or need <b>different benefits</b></li>
-<li>Unnoticed and characteristic needs</li><li>It can bring profit</li>
-<li><b>Unattractive for large businesses</b></li>
-<li>Over time, <b>specialization and economies of scale</b> will provide (advantage)</li>
-<li>Market segments that have the potential to <b>grow with profitability</b> are “niches”.</li></ul>`},
-{id:"criteria", t:"Top targeting criteria for personalized experiences", imp:1, h:`
-<div class="tbw"><table class="tb"><tr><th>Criterion</th><th>%</th><th>Criterion</th><th>%</th></tr>
-<tr><td>Geography / region</td><td><b>38</b></td><td>Device type</td><td>25</td></tr>
-<tr><td>Purchase history</td><td><b>38</b></td><td>Referral source</td><td>24</td></tr>
-<tr><td>Segmentation model</td><td>33</td><td>Predictive model (manual)</td><td>24</td></tr>
-<tr><td>User profile / preferences</td><td>31</td><td>Gender</td><td>23</td></tr>
-<tr><td>Age</td><td>30</td><td>Session click-stream data</td><td>20</td></tr>
-<tr><td>Current geo-location</td><td>28</td><td>Ethnicity</td><td>15</td></tr>
-<tr><td>Browsing history</td><td>28</td><td>Predictive model (AI)</td><td><b>9</b></td></tr>
-<tr><td>Shopping cart history</td><td>26</td><td>Other</td><td>1</td></tr></table></div>
-<div class="trap">Top two are tied (geography and purchase history, 38%). AI predictive models are the least used real criterion (9%) — less than manual predictive models (24%).</div>`}
+
+{title:"3 · Sustainability in Logistics",who:"ITR313 — Key trends, technologies & EU developments",color:"--c3",nodes:[
+ ["Big picture",null,[
+  ["Chain","Factory → Transport → Hub/Port → Customer"],
+  ["3 impact areas","Environment (emissions, energy, air, waste) · Operations (cost, speed, reliability, resilience) · People (safety, conditions, communities)"],
+  ["Unit of analysis","The WHOLE logistics chain — not one vehicle or warehouse"]
+ ]],
+ ["5 themes of 2026","1 Reducing carbon emissions · 2 Digitalization & AI · 3 Regulatory developments · 4 Circular economy · 5 Measurable performance"],
+ ["3 pillars, one decision",null,[
+  ["Planet (E)","Reduce emissions, pollution, energy, waste"],
+  ["Performance (€)","Efficiency, total cost, service, resilience"],
+  ["People (P)","Protect workers, rights, communities (drivers' hours)"],
+  ["Warnings","Greener ≠ automatically better if it shifts costs/harm. Not sustainable because marketed green → must be measurable & verifiable"],
+  ["EV example","Electric fleet cuts operational emissions but depends on: electricity source, vehicle manufacturing emissions, battery lifespan, total cost of ownership"]
+ ]],
+ ["Transport emissions in EU",null,[
+  ["31%","of EU-27 GHG emissions come from transport (2023)"],
+  ["72.9%","of transport emissions come from ROAD transport (2023)"],
+  ["Source","European Environment Agency 2025 report"],
+  ["Implication","Redesign operations, don't rely only on alternative fuels"]
+ ]],
+ ["5 practices to cut transport emissions","Route optimization · Load consolidation · Fewer empty miles · Modal shift (road → rail/sea) · Alternative energy"],
+ ["Transport mix",null,[
+  ["Road","+ flexible, first/last mile; – congestion & emissions"],
+  ["Rail / Sea","+ efficient for volumes, lower emissions per tonne-km; – terminals, transfers, schedules"],
+  ["Multimodal","+ combines modes, less long-haul road; – coordination & transshipment"],
+  ["No single mode wins","Depends on distance, cargo type, load factor, transshipment, energy used. Compare door-to-door"]
+ ]],
+ ["EU 2026 timeline",null,[
+  ["1 Jan 2026","CBAM definitive phase begins"],
+  ["4 Mar 2026","EU Ports Strategy announced"],
+  ["16 Mar → 30 Mar 2026","Sustainable transport state-aid rules adopted → apply (rail, inland waterways, multimodal)"],
+  ["1 Jun 2026","CountEmissionsEU enters into force"],
+  ["Rule","Distinguish announcement / entry into force / obligations for a specific company"]
+ ]],
+ ["CBAM (scope!)",null,[
+  ["IS","Embedded emissions from PRODUCTION of imported goods covered by the mechanism"],
+  ["IS NOT","A general tax on transport emissions of every shipment"],
+  ["Supply-chain implications","Reliable supplier emissions data · traceability exporter↔importer · applicability depends on product scope"],
+  ["Türkiye → EU","Needs embedded-emissions data; impact depends on product coverage & thresholds"]
+ ]],
+ ["EU Ports Strategy","Competitiveness, security, resilience, sustainability: equipment electrification, flow optimization, shorter waiting times, rail/road links, renewable & alt-fuel infrastructure. Port performance = energy, emissions, congestion, reliability, hinterland connectivity (not only speed)"],
+ ["CountEmissionsEU","Common EU methodology for GHG of passenger & freight transport; aligned with EN ISO 14083:2023 → consistent, comparable data, carrier selection"],
+ ["Multimodal",null,[
+  ["Benefits","Less long road freight, energy efficiency for volumes, more carbon options, less congestion"],
+  ["Limits","Inadequate transshipment facilities, extra handling, delays, infrastructure limits"]
+ ]],
+ ["AI & technology",null,[
+  ["Predict / Optimize / Monitor","Forecasting & inventory · routes & consolidation · IoT & cold chain"],
+  ["Rebound effects!","More small deliveries, data processing & energy can offset gains — judge net outcomes"],
+  ["Tech table","AI (forecast, routing) · IoT (cold chain, less spoilage) · Big data (inefficiencies) · Digital twins (test before investing) · Smart warehouses (space, energy, labour)"]
+ ]],
+ ["Warehousing, packaging, reverse logistics",null,[
+  ["Energy-efficient warehouses","LED, solar, smart temperature, insulation, energy monitoring"],
+  ["Sustainable packaging","Lighter, reusable containers, recyclable"],
+  ["Reverse logistics","Collect, sort, repair, resell/recycle returns → key to circular economy"],
+  ["E-commerce problems","Oversized packaging, low load factors, repeated failed deliveries → integrate packaging, consolidation, delivery planning, returns"]
+ ]],
+ ["KPIs",null,[
+  ["Carbon intensity","kg CO₂e ÷ tonne-km. Ex: 1,000 km × 100 t = 100,000 t-km; 8,000 kg → 0.08; 6,000 kg → 0.06 = −25%"],
+  ["Vehicle load factor","Used / total capacity × 100"],
+  ["Empty-mile ratio","Empty km / total km × 100"],
+  ["Warehouse energy intensity","kWh / m² or per order"],
+  ["Packaging waste intensity","kg waste / order"],
+  ["On-time delivery rate","On-time / total × 100"],
+  ["Occupational safety","Recorded accidents & rates"]
+ ]],
+ ["Türkiye","EU market access (CBAM data) · rail/maritime/multimodal · ports & hubs · digital data infrastructure · SME transformation (funding & expertise)"],
+ ["5 priorities","1 Standardized emissions data · 2 Integrated transport planning · 3 Digital supply chains · 4 Circular logistics · 5 Verified sustainability claims"],
+ ["Discussion Qs","Fast vs low-carbon? EV always better? Less carbon = less cost? AI creates new costs? Where should an exporter start?"]
 ]},
-{id:"pos", c:"c4", week:"Week 5 · Positioning deck", name:"Positioning", side:"L", nodes:[
-{id:"posdef", t:"Definition & perception management", imp:3, h:`
-<div class="def">A product's <b>position</b> is its <b>relative place in the customer's mind relative to competing products</b>. <b>Positioning</b> is the <b>process of creating this place</b>.</div>
-<p>For positioning, it is <b>first</b> necessary to fully and accurately determine the <b>qualities and image of each of the main competitors</b>.</p>
-<p>Positioning is a type of <b>perception management</b>: if you create a perception of <b>more benefit</b>, you have positioned it in a good place. Benefit types: <b>financial, psychological, social, functional, physical</b>.</p>
-<div class="trap">Position lives in the <b>customer's mind</b> and is always <b>relative to competitors</b>. The five benefit types do not include “environmental” or “emotional”.</div>`},
-{id:"tools", t:"Positioning tools", imp:2, h:`
-<ul><li>Specific features and benefits of the product (taste, quality, durability, security, prestige, luxury…)</li><li>Brand</li><li>Packaging</li><li>Price</li><li>Usage</li><li>Image (business image – product image)</li><li>Competitive products</li><li>Sales at special distribution points</li><li>Personalized messages</li><li>Advertising</li><li>Cultural icons</li><li>Famous people</li></ul>`},
-{id:"types", t:"Types of positioning", imp:3, h:`
-<h4>Four types (slide)</h4>
-<ul><li><b>Generic positioning</b></li><li><b>Value positioning</b></li><li><b>Positioning by feature</b></li><li><b>Emotional positioning</b></li></ul>
-<h4>Competition-oriented vs consumer-oriented</h4>
-<div class="tbw"><table class="tb"><tr><th>Competition oriented</th><th>Consumer oriented</th></tr>
-<tr><td>Comparative messages<br>“The best, the most affordable”<br>“This is the best until we make the better one”<br>“Or are you still using your mother's margarine?”<br>“Whiter with Vanish crystal white”</td>
-<td>Differentiates your target market<br>“juss: like drinking juice for the first time”<br>“Papia threefold”<br>“More hazelnuts”<br>“Exclusive in Worldcard + 4 installments”<br>“7 effective toothpaste”</td></tr></table></div>
-<h4>In-class strategy options + benefits</h4>
-<ul><li><b>Functional</b>: breathability, durability, flexibility, fit, moisture management</li>
-<li><b>Emotional</b>: confidence, motivation, inclusion, self-expression, belonging</li>
-<li><b>Value-based</b>: accessible pricing, versatile products, transparent value proposition</li>
-<li><b>Competition-oriented</b>: more inclusive fit, more specialized customer experience, greater simplicity, distinct product focus</li></ul>
-<div class="trap">“More hazelnuts” and “7 effective toothpaste” look like feature claims but the slide puts them under <b>consumer-oriented</b>. A slogan that compares to something else (“whiter”, “your mother's margarine”) is <b>competition-oriented</b>.</div>`},
-{id:"stages", t:"7 stages of positioning", imp:3, h:`
-<ol><li>Identification of <b>competing product groups</b></li><li>Identifying the <b>features to be highlighted</b></li><li>Determination of <b>consumer perceptions</b></li><li>Extraction and analysis of <b>detection (perceptual) maps</b></li><li>Identifying the <b>most preferred features</b></li><li>Determining the <b>most suitable location for the market segment</b></li><li>Determining the <b>positioning strategy</b></li></ol>
-<div class="tip">Competitors → Features → Perceptions → Maps → Preferences → Location → Strategy: “<b>C</b>an <b>F</b>red <b>P</b>lease <b>M</b>ap <b>P</b>eople's <b>L</b>ocal <b>S</b>hops?”</div>
-<div class="trap">Perceptions (3) are measured <b>before</b> the maps are drawn (4). Most preferred features (5) come <b>after</b> the maps.</div>`},
-{id:"maps", t:"How to read a perceptual map", imp:3, h:`
-<ul><li>Two axes = two attributes customers use to judge the category (price/quality, filling/treat, mass/niche…).</li>
-<li>Brands close together = <b>direct rivals in the customer's mind</b>.</li>
-<li>An <b>empty area</b> = possible white space (only useful if customers actually want it).</li>
-<li>The <b>ideal point of the target segment</b> shows where the segment wants a brand to be; the brand nearest to it is best positioned for that segment.</li>
-<li>On a price × quality map, the <b>diagonal</b> is the fair-value line: above it = price higher than perceived quality (overpriced); below it = better value for money.</li></ul>
-<div class="trap">A brand in the high-price / low-quality quadrant (Infiniti, Mini on the car map) is in the weakest value position.</div>`},
-{id:"mapex", t:"Perceptual map examples from class", imp:2, h:`
-<h4>Clothing (Turkey) — quality × price, with diagonal</h4>
-<p>Top: <b>Vakko, Lacoste</b> (≈ 8.7 / 9.2), Tommy Hilfiger, Pierre Cardin, Sarar, Mavi Jeans, Roman, D'S Damat, GAP. Middle: Marks &amp; Spencer, Stefanel, Benetton, Kiğılı, <b>ORTALAMA</b> (= “average”, ≈ 6.9 / 7). Lower: Mudo, Mango, Koton, Tiffany, DeFacto, Collezione, <b>LCW</b> (quality 5, price ≈ 4.3 → below diagonal = good value). Marks &amp; Spencer (quality ≈ 6.7, price ≈ 7.6) sits above the diagonal → priced above its perceived quality.</p>
-<h4>Cars — price × quality</h4>
-<p>High price/high quality: <b>Porsche, Mercedes</b>, Audi, BMW. High price/low quality: <b>Infiniti, Mini</b>. Low price/high quality: <b>Ford, Toyota, Honda</b>. Low/low: VW, Citroën, Renault, Kia, <b>Dacia</b> (extreme).</p>
-<h4>Cars — classy ↔ useful × plain/old ↔ sporty/young</h4>
-<p><b>Porsche</b> sits at the <b>ideal point of the target segment</b> (classy + high performance). BMW also top-right. Lincoln, Cadillac, Mercedes: classy but plain / attractive for old people. Pontiac: sporty. Chevrolet, Datsun, Toyota, VW: useful, budget-friendly, fun/young. Ford, Dodge, Plymouth: useful + plain.</p>
-<h4>Chocolate — filling ↔ treat × smooth ↔ crunchy</h4>
-<p>Filling + smooth: <b>Mars</b> (Galaxy just above the axis). Filling + crunchy: <b>Snickers, Twix</b>. Treat + smooth: <b>Milky Way</b>. Treat + crunchy: <b>Maltesers</b>.</p>
-<h4>Airlines — seats (customers) × destinations (routes)</h4>
-<p>Top-right (many seats, many routes): China Eastern, China Southern, Air China; AirAsia also right. Korean Air near the centre-top; JAL, Sichuan upper-left; ANA, Thai lower-left; Philippine Airlines lower-right.</p>
-<h4>Sportswear — mass ↔ niche × price</h4>
-<p>Price+ mass: Nike, Adidas, Asics, Under Armour, The North Face (Columbia near centre). Price+ niche: <b>Lululemon</b>, Yoga Smoga, Sweaty Betty, Vimma, Outdoor Voices. Price− mass: Fila, Li-Ning, New Balance, Anta. Price− niche: Athleta (centre), Urban Outfitters, Victoria's Secret, Fabletics.</p>
-<h4>Feel–Think country clusters</h4>
-<p>High <b>think</b>: Belgium, Italy, Netherlands, Austria, Germany. Low feel: Australia, NZ, Brazil, Argentina. High <b>feel</b>: Sweden, UK, Korea, Canada, US, Japan, Taiwan, Spain, France, Denmark. Outliers: India, Hong Kong.</p>`},
-{id:"cases", t:"Brand positioning cases (6 lessons)", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Brand</th><th>Positioning</th><th>Lesson (keyword in CAPS on the slide)</th></tr>
-<tr><td><b>Apple</b> — “Think different.”</td><td>Technological research, innovation; considers impact on customers and the planet. Mac vs Windows user ad.</td><td>Actions speak louder than words: embody positioning in product quality &amp; functionality; associate the brand with a <b>LIFESTYLE OR SET OF VALUES</b></td></tr>
-<tr><td><b>Chipotle</b> — “Food with Integrity”</td><td>Fast-casual; just <b>53 ingredients “with names you can pronounce”</b>; healthful dining, whole ingredients; differentiates from Mexican fast-food chains</td><td>What matters to customers beyond the core product (healthy, sustainable) → use this <b>INSIGHT</b></td></tr>
-<tr><td><b>Tesla</b></td><td>Mission: “accelerate the world's transition to sustainable energy”; values: environmental benefit, safety, fun (gaming, easter eggs). Tesla Aviation brand identity example.</td><td>Forward-thinking pioneer; mission resonates with <b>PREVAILING SOCIETAL VALUES</b> in every interaction</td></tr>
-<tr><td><b>Nike</b> — “Just Do It”</td><td>Started on performance &amp; innovation; messaging = <b>empowerment</b>; named after the Greek goddess of victory; athletes with “game faces”, not smiling</td><td>Motivational aspect → <b>DEEP EMOTIONAL BOND</b></td></tr>
-<tr><td><b>Airbnb</b></td><td>Unique travel experiences, local experiences, personal connection</td><td>Deliver <b>experiences, not just products or services</b>; authentic, personal connection</td></tr>
-<tr><td><b>Southwest Airlines</b> — “Low Fares. Nothing to Hide.”</td><td>Budget airline without sacrificing quality/service; focus on people (employees + customers); “<b>Transfarency</b>”: customers treated honestly and fairly, low fares stay low</td><td>Excellent <b>VALUE</b> without sacrificing quality; customers feel part of the brand's community</td></tr></table></div>`},
-{id:"measure", t:"Measuring positioning & brand awareness", imp:2, h:`
-<h4>Measuring the effectiveness of brand positioning (4)</h4>
-<ul><li>Track <b>brand awareness</b> with surveys, social media mentions and website analytics</li><li>Monitor <b>customer perception and sentiment</b> towards the brand</li><li>Assess <b>market share and sales growth</b> compared to competitors</li><li>Conduct regular <b>brand audits</b> to evaluate <b>consistency across all channels</b></li></ul>
-<h4>6 ways to evaluate brand awareness</h4>
-<ol><li>Study growth in <b>direct website traffic</b></li><li>Measure and study <b>referral traffic</b></li><li><b>Social share of voice</b></li><li><b>Backlink profiles</b></li><li>Compare your <b>earned media value</b> with competitors</li><li><b>Surveys</b></li></ol>
-<div class="trap">Customer lifetime value, NPS or conversion rate are NOT among the 6 awareness measures on the slide.</div>`},
-{id:"sportsw", t:"In-class: launch a new sportswear brand", imp:1, h:`
-<p>Map: perceived price (low ↔ high) × brand appeal (performance ↔ lifestyle). Quadrants: <b>Premium Performance</b> (Nike, Under Armour), <b>Premium Lifestyle</b> (Lululemon; Adidas towards the centre), <b>Accessible Lifestyle</b> (Puma, New Balance), <b>Accessible Performance</b> — <b>empty</b> on the slide.</p>
-<p>Rules: do <b>not</b> imitate Nike/Adidas; identify a <b>customer need</b>, a <b>relevant point of differentiation</b> and a <b>credible reason</b> to choose your brand.</p>
-<p>Killer question: “If an established brand launched a similar product tomorrow, what would prevent your target customers from switching to that competitor?” → tests whether the differentiation is <b>defensible / sustainable</b>.</p>`}
-]},
-{id:"brand", c:"c5", week:"Week 7 · Branding deck", name:"Brand Strategy & Branding", side:"L", nodes:[
-{id:"equity", t:"Brand equity: definition & formula", imp:3, h:`
-<div class="def"><b>Brand equity</b> = a <b>value premium</b> that a company generates from a product with a <b>recognizable name</b> when compared to a <b>generic equivalent</b>.<br><b>BRAND EQUITY = BRAND − PRODUCT</b></div>
-<p><b>Starbucks example</b>: branded cup ₹400 vs unbranded cup ₹80 → brand equity = ₹320 (80% of the price is paid for the brand).</p>
-<p><b>Kellogg's Corn Flakes</b> rooster: the mascot alone is recognized on the shelf. <b>Band-Aid</b>: a child falls and you say “Band-Aid”, not “adhesive bandage” — the brand has become the category name (extreme equity).</p>`},
-{id:"eqparts", t:"Brand equity: 3 circles + 6 components", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>Circle</th><th>Meaning</th></tr>
-<tr><td>Consumer perception</td><td>What consumers <b>believe a brand represents</b></td></tr>
-<tr><td>Positive / negative effects</td><td>What a brand's <b>reputation</b> is viewed to be</td></tr>
-<tr><td>Resulting value</td><td>What <b>return</b> a brand generates for the business as a whole</td></tr></table></div>
-<p>Brand equity sits at the intersection. Its six components: <b>brand image, brand identity</b> (both circled in class), brand awareness, customer perception, brand loyalty, brand association.</p>`},
-{id:"identity", t:"Brand identity: definition & elements", imp:3, h:`
-<ul><li>The <b>bond</b> formed between the brand and the consumer</li><li>A characteristic by which a consumer can <b>identify and express</b> a brand</li><li><b>Human characteristics</b> associated with a brand</li><li>Introduced by <b>Kapferer</b> — the slide says <b>1970</b></li><li>To be seen as a <b>true relationship partner</b>, a brand must <b>contribute to the relationship</b></li><li>Animated brand characters and interactive communication; tangible entities such as fans, movie stars</li></ul>
-<p>Elements around “brand identity”: <b>communication, logo, behavior, language, mission, vision, culture, design</b>.</p>
-<div class="trap">Use the slide's year (1970) in this course's exam. Outside the course the prism is usually dated 1986 — mention it only if the question asks for discussion.</div>`},
-{id:"blueprint", t:"Brand blueprint vs brand identity vs brand", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th></th><th>Brand blueprint</th><th>Brand identity</th><th>Brand</th></tr>
-<tr><td>Meaning</td><td>The way you <b>want to be perceived</b></td><td>The way your brand <b>presents itself</b></td><td>The way consumers <b>actually perceive you</b></td></tr>
-<tr><td>Layer</td><td>Brand <b>strategy</b></td><td>Brand <b>expression</b></td><td><b>Consumer perception</b></td></tr>
-<tr><td>Contents</td><td>Market opportunity, target market, brand promise, values, macro trends</td><td>Logo, colour palette, typography, tone, messaging</td><td>Expectations, emotions &amp; feelings, impressions, decisions</td></tr></table></div>
-<div class="trap">“Brand promise” and “macro trends” belong to the <b>blueprint</b>; “tone” and “messaging” to <b>identity</b>. The <b>brand</b> itself is owned by the consumer's perception.</div>`},
-{id:"layers", t:"Branding layers: logo → visual identity → branding", imp:2, h:`
-<ul><li><b>Logo</b> (core)</li>
-<li><b>Visual identity</b>: colours, imagery, layout, typography, use of space</li>
-<li><b>Branding</b> (outer ring): values, brand personality, type/quality of products &amp; services, customer service philosophy, business processes, associated brands, communication channels, marketing approach, business &amp; social networking, tone of voice</li></ul>
-<div class="trap">Tone of voice and customer-service philosophy are <b>branding</b>, not visual identity. The logo is only the innermost part.</div>`},
-{id:"creation", t:"Brand identity creation (6 building blocks)", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>#</th><th>Block</th><th>Contents</th></tr>
-<tr><td>01</td><td>Brand story</td><td>Value story, founder story, customer story</td></tr>
-<tr><td>02</td><td>Personality</td><td>Mission, ethics, purpose, values</td></tr>
-<tr><td>03</td><td>Tone of voice</td><td>Positioning, emotion, difference, relevance</td></tr>
-<tr><td>04</td><td>Brand mark</td><td>Logo, pictograph, file formats, type, colour</td></tr>
-<tr><td>05</td><td>Design</td><td>Colour, typography, tonality, weight, imagery</td></tr>
-<tr><td>06</td><td>Communications</td><td>Brand guidelines, consistency, messaging, tone of voice</td></tr></table></div>
-<div class="trap">“Mission, ethics, purpose, values” are under <b>Personality</b> here, not Brand story. “Positioning” appears under <b>Tone of voice</b>.</div>`},
-{id:"corp", t:"Corporate identity vs brand identity", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>Corporate identity</th><th>Brand identity</th></tr>
-<tr><td>Reflects company identity <b>as a whole</b></td><td><b>Specific</b> identity of the brand</td></tr>
-<tr><td>Showcases company <b>mission and ethos</b></td><td>Showcases <b>each brand's values</b></td></tr>
-<tr><td>Highlights <b>corporate culture</b></td><td>Speaks to the brand's <b>specific audience</b></td></tr>
-<tr><td>Attention to <b>internal</b> perception</td><td>Attention to <b>external</b> perception</td></tr></table></div>`},
-{id:"mascot", t:"Brand mascots: human · animal · object", imp:2, h:`
-<h4>Decision tree “Choose the right mascot”</h4>
-<ol><li>Promote yourself as a person (freelancer, public speaker)? → <b>Human</b></li><li>Sell a specific product that's easy to visualize? → <b>Object</b></li><li>Service that can be associated with an object (real estate → house)? → <b>Object</b></li><li>Service/product associated with an animal (milk → cow)? → <b>Animal</b></li><li>Need the mascot's look to be associated with the brand's values? → <b>Animal</b></li></ol>
-<p>Examples shown: Kellogg's rooster, Colonel Sanders (KFC), Ronald McDonald, Michelin Man, Mr. Peanut, Pillsbury Doughboy, M&amp;M's, Energizer Bunny, Tony the Tiger, Mr. Clean, Mr Muscle, GEICO gecko, Kool-Aid Man, Pringles' Mr. P, Captain Morgan, Chester Cheetah, Toucan Sam, La vache qui rit, Monopoly man, Burger King, Jolly Green Giant.</p>
-<p>Mascots make the brand a relationship partner (“animated brand characters and interactive communication”).</p>`},
-{id:"prism", t:"Kapferer's Brand Identity Prism (6 facets)", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th></th><th>Externalization (left)</th><th>Internalization (right)</th></tr>
-<tr><td><b>Sender</b> (picture of sender = company)</td><td><b>Physique</b> — physical characteristics: colours, shapes, design elements</td><td><b>Personality</b> — brand's character: tone, language, persona</td></tr>
-<tr><td>Middle (bridge)</td><td><b>Relationship</b> — relationship between brand and consumer</td><td><b>Culture</b> — values and guiding principles</td></tr>
-<tr><td><b>Receiver</b> (picture of receiver = consumers)</td><td><b>Reflection</b> — who you portray as the target group</td><td><b>Self-image</b> — how consumers perceive themselves when engaging with the brand</td></tr></table></div>
-<div class="tip">Left = what you can <b>see from outside</b> (Physique, Relationship, Reflection — “PRR”). Right = what is <b>felt inside</b> (Personality, Culture, Self-image — “PCS”).</div>
-<div class="trap"><b>Reflection</b> = the image of the <i>typical user the brand shows</i>; <b>Self-image</b> = how the <i>buyer sees himself</i> (“I'm worth it”). Classic confusion.</div>`},
-{id:"prismex", t:"Prism examples: Dove · L'Oréal · Levi's", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>Facet</th><th>Dove</th><th>L'Oréal Paris</th><th>Levi's</th></tr>
-<tr><td>Physique</td><td>Soft colours white &amp; blue, dove symbol, drop-shaped packaging</td><td>Women skincare dedicated to all women</td><td>Iconic red logo, blue jeans, long-lasting clothes</td></tr>
-<tr><td>Personality</td><td>Natural, soft, friendly</td><td>Very beautiful, attractive women with sex appeal</td><td>Youthful, rebellious, free</td></tr>
-<tr><td>Relationship</td><td>Close to women; consider them with no distinction; redefine true beauty</td><td>Women strongly trust L'Oréal: beauty partners</td><td>Sharing adventures and emotions with friends</td></tr>
-<tr><td>Culture</td><td>Trust, universal, no stereotypes, down to earth</td><td>Excellence, beauty, innovation, expertise</td><td>American freedom, individualistic mindset</td></tr>
-<tr><td>Reflection</td><td>Natural and confident modern women</td><td>“I can benefit from the expertise of the worldwide leader of skincare at an affordable price”</td><td>Young trendsetters, fashionable without trying too hard</td></tr>
-<tr><td>Self-image</td><td>Confident, beautiful, inspired</td><td>“I'm a beautiful, independent and powerful woman. I'm worth it.”</td><td>Trendy, independent, confident</td></tr></table></div>`},
-{id:"aaker", t:"Brand personality — Aaker's 5 dimensions", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Dimension</th><th>Traits</th><th>Examples (slide)</th></tr>
-<tr><td><b>Sincerity</b><br>genuine, open-armed</td><td>Down-to-earth, family-oriented, honest, sincere, real, sentimental, original, wholesome, cheerful</td><td>McDonald's, Nivea, Pampers, Whole Foods, Home Depot, Hallmark, Chevrolet</td></tr>
-<tr><td><b>Excitement</b><br>exciting, emotional</td><td>Daring, trendy, spirited, cool, independent, dynamic, imaginative, up-to-date</td><td>Snickers, Pixar, Axe, <b>Porsche</b>, Absolut, Red Bull, <b>Apple</b>, Virgin</td></tr>
-<tr><td><b>Competence</b><br>competent, skillful</td><td>Reliable, hard-working, secure, intelligent, technical, corporate, successful, leader, confident</td><td>Google, Domestos, Ariel, Gillette, CNN, IBM, <b>Toyota</b></td></tr>
-<tr><td><b>Sophistication</b><br>refined, tempted</td><td>Upper class, glamorous, good-looking, charming, feminine, smooth</td><td>Lamborghini, Baileys, <b>L'Oréal</b>, Tiffany, Four Seasons, <b>Mercedes</b>, Calvin Klein</td></tr>
-<tr><td><b>Ruggedness</b><br>outdoorsy, tough</td><td>Courageous, masculine, western, rugged, active, brutal, unsentimental</td><td>Marlboro, Harley-Davidson, <b>Nike</b>, Guinness, <b>Levi's</b>, REI, Jeep</td></tr></table></div>
-<div class="trap">Per the slide: <b>Nike = Ruggedness</b>, <b>Apple and Porsche = Excitement</b> (Porsche is NOT sophistication; Mercedes and Lamborghini are), <b>Toyota = Competence</b>, <b>McDonald's = Sincerity</b>.</div>
-<div class="tip">“<b>S</b>he <b>E</b>njoys <b>C</b>offee, <b>S</b>ophie <b>R</b>ides” — Sincerity, Excitement, Competence, Sophistication, Ruggedness.</div>`},
-{id:"color", t:"Psychology of colours", imp:2, h:`
-<div class="tbw"><table class="tb"><tr><th>Colour</th><th>Psychology wheel</th><th>Colour emotion guide</th></tr>
-<tr><td>Yellow</td><td>Positivity, joy, warmth, curiosity, fun, clarity, happiness</td><td>Optimism, clarity, warmth</td></tr>
-<tr><td>Orange</td><td>Emotion, optimism, pleasure, freedom, enthusiasm, original, youth</td><td>Friendly, cheerful, confidence</td></tr>
-<tr><td>Red</td><td>Excitement, adventure, strength, energy, passion, action, love</td><td>Excitement, youthful, bold</td></tr>
-<tr><td>Pink</td><td>Intuition, softness, femininity, respect, calm, gratitude, creativity</td><td>—</td></tr>
-<tr><td>Purple</td><td>Imagination, justice, royalty, fantasy, mystery, art, spirituality</td><td>Creative, imaginative, wise</td></tr>
-<tr><td>Blue</td><td>Success, power, trust, security, confidence, purpose</td><td>Trust, dependable, strength</td></tr>
-<tr><td>Green</td><td>Nature, luck, health, prosperity, safety, harmony, loyalty</td><td>Peaceful, growth, health</td></tr>
-<tr><td>Grey</td><td>—</td><td>Balance, neutral, calm</td></tr></table></div>
-<p>Packaging slide: <b>blue often conveys trust</b>, <b>red can create a sense of urgency</b>.</p>`}
-]},
-{id:"pack", c:"c6", week:"Week 7 · Branding deck", name:"Packaging as a Strategic Tool", side:"L", nodes:[
-{id:"pkdef", t:"Packaging as a strategic marketing tool", imp:3, h:`
-<div class="def">Packaging serves as a critical strategic marketing tool that <b>transcends mere protection</b>. It plays a vital role in <b>differentiation</b>, <b>delivering value</b> to consumers, establishing <b>competitive positioning</b>, and <b>fulfilling brand promises</b> — thus influencing consumer perceptions and purchasing decisions.</div>
-<p>Packaging is one of the two Ps the <b>9P</b> model adds (with Public Relations), and a <b>positioning tool</b>.</p>`},
-{id:"pkfun", t:"4 functions of packaging beyond protection", imp:3, h:`
-<div class="tbw"><table class="tb"><tr><th>Function</th><th>Slide content</th></tr>
-<tr><td><b>Differentiation</b></td><td>Helps consumers recognize and choose brands in a crowded marketplace; unique shapes, colours and designs create a memorable first impression</td></tr>
-<tr><td><b>Value delivery</b></td><td>Enhances user experience, preserves product quality, convenience: easy-open features, portion control, materials that enhance freshness</td></tr>
-<tr><td><b>Competitive positioning</b></td><td>Aligns with brand messaging and market positioning; communicates the value proposition relative to competitors</td></tr>
-<tr><td><b>Brand promise</b></td><td>Reflects values, quality and identity; creates expectations and trust → loyalty and repeat purchases</td></tr></table></div>
-<div class="tip">“<b>D</b>on't <b>V</b>alue <b>C</b>heap <b>P</b>romises” — Differentiation, Value delivery, Competitive positioning, brand Promise.</div>
-<div class="trap">Portion control and easy-open = <b>value delivery</b>, not differentiation. Trust and repeat purchase = <b>brand promise</b>.</div>`},
-{id:"pkbeh", t:"Consumer behaviour & packaging perception", imp:2, h:`
-<ul><li><b>Visual attention &amp; eye-tracking</b>: imagery and bold typography capture and hold attention</li>
-<li><b>Colour, shape, texture, material cues</b>: shape aesthetic appeal and emotional responses (blue → trust, red → urgency)</li>
-<li><b>Heuristics &amp; biases</b>: the <b>size–value heuristic</b> — larger packages are often perceived as better value, <b>regardless of the actual contents</b></li>
-<li><b>Impulse buying triggers &amp; point-of-sale dynamics</b>: stand-out packaging and strategic placement prompt unplanned purchases</li></ul>`},
-{id:"pkdesign", t:"Packaging design principles (5)", imp:2, h:`
-<ul><li><b>Structural design &amp; front-of-pack architecture</b>: physical shape/form; windows, cutouts, unique shapes; easier handling and storage</li>
-<li><b>Shelf impact &amp; category visibility</b>: attract attention among competitors; easy recognition → impulse purchases, brand recall</li>
-<li><b>Private label vs national brand design logic</b>: national brands leverage <b>brand equity, premium materials, innovation, standout design</b>; private labels use <b>cost-effective</b> designs stressing <b>value and functionality</b> for budget-conscious shoppers</li>
-<li><b>Typography &amp; colour theory</b>: fonts convey personality and readability; colours trigger psychological responses</li>
-<li><b>Visual hierarchy</b>: guides attention via <b>size, colour contrast and placement</b> so key messages are noticed first</li></ul>`},
-{id:"pkid", t:"Packaging & brand identity (4)", imp:2, h:`
-<ul><li><b>Consistency with brand personality</b>: colours, shapes, typography reinforce personality</li>
-<li><b>Brand memory &amp; recognition</b>: lasting impression → higher recall and preference</li>
-<li><b>Portfolio architecture</b>: differentiates <b>line extensions and sub-brands</b>; visual cues help navigate a brand family</li>
-<li><b>Signature packaging &amp; brand assets</b>: iconic packaging becomes a valuable asset → loyalty and repeat purchases</li></ul>`},
-{id:"pkinno", t:"Strategic packaging innovations (4)", imp:2, h:`
-<ul><li><b>Smart packaging technologies</b>: QR codes, NFC chips, sensors → real-time information, better UX, <b>tracking and authentication</b></li>
-<li><b>AR/VR-enhanced experiences</b>: scan the pack for extra information or entertainment</li>
-<li><b>Minimalist &amp; transparent design</b>: fewer materials, clear labelling → perceived quality; appeals to consumers seeking <b>authenticity and sustainability</b></li>
-<li><b>Personalization strategies</b>: customized labels, unique designs, interactive elements (e.g. <b>Nutella jars with first names</b>)</li></ul>`},
-{id:"pkcomp", t:"Packaging & competitive positioning (3)", imp:2, h:`
-<ul><li><b>Premiumization vs economy packaging</b>: premium materials and unique designs create luxury/exclusivity and justify a higher price (Elizabeth Arden)</li>
-<li><b>Disruptive category design</b>: <b>Oatly</b> and <b>Method</b> broke packaging norms with sustainable materials and innovative designs that communicate brand values</li>
-<li><b>Market leaders vs challenger brands</b>: leaders use packaging to <b>reinforce brand equity and loyalty</b>; challengers use <b>distinctive designs to differentiate</b>, often appealing to niche segments</li></ul>`},
-{id:"pkex", t:"Creative packaging examples", imp:1, h:`
-<ul><li>NYC spaghetti box shaped like a skyline; pasta boxes where the pasta becomes the woman's hair (Fettuccine, Spaghettoni, Cavatappi)</li>
-<li>Fruit-slice juice boxes; juice cartons with real fruit skin texture (kiwi, banana, strawberry)</li>
-<li>Hanger tea bags (T-shirt shaped bags on a hanger)</li>
-<li>Earphones packaged as a musical note; wool sold inside a black sheep</li>
-<li>Nike Air shoe sealed in an air-filled bag; <b>Festina</b> watches sold in water bags (“engineered for water”)</li>
-<li>Butter portion whose lid is a knife; paintbrushes dressed as moustaches; shoe-lace handles on shopping bags</li>
-<li>Natub kraft boxes; personalized Nutella jars</li></ul>
-<p>Common thread: the package <b>demonstrates the product's key benefit</b> (waterproof, air cushioning, fresh fruit) or creates a memorable, shareable experience.</p>`}
+
+{title:"4 · 0→1: Turning a Problem into a Company",who:"Founder of Troy Depo — real-world entrepreneurship",color:"--c4",nodes:[
+ ["Session approach","Not a formula: how founders think when the answer is not obvious. 4 lenses: Problems · Customers · Trade-offs · Systems. Goal = better decisions under uncertainty"],
+ ["Idea ≠ Problem",null,[
+  ["Idea (our view)","'Let's start a storage company.'"],
+  ["Problem (customer view)","'Where can I safely keep my things for a while?'"],
+  ["Not every problem = opportunity","Who has it? · How often? · Will they pay?"],
+  ["Chain","Problem → Frequency → Pain → Willingness to pay"]
+ ]],
+ ["10-question checklist",null,[
+  ["1–5: is the opportunity REAL?","01 Problem · 02 Customer · 03 Market (demand + timing) · 04 Value (why switch/trust/pay) · 05 MVP"],
+  ["6–10: can the business WORK?","06 Product–market fit (customers pull) · 07 Business model · 08 Go-to-market (first 100 customers) · 09 Unit economics & cash · 10 Team"],
+  ["Idea","You keep returning to them; a venture = a system of answers that fit together"]
+ ]],
+ ["MVP",null,[
+  ["MVP ≠ smaller final product","Its job is to REDUCE UNCERTAINTY"],
+  ["Loop","Assumption → Smallest test → Evidence → Next move (build, change or stop)"],
+  ["Minimum ≠ low quality","Minimum effort to learn something important"]
+ ]],
+ ["Market- vs product-oriented",null,[
+  ["Market-oriented","Need → Customer → Offer. Default for services, consumer, marketplaces; reduces demand risk"],
+  ["Product-oriented","Capability → Product → Market. New tech/research; breakthroughs before market knows"],
+  ["Rule","Market-first lowers risk; product-first can unlock breakthroughs. Know which game you play"]
+ ]],
+ ["How a problem becomes a company","We SAW people need extra space → ASSUMED need = 'storage space' → LEARNED real need = trust + peace of mind → CHANGED service, process, experience. Not a straight line"],
+ ["What customers really buy",null,[
+  ["Visible","Storage space"],
+  ["Real value","Trust · Peace of mind · Less uncertainty → they buy the OUTCOME"],
+  ["Product ≠ Value","Storage→more space · Moving→less time & stress · Insurance→shared risk · Brand→confidence. They remember what changed"]
+ ]],
+ ["The journey","Plan will change · unpredicted problems are normal · people see the outcome, not the process"],
+ ["First customer","Gives EVIDENCE (more valuable than revenue). Assumption → Customer → Evidence → Change. Listen to behaviour, questions, friction, objections — not only compliments"],
+ ["Pricing","Same service, different price: customers compare risk & peace of mind. Trust, convenience, communication, speed, assurance, experience → PRICE FOLLOWS PERCEIVED VALUE"],
+ ["Defensibility Q","If a competitor copies everything tomorrow, why would customers still choose you?"],
+ ["Founder's job evolves",null,[
+  ["1 person","'I'll do it' → Founder as DOER"],
+  ["10 people","'Who should do it?' → DELEGATOR"],
+  ["100 people","'How should the system work?' → SYSTEM DESIGNER"],
+  ["Same problem","1st time: solve it · 2nd: find the cause · 3rd: build a system"]
+ ]],
+ ["Case 1 · Investor","3-yr company; investor wants 40% for potential 3× in 2 yrs + board influence. New info: competitor raised capital; valuation +30% but say in replacing CEO. → Speed & capital vs ownership & control"],
+ ["Trade-offs","Growth↔Control · Speed↔Quality · Capital↔Independence · Today↔Long term. Big decisions are rarely good vs bad; they are trade-offs"],
+ ["Case 2 · Toxic big customer","35% of revenue; late payments, last-minute requests, disruption, poor treatment of team. Finance: lose money · Ops: lose good people. New info: best manager will leave; +20% price, 3-yr contract → 'The money changed. Did the underlying problem change?'"],
+ ["7 principles","01 Fall in love with the problem · 02 Sell early · 03 Listen but don't do all they ask · 04 Build systems (not in founder's head) · 05 People decisions seriously · 06 Question growth · 07 Start with market by default"],
+ ["Quotes","Arthur C. Clarke (limits of the possible) · Seneca ('no wind is favorable' without a port) · Zig Ziglar ('start to be great') · If nothing fails, not enough risk"],
+ ["Closing","Do not look for ideas. Look for problems. Find one worth solving."]
 ]}
 ];
-const IMPNAME={3:"Must-know",2:"Important",1:"Detail"};
 
-/* ======================= QUIZ DATA ======================= */
-const TOPICS={strat:"Strategic thinking",env:"Opportunities & environment",stp:"Segmentation & targeting",pos:"Positioning",brand:"Branding",pack:"Packaging"};
-const TOPC={strat:"c1",env:"c2",stp:"c3",pos:"c4",brand:"c5",pack:"c6"};
-const Q=[
-/* ---- Strategic thinking ---- */
-{t:"strat",q:"A firm believes customers will only buy if it pushes them through aggressive selling and promotion. In the course's “orientation towards the marketplace” sequence, which concept comes IMMEDIATELY BEFORE this one?",o:["Production concept — emphasis on producing goods","Product concept — producing quality goods","Marketing concept — right products for customers","Holistic marketing concept — do everything possible"],a:1,x:"The sequence is Production → Product → Selling → Marketing → Holistic. Aggressive selling is the Selling concept, so the one before it is the Product concept (quality goods). “Producing goods” alone is the Production concept."},
-{t:"strat",q:"Which set lists ONLY the elements that the 9P model adds on top of the 7P model?",o:["People, Physical evidence, Processes","Packaging, Public relations","Positioning, Packaging","Public relations, Partnerships, Purpose"],a:1,x:"4P = Product, Price, Place, Promotion. 7P adds People, Physical evidence, Processes. 9P adds exactly Packaging and Public Relations."},
-{t:"strat",q:"In the services marketing-mix wheel shown in class, “internal marketing” is listed under which element?",o:["People","Process","Promotion","Physical evidence"],a:2,x:"Promotion = internal marketing, direct marketing, advertising, other promotional methods. Students instinctively pick People, but People = customers, employees, social interactions, roles & scripts, relationships."},
-{t:"strat",q:"On the same wheel, which item does NOT belong under “Process”?",o:["Service design","Standardization","Customization","Supplementary services"],a:3,x:"Process = service design, standardization, customization, operational efficiency. Supplementary services belong to Product (with total service product, core product, facilitating and supporting services)."},
-{t:"strat",q:"“Roles & scripts”, “uniforms” and “relationship-based” appear on the 7P wheel. Match them correctly.",o:["People · Physical evidence · Price","Process · Physical evidence · Promotion","People · People · Price","Process · Promotion · Place"],a:0,x:"Roles & scripts → People. Uniforms → Physical evidence (with facilities, livery & artefacts, signage, symbols). Relationship-based → a pricing approach (Price: cost-, demand-, operations-, competition-, relationship-based)."},
-{t:"strat",q:"According to the “Evolution of Marketing” slide, in which decade did the customer “wish to follow us using their personal details”?",o:["1990s","2000s","2010s","2020s"],a:2,x:"80s: pay attention to ads · 90s: build a website and they come · 00s: become our friends and like us on Facebook · 10s: follow us using personal details · 20s: hang out with our brand in the virtual world."},
-{t:"strat",q:"Which statement about the Marketing-Evolution (push → pull) chart is correct?",o:["PR, event marketing and product placement are above-the-line push tools","Content, viral and word-of-mouth marketing form the online below-the-line end of the shift","Online Marketing 1.0 is performance marketing priced per click","Social-media marketing is classified as above-the-line advertising"],a:1,x:"The shift runs from push (above-the-line) to pull (below-the-line). PR, events and product placement are offline BELOW-the-line. Online Marketing 1.0 = push advertising (display by TKP, e-mail); 2.0 = performance marketing (CPC, SEO, SEA, affiliate). The final stage is online BTL: content, viral, WOM."},
-{t:"strat",q:"“Display advertising according to TKP” belongs to which stage of the chart, and what does TKP measure?",o:["Online Marketing 2.0 — cost per click","Online Marketing 1.0 — cost per thousand contacts","Below-the-line offline — cost per event","Social-media marketing — cost per follower"],a:1,x:"TKP (Tausend-Kontakt-Preis) = price per thousand contacts, i.e. CPM. It is listed under Online Marketing 1.0 (push advertising). CPC is the performance-marketing model of Online Marketing 2.0."},
-{t:"strat",q:"In the orientation timeline (1950 → 2020), which orientation comes directly AFTER “competitive orientation”?",o:["Market orientation","Environment orientation","Performance orientation","Distribution orientation"],a:1,x:"Product (1950) → Distribution (1960) → Market (1970) → Competitive (1980) → Environment (1990) → Performance & Dialog (2000) → Network (2010) → Below-the-line & Content (2020)."},
-{t:"strat",q:"In the 8-step marketing strategy process, what comes immediately after “Develop value proposition”?",o:["Perform marketing research","Define marketing strategies","Set marketing goals","Define marketing mix"],a:2,x:"Existing plan → Research → Value proposition → Set marketing goals → Define marketing strategies → Define marketing mix → Marketing plan → Review & reassess (loop)."},
-{t:"strat",q:"On the marketing-strategy wheel, which step comes immediately BEFORE “Marketing budget”?",o:["Define marketing mix","Determine market position","Analyze competition","Execution plan"],a:1,x:"Understand customer → Analyze market → Analyze competition → Define marketing mix → Determine market position → Marketing budget → Execution plan (“also called marketing plan”)."},
-{t:"strat",q:"Which of these is NOT one of the six benefits of a market development strategy shown in class?",o:["Up-sells current users","Helps to lessen production cost per unit","Increases revenue margins","Reduces dependence on intermediaries"],a:3,x:"The six: improves product quality, acquires new users, up-sells current users, helps develop new products, increases revenue margins, lessens production cost per unit."},
-{t:"strat",q:"Which definition of marketing strategy was used in class?",o:["The set of tactical promotional activities used in a campaign","A business's overall game plan for reaching prospective consumers and turning them into customers of their products","The process of creating a place for the product in the customer's mind","The value premium generated by a recognizable name versus a generic equivalent"],a:1,x:"That is the Investopedia definition on the slide. “Creating a place in the customer's mind” is positioning; “value premium vs a generic equivalent” is brand equity."},
-/* ---- Opportunities & environment ---- */
-{t:"env",q:"In the 8-step marketing cycle around the consumer, what sits between “Customer feedback” and “Adjustment”?",o:["Distribution","Analysis","Market research","Sales"],a:1,x:"Market research → Product development → Promotion → Sales → Distribution → Customer feedback → Analysis → Adjustment → (back to research)."},
-{t:"env",q:"Which of the following is a MACRO-environment force in the course model?",o:["Publics","Intermediaries","Demographic","Competitors"],a:2,x:"Micro = suppliers, customers, competitors, intermediaries, distributors, publics. Macro = technological, social/cultural, demographic, environmental, economic, political/legal."},
-{t:"env",q:"A government makes EV charging points mandatory in all new buildings, creating sudden demand for installers. Which of the four types of market opportunity is this?",o:["Untapped or underserved audience","Technological innovation","Societal change","Regulatory intervention"],a:3,x:"The trigger is a law, so it is a regulatory intervention — even though EVs are a technology and sustainability is a societal trend."},
-{t:"env",q:"According to the course, Netflix's relationship with Disney+ and with cable TV is, respectively:",o:["Indirect · direct","Direct · indirect","Direct · direct","Indirect · indirect"],a:1,x:"Direct competitors offer similar products (Netflix vs Disney+). Indirect competitors sell different products that satisfy the same need (Netflix vs cable TV)."},
-{t:"env",q:"What is step 4 of the 5-step market opportunity analysis?",o:["Dive into the details of your competitors","Describe your target market","Define the industry and determine the outlook","Create your projections"],a:1,x:"1 Identify what's happening in the business environment → 2 Define industry & outlook → 3 Competitors → 4 Target market → 5 Projections."},
-{t:"env",q:"On the course's PEST table, under which factor are “copyright & intellectual property regulations” listed?",o:["Political","Economic","Socio-cultural","Technological"],a:3,x:"Trap: it sounds legal/political, but the slide lists it under Technological, along with technologization rates, Internet availability, R&D & communication costs and technology-transfer regulations."},
-{t:"env",q:"Which pairing matches the course's PEST table?",o:["Labor laws → Economic; labor costs → Political","Labor laws → Political; labor costs → Economic","Both → Economic","Both → Political"],a:1,x:"Political: stability & regime, labor laws, tax/trade/tariff, consumer protection, antitrust, bureaucracy & corruption. Economic: growth, inflation & interest rates, foreign-currency regulation, labor costs, disposable income."},
-{t:"env",q:"“Job market freedoms” appears under which PEST factor?",o:["Political","Economic","Socio-cultural","Technological"],a:2,x:"Socio-cultural = population numbers (growth, age), job market freedoms, employment patterns & lifestyle choices, social beliefs & values, social taboos."},
-{t:"env",q:"In PESTELE, what do the letters after T stand for?",o:["Economic, Legal, Ethical","Environmental, Legal, Ethical","Environmental, Labor, Economic","Ethical, Legal, Environmental"],a:1,x:"P-E-S-T-E-L-E = Political, Economic, Social, Technological, Environmental, Legal, Ethical. The final E is Ethical."},
-{t:"env",q:"Which question belongs to the INTERNAL-factors analysis rather than to the market, competitor or external analysis?",o:["What do competitors offer that you don't?","How cash-rich are you compared to the competition?","Are there alternative products about to enter the market?","Is the country maintaining stable economic relations with other states?"],a:1,x:"Despite the words “compared to the competition”, this question is about your own finances, so it is internal. “What competitors offer” = competitor research; “alternatives about to enter” = market analysis; “stable relations with other states” = external."},
-{t:"env",q:"Which is NOT one of the six reasons to run a market opportunity analysis?",o:["Make better-informed decisions","Find and mitigate potential risks","Guarantee a first-mover advantage","Uncover your strengths, weaknesses and areas for further research"],a:2,x:"The six: better-informed decisions, improved long-term strategies, evaluate demand, identify growth potential, uncover strengths/weaknesses/research areas, find and mitigate risks. Nothing is guaranteed."},
-{t:"env",q:"Which of these is NOT given as an example of an opportunity you could choose to analyze?",o:["A business partnership","Horizontal improvement for multiple operations","A new niche uncovered by a shift in external factors","Vertical integration of your suppliers"],a:3,x:"Examples: new product/service, new market, business partnership, unmet need, improvement of something existing, horizontal improvement for multiple operations, new niche from external shifts."},
-{t:"env",q:"Competitor research helps you do three things according to the slide. Which option lists them?",o:["Identify market gaps, learn from others' successes and failures, refine your USP","Set prices, choose channels, plan the budget","Segment, target, position","Measure awareness, share of voice and backlinks"],a:0,x:"“Proper analysis will help you identify market gaps, learn from the successes and failures of others, and refine your unique selling proposition (USP).”"},
-{t:"env",q:"The definition of a market opportunity in class is a need or want for a product, service or feature that is…",o:["…already served by the market leader","…either not being met or underserved","…created by advertising","…protected by regulation"],a:1,x:"“A need or want for a product, service, or feature that is either not being met or is underserved.”"},
-/* ---- Segmentation & targeting ---- */
-{t:"stp",q:"A start-up's product could in theory serve 40M people (category demand). With its language, channels and country it can serve 2M, and it realistically expects to win 150k in year 3. 150k is its:",o:["TAM","SAM","SOM","PAM"],a:2,x:"PAM ⊃ TAM ⊃ SAM ⊃ SOM. 40M ≈ TAM, 2M = SAM (serviceable available), 150k = SOM (serviceable & obtainable market, or share of market)."},
-{t:"stp",q:"In the chain of positive customer relations, which stage comes immediately before customer loyalty?",o:["Customer acquisition","Customer satisfaction","Customer retention","Customer advocacy"],a:2,x:"Acquisition → Satisfaction → Retention → Loyalty. Advocacy is the in-class goal of loyalty, not a separate stage."},
-{t:"stp",q:"A segmentation that uses supervised, unsupervised and reinforcement learning on historical behaviour to answer “who and when” is:",o:["Behavioural","Persona","Predictive","Psychographic"],a:2,x:"Predictive segmentation = historical behavioural patterns to predict and influence future behaviour; uncovers hidden buying clusters. Persona answers Who/What/Why/Where."},
-{t:"stp",q:"“Benefits sought, occasion, usage rate, loyalty, buyer readiness” are examples of which segmentation base?",o:["Psychographic","Behavioural","Demographic","Persona"],a:1,x:"Behavioural = what customers do (online/offline). Psychographic = interests, personality, lifestyle, social status, AIO, attitudes — the “why”."},
-{t:"stp",q:"In the course's segmentation table, “social status” is an example of:",o:["Demographic","Geographic","Psychographic","Behavioural"],a:2,x:"The table lists social status under Psychographic (with interests, personality, lifestyle, AIO, attitudes). Demographic uses census data: age, income, family status, gender, education."},
-{t:"stp",q:"“Jobs to be done” and “pains / gains” are examples used for which segmentation base?",o:["Persona","Predictive","Behavioural","Psychographic"],a:0,x:"Persona segmentation blends demographic, psychographic and behavioural data with customer goals — jobs to be done, pains/gains."},
-{t:"stp",q:"Which segmentation base is described as being based on census data and “ideal for life stages”?",o:["Geographic","Demographic","Persona","Psychographic"],a:1,x:"Demographic: easy to use, good for store profiling, ideal for life stages, good to supplement with other data."},
-{t:"stp",q:"Family life-stage data: Young singles 10% · 4×/week · $25; Young couples 8% · 2×/week · $43; Young families 28% · 3×/month · $57; Families with older kids 31% · 4×/month · $64; Empty nesters 23% · 3×/week · $12. Which segment brings the largest TOTAL monthly leisure spend (share × frequency × spend)?",o:["Young singles","Young families","Families with older kids","Empty nesters"],a:2,x:"Monthly per person ≈ singles 400, couples 344, young families 171, older-kids families 256, empty nesters 144. Weighted by share: 40, 27.5, 47.9, 79.4, 33.1 → families with older kids win."},
-{t:"stp",q:"Using the same data, which segment spends the most per PERSON per month?",o:["Families with older kids (highest $/outing)","Young singles","Young couples, no kids","Empty nesters (3×/week)"],a:1,x:"Young singles: 4×/week ≈ 16 outings × $25 ≈ $400/month. The highest spend per outing ($64) does not mean the highest monthly spend."},
-{t:"stp",q:"The slide's segment-evaluation table prints totals 31.0 / 27.5 / 29.5 / 23.0 for segments 1–4. If you add the eight criteria in each column yourself, which segment is actually the most attractive?",o:["Segment 1","Segment 2","Segment 3","Segment 4"],a:1,x:"Correct sums: S1 = 23, S2 = 31, S3 = 27.5, S4 = 29.5. The printed totals are shifted one column. Always recompute."},
-{t:"stp",q:"A coffee chain sends app offers that differ for each individual customer and each store's neighbourhood. Which targeting strategy is this?",o:["Differentiated marketing","Concentrated marketing","Micromarketing","Undifferentiated marketing"],a:2,x:"Micromarketing targets an individual or a specific location — the narrowest end of the broad → narrow scale."},
-{t:"stp",q:"A carmaker runs separate programs for families, young urban drivers and luxury buyers. Which targeting strategy?",o:["Concentrated (niche)","Differentiated (segmented)","Undifferentiated (mass)","Micromarketing"],a:1,x:"Several segments, each with dedicated strategies = differentiated. Concentrated = one smaller specific subset."},
-{t:"stp",q:"Which statement is NOT a characteristic of a niche as described in class?",o:["A small group of consumers who seek different benefits","It is unattractive for large businesses","It is attractive for large businesses because of economies of scale","A segment with potential to grow with profitability"],a:2,x:"The slide says niches are UNattractive for large businesses. Specialization and economies of scale come over time to the niche player."},
-{t:"stp",q:"In the target-marketing table, which analysis informs the Positioning stage?",o:["Demand analysis","Market research & analysis of customer data","Competitor analysis and internal analysis","Evaluation of resources"],a:2,x:"Segmentation ← market research & customer data; Target marketing ← demand analysis; Positioning ← competitor + internal analysis; Planning ← evaluation of resources."},
-{t:"stp",q:"“Automated online customer contact strategy” and “restructuring” are outputs of which stage?",o:["Segmentation","Target marketing","Positioning","Planning"],a:3,x:"Planning (deploy resources to achieve plan) informs online marketing mix, restructuring and automated online customer contact strategy."},
-{t:"stp",q:"In the 6-step segmentation process, what comes right after “Evaluate market segments”?",o:["Develop profiles for each segment","Select best market segment","Develop a positioning strategy","Focus on marketing program"],a:1,x:"Identify → Develop profiles → Evaluate → Select best → Develop positioning strategy → Focus on marketing program."},
-{t:"stp",q:"Among the top targeting criteria for personalized experiences, which real criterion is used LEAST (ignoring “Other”)?",o:["Ethnicity (15%)","Session click-stream data (20%)","Predictive model – AI (9%)","Predictive model – manual (24%)"],a:2,x:"Geography/region and purchase history lead (38% each). AI predictive models are at 9%, below manual predictive models (24%)."},
-{t:"stp",q:"Which is NOT one of the six personalized-marketing tactics listed?",o:["Custom video messages","Omnichannel marketing","Fear of missing out (FOMO)","Mass TV sponsorship"],a:3,x:"The six: targeted emails, custom video messages, product recommendations, social media marketing, omnichannel marketing, FOMO."},
-/* ---- Positioning ---- */
-{t:"pos",q:"According to the course, what must be done FIRST before positioning a product?",o:["Choose a slogan","Fully and accurately determine the qualities and image of each of the main competitors","Set the price","Build a perceptual map of your own features"],a:1,x:"Slide: “For positioning, it is first necessary to fully and accurately determine the qualities and image of each of the main competitors.” Position is always relative to competitors."},
-{t:"pos",q:"Positioning is “a type of perception management”. Which benefit type is NOT on the slide's list?",o:["Psychological","Social","Environmental","Physical"],a:2,x:"The five: financial, psychological, social, functional, physical."},
-{t:"pos",q:"Which slogan does the course classify as COMPETITION-oriented positioning?",o:["“More hazelnuts”","“7 effective toothpaste”","“Whiter with Vanish crystal white”","“Papia threefold”"],a:2,x:"Competition-oriented = comparative messages (“whiter”, “the best, the most affordable”, “still using your mother's margarine?”). “More hazelnuts”, “7 effective”, “Papia threefold” are on the consumer-oriented side."},
-{t:"pos",q:"What is stage 4 of the 7 stages of positioning?",o:["Determination of consumer perceptions","Extraction and analysis of detection (perceptual) maps","Identifying the most preferred features","Determining the most suitable location for the market segment"],a:1,x:"1 Competing product groups → 2 Features to highlight → 3 Consumer perceptions → 4 Perceptual maps → 5 Most preferred features → 6 Most suitable location for the segment → 7 Positioning strategy."},
-{t:"pos",q:"Which stage comes immediately before “Determining the positioning strategy”?",o:["Identifying the most preferred features","Determining the most suitable location for the market segment","Identification of competing product groups","Determination of consumer perceptions"],a:1,x:"Stage 6 (most suitable location for the segment) precedes stage 7 (positioning strategy)."},
-{t:"pos",q:"On the clothing price × quality map, LCW sits at quality ≈ 5 and price ≈ 4.3, below the diagonal. The best interpretation is:",o:["LCW is overpriced for its quality","LCW offers more perceived quality than its price suggests — a value-for-money position","LCW is a premium brand","LCW sits exactly on the fair-value line"],a:1,x:"The diagonal is the fair-value line. Below it, price < perceived quality → good value. Marks & Spencer (quality ≈ 6.7, price ≈ 7.6) is above it → priced above its perceived quality."},
-{t:"pos",q:"On the car price × quality map, which brands sit in the weakest value quadrant (high price, low quality)?",o:["Ford and Toyota","Infiniti and Mini","Dacia and Kia","Audi and BMW"],a:1,x:"Infiniti and Mini are high price / low quality. Ford, Toyota, Honda are high quality / low price (best value). Dacia and Kia are low/low."},
-{t:"pos",q:"On the classic car map (classy ↔ useful, plain/old ↔ sporty/young), which brand is closest to the “ideal point of the target segment”?",o:["Cadillac","BMW","Porsche","Pontiac"],a:2,x:"The ideal point (classy + high performance/sporty) sits on Porsche. BMW is near but below; Cadillac is classy but plain/old; Pontiac is sporty but less classy."},
-{t:"pos",q:"A new chocolate is launched as a “crunchy treat” (crunchy + treat). On the class map, its most direct rival is:",o:["Snickers","Milky Way","Maltesers","Mars"],a:2,x:"Maltesers = crunchy + treat. Milky Way = smooth + treat; Snickers and Twix = crunchy + filling; Mars = smooth + filling."},
-{t:"pos",q:"On the in-class sportswear map (perceived price × performance ↔ lifestyle), which quadrant was empty — a possible white space?",o:["Premium performance","Premium lifestyle","Accessible lifestyle","Accessible performance"],a:3,x:"Nike & Under Armour = premium performance, Lululemon = premium lifestyle, Puma & New Balance = accessible lifestyle. Accessible performance had no brand."},
-{t:"pos",q:"On the mass ↔ niche × price sportswear map, Lululemon is positioned as:",o:["Price+ / mass market","Price+ / niche market","Price− / niche market","Price− / mass market"],a:1,x:"Lululemon sits with Yoga Smoga, Sweaty Betty, Vimma and Outdoor Voices in premium-niche. Nike/Adidas = premium-mass; Li-Ning/Anta = low-price mass; Fabletics = low-price niche."},
-{t:"pos",q:"Which country is NOT in the “high feel” cluster of the Feel–Think map?",o:["Japan","Denmark","Netherlands","Spain"],a:2,x:"High think: Belgium, Italy, Netherlands, Austria, Germany. High feel: Sweden, UK, Korea, Canada, US, Japan, Taiwan, Spain, France, Denmark."},
-{t:"pos",q:"Which brand lesson says your mission should resonate with PREVAILING SOCIETAL VALUES and position you as a forward-thinking pioneer?",o:["Apple","Tesla","Nike","Airbnb"],a:1,x:"Tesla: “accelerate the world's transition to sustainable energy”. Apple = lifestyle or set of values; Nike = deep emotional bond; Airbnb = experiences, not products."},
-{t:"pos",q:"“Instead of relying on explicit mission statements, embody your positioning in the quality and functionality of your products” is the lesson from:",o:["Chipotle","Southwest Airlines","Apple","Tesla"],a:2,x:"Apple: actions speak louder than words; customers associate the brand with a LIFESTYLE OR SET OF VALUES (“Think different.”)."},
-{t:"pos",q:"Chipotle's “53 ingredients with names you can pronounce” illustrates which lesson?",o:["Compete on the lowest price","Use the INSIGHT about what matters to customers beyond the core product","Build a deep emotional bond through motivation","Deliver experiences rather than products"],a:1,x:"Chipotle differentiated from Mexican fast-food chains through healthy ingredients and sustainable practices — what customers care about beyond the core product (“Food with Integrity”)."},
-{t:"pos",q:"“Transfarency” is the philosophy of which brand, and what is its lesson?",o:["Airbnb — authentic personal connection","Southwest — excellent VALUE without sacrificing quality","Tesla — societal values","Nike — empowerment"],a:1,x:"Southwest: “Low Fares. Nothing to Hide.” Customers are treated honestly and fairly and low fares stay low; people (employees and customers) feel part of a community."},
-{t:"pos",q:"Which of these is NOT one of the 6 ways to evaluate brand awareness?",o:["Social share of voice","Backlink profiles","Customer lifetime value","Comparing your earned media value with competitors"],a:2,x:"The six: direct website traffic growth, referral traffic, social share of voice, backlink profiles, earned media value vs competitors, surveys."},
-{t:"pos",q:"In “measuring the effectiveness of brand positioning”, what are regular brand audits used for?",o:["To compute brand equity in money","To evaluate consistency across all channels","To track backlink growth","To set the marketing budget"],a:1,x:"The four: track awareness (surveys, social mentions, web analytics); monitor perception & sentiment; assess market share & sales growth vs competitors; regular brand audits for consistency across channels."},
-{t:"pos",q:"The in-class question “If an established brand launched a similar product tomorrow, what would prevent your customers from switching?” mainly tests whether your positioning is:",o:["Cheap enough","Defensible — a credible, hard-to-copy point of differentiation","Visible on social media","Based on the 4P"],a:1,x:"The challenge required a customer need, a relevant point of differentiation and a credible reason to choose the brand. The question checks that the difference cannot be copied overnight."},
-{t:"pos",q:"Which is listed as a positioning TOOL in class?",o:["Cultural icons","Backlink profiles","TAM / SAM / SOM","Customer retention"],a:0,x:"Tools: features & benefits, brand, packaging, price, usage, image, competitive products, sales at special distribution points, personalized messages, advertising, cultural icons, famous people."},
-/* ---- Branding ---- */
-{t:"brand",q:"A Starbucks cup sells for ₹400; an identical unbranded cup sells for ₹80. Using the course formula, what share of the Starbucks price is brand equity?",o:["20%","25%","75%","80%"],a:3,x:"Brand equity = Brand − Product = 400 − 80 = ₹320. 320 / 400 = 80%."},
-{t:"brand",q:"In the brand-equity Venn diagram, “what return a brand generates for the business as a whole” is:",o:["Consumer perception","Positive / negative effects","Resulting value","Brand association"],a:2,x:"Consumer perception = what consumers believe the brand represents; positive/negative effects = what its reputation is viewed to be; resulting value = return for the business."},
-{t:"brand",q:"According to the Brand Blueprint vs Brand Identity vs Brand slide, “the way consumers ACTUALLY perceive you” is the:",o:["Brand blueprint","Brand identity","Brand","Brand strategy"],a:2,x:"Blueprint = how you want to be perceived (strategy). Identity = how the brand presents itself (expression). Brand = how consumers actually perceive you."},
-{t:"brand",q:"“Brand promise”, “values” and “macro trends” belong to which part of that slide?",o:["Brand blueprint (brand strategy)","Brand identity (brand expression)","Brand (consumer perception)","Visual identity"],a:0,x:"Blueprint: market opportunity, target market, brand promise, values, macro trends. Identity: logo, colour palette, typography, tone, messaging. Brand: expectations, emotions, impressions, decisions."},
-{t:"brand",q:"Which statement describes CORPORATE identity rather than brand identity?",o:["Speaks to the brand's specific audience","Showcases each brand's values","Pays attention to internal perception","Pays attention to external perception"],a:2,x:"Corporate identity: company as a whole, mission & ethos, corporate culture, internal perception. Brand identity: specific brand, its values, its audience, external perception."},
-{t:"brand",q:"Which three facets sit on the INTERNALIZATION side of Kapferer's prism?",o:["Physique, Relationship, Reflection","Personality, Culture, Self-image","Physique, Personality, Culture","Relationship, Culture, Reflection"],a:1,x:"Externalization (left): Physique, Relationship, Reflection. Internalization (right): Personality, Culture, Self-image."},
-{t:"brand",q:"L'Oréal: “Thanks to L'Oréal I'm a beautiful, independent and powerful woman. I'm worth it.” Which prism facet is this?",o:["Reflection","Personality","Self-image","Relationship"],a:2,x:"Self-image = how consumers perceive themselves when using the brand. Reflection = who the brand portrays as its target user."},
-{t:"brand",q:"Dove: “Natural and confident modern women.” Which facet?",o:["Self-image","Reflection","Personality","Culture"],a:1,x:"Reflection = the portrayed target user. Dove's self-image is “confident, beautiful, inspired”; personality “natural, soft and friendly”; culture “trust, universal, no stereotypes, down to earth”."},
-{t:"brand",q:"Levi's: “The American freedom, an individualistic mindset.” Which facet?",o:["Personality","Culture","Relationship","Physique"],a:1,x:"Culture = values and guiding principles. Levi's personality = youthful, rebellious, free; relationship = sharing adventures and emotions with friends; physique = red logo, blue jeans, long-lasting clothes."},
-{t:"brand",q:"In Kapferer's prism, which two facets form the “picture of the SENDER”?",o:["Reflection and Self-image","Relationship and Culture","Physique and Personality","Personality and Self-image"],a:2,x:"Sender (company) at the top: Physique and Personality. Receiver (consumers) at the bottom: Reflection and Self-image. Relationship and Culture form the bridge."},
-{t:"brand",q:"According to the course's Aaker slide, which brand–dimension pair is CORRECT?",o:["Porsche — Sophistication","Toyota — Competence","Apple — Sophistication","McDonald's — Excitement"],a:1,x:"Toyota is under Competence. Porsche and Apple are Excitement; Mercedes and Lamborghini are Sophistication; McDonald's is Sincerity."},
-{t:"brand",q:"Per the slide, Nike and Levi's share which brand-personality dimension?",o:["Excitement","Competence","Ruggedness","Sincerity"],a:2,x:"Ruggedness (outdoorsy, tough): Marlboro, Harley-Davidson, Nike, Guinness, Levi's, REI, Jeep."},
-{t:"brand",q:"In the brand-identity creation framework, “mission, ethics, purpose, values” belong to which block?",o:["#01 Brand story","#02 Personality","#03 Tone of voice","#06 Communications"],a:1,x:"Brand story = value, founder, customer story. Personality = mission, ethics, purpose, values. Tone of voice = positioning, emotion, difference, relevance. Communications = guidelines, consistency, messaging, tone of voice."},
-{t:"brand",q:"In the “logo → visual identity → branding” circles, which item belongs to the outer BRANDING ring rather than to visual identity?",o:["Typography","Use of space","Customer service philosophy","Imagery"],a:2,x:"Visual identity = colours, imagery, layout, typography, use of space. Branding ring = values, personality, product quality, customer service philosophy, business processes, associated brands, channels, marketing approach, networking, tone of voice."},
-{t:"brand",q:"Using the “Choose the right mascot” decision tree, a dairy brand (milk → cow) should pick:",o:["A human mascot","An object mascot","An animal mascot","No mascot"],a:2,x:"Product associated with an animal → animal mascot. A real-estate service associated with a house → object. A freelancer promoting themself → human."},
-{t:"brand",q:"According to the slide, brand identity was introduced by:",o:["David Aaker in 1991","Philip Kotler in 1967","Kapferer in 1970","George S. Day in 1990"],a:2,x:"The slide states Kapferer, 1970. Aaker is the source of the five brand-personality dimensions."},
-{t:"brand",q:"Which is NOT one of the six components of brand equity on the class diagram?",o:["Brand association","Brand loyalty","Brand awareness","Brand architecture"],a:3,x:"The six: brand image, brand identity, brand awareness, customer perception, brand loyalty, brand association."},
-{t:"brand",q:"On the psychology-of-colours wheel, “trust, security, power, success” are linked to:",o:["Green","Blue","Purple","Yellow"],a:1,x:"Blue = success, power, trust, security, confidence, purpose. Green = nature, health, prosperity, safety, harmony, loyalty, luck."},
-{t:"brand",q:"Why did the course show a child falling off a bike next to a box of Band-Aid?",o:["To illustrate packaging protection","To show a brand so strong that its name replaces the category name — very high brand equity","To illustrate an object mascot","To illustrate value positioning"],a:1,x:"People say “Band-Aid” rather than “adhesive bandage”: the brand has become the generic term, an extreme form of brand equity."},
-/* ---- Packaging ---- */
-{t:"pack",q:"Easy-open features, portion control and freshness-preserving materials illustrate which function of packaging beyond protection?",o:["Differentiation","Value delivery","Competitive positioning","Brand promise"],a:1,x:"Value delivery = better user experience, preserved quality, convenience. Differentiation = unique shapes/colours; brand promise = trust → repeat purchase."},
-{t:"pack",q:"Shoppers assume a bigger box is a better deal even when the contents are identical. Which concept explains this?",o:["Visual hierarchy","The size–value heuristic","Shelf impact","Front-of-pack architecture"],a:1,x:"Heuristics & biases: the size–value heuristic makes larger packages look like better value regardless of the actual contents."},
-{t:"pack",q:"According to the packaging slide, red on a pack often creates:",o:["Trust","Calm","A sense of urgency","Luxury"],a:2,x:"“Blue often conveys trust, while red can create a sense of urgency.”"},
-{t:"pack",q:"Which statement matches private-label vs national-brand design logic?",o:["Private labels use premium materials and innovation","National brands focus on cost-effective designs","National brands leverage brand equity, premium materials and standout design; private labels emphasize value and functionality","Both follow the same logic"],a:2,x:"Private labels aim for cost-effective designs for budget-conscious consumers."},
-{t:"pack",q:"Packaging that helps consumers tell line extensions and sub-brands apart within a brand family serves:",o:["Portfolio architecture","Signature packaging","Visual hierarchy","Disruptive category design"],a:0,x:"Portfolio architecture differentiates line extensions and sub-brands with clear visual cues."},
-{t:"pack",q:"Oatly and Method are given as examples of:",o:["Premiumization","Disruptive category design","Private-label logic","Smart packaging"],a:1,x:"They disrupted packaging norms with sustainable materials and innovative designs that communicate brand values to environmentally conscious consumers."},
-{t:"pack",q:"How do market leaders and challenger brands use packaging differently?",o:["Leaders use it to differentiate in a crowded market; challengers to reinforce loyalty","Leaders use it to reinforce brand equity and loyalty; challengers use distinctive designs to differentiate, often for niche segments","Both only use it for protection","Challengers copy the leader's packaging"],a:1,x:"Market leaders: reinforce equity and loyalty. Challengers: distinctive designs to stand out, appealing to niche segments or specific preferences."},
-{t:"pack",q:"QR codes, NFC chips and sensors on packs are classified as smart packaging. Besides better UX, what do they enable?",o:["Lower production cost","Tracking and authentication of products","Portion control","Premium pricing"],a:1,x:"Smart packaging gives real-time product information and enables tracking and authentication."},
-{t:"pack",q:"Nutella jars printed with customers' first names are an example of:",o:["Minimalist design","AR/VR experience","Personalization strategy","Private-label logic"],a:2,x:"Personalization strategies: customized labels, unique designs, interactive elements that create a personal connection."},
-{t:"pack",q:"Which is NOT one of the four functions of packaging “beyond protection”?",o:["Differentiation","Brand promise","Cost minimization","Competitive positioning"],a:2,x:"The four: differentiation, value delivery, competitive positioning, brand promise."},
-{t:"pack",q:"Guiding attention to the key message through size, colour contrast and placement is called:",o:["Shelf impact","Visual hierarchy","Structural design","Category visibility"],a:1,x:"Visual hierarchy ensures key messages are noticed first, leading to better decisions at the point of purchase."},
-{t:"pack",q:"Minimalist and transparent packaging especially resonates with consumers seeking:",o:["Status and luxury","Authenticity and sustainability","Low prices","Novelty and fun"],a:1,x:"Fewer materials and clear labelling enhance perceived quality and appeal to consumers seeking authenticity and sustainability."}
+/* ============ CHEAT SHEET ============ */
+const CHEAT = [
+ {h:"EU AI Act — dates",rows:[
+  ["1 Aug 2024","AI Act (Reg. 2024/1689) in force"],["2 Feb 2025","Bans + AI literacy (Art. 4)"],
+  ["2 Aug 2025","General-purpose AI rules"],["27 Jul 2026","Digital Omnibus (Reg. 2026/1744) in force"],
+  ["2 Aug 2026","Transparency (Art. 50) + enforcement, lock-down"],["2 Dec 2026","AI content marking, nudifier ban; Platform Work Directive transposition"],
+  ["20 Jan 2027","Machinery Regulation (robots, AGVs, AMRs)"],["2 Dec 2027","High-risk stand-alone (Annex III)"],
+  ["2 Aug 2028","High-risk embedded (Annex I)"]]},
+ {h:"Sustainability — dates & figures",rows:[
+  ["14 Jul 2021","CBAM adopted (Taşkın)"],["2023","CBAM implementation starts"],["1 Jan 2026","CBAM definitive phase"],
+  ["4 Mar 2026","EU Ports Strategy"],["16/30 Mar 2026","State-aid rules adopted / apply"],["1 Jun 2026","CountEmissionsEU (EN ISO 14083:2023)"],
+  ["2050","EU carbon-neutral goal"],["2025","Separate textile waste collection"],
+  ["31%","EU GHG from transport (2023)"],["72.9%","Transport emissions from road"]]},
+ {h:"Sanctions & articles (AI Act)",rows:[
+  ["€35M / 7%","Prohibited practices"],["€15M / 3%","Other obligations"],["€7.5M / 1%","Misleading info"],
+  ["€20M / 4%","GDPR (comparison)"],["Art. 2(1)","Scope / extraterritorial"],["Art. 4","AI literacy"],
+  ["Art. 5(1)(f)","Workplace emotion recognition ban"],["Art. 14","Human oversight"],["Art. 25","Deployer becomes provider"],
+  ["Art. 26","Deployer duties (logs ≥ 6 months)"],["Art. 50","Transparency"],["Annex III pt 4","Employment / workforce mgmt"]]},
+ {h:"Acronyms",rows:[
+  ["CBAM","Carbon Border Adjustment Mechanism"],["DPP","Digital Product Passport"],["LCA","Life Cycle Assessment (cradle to grave)"],
+  ["LCC","Life Cycle Cost"],["PEF","Product Environmental Footprint"],["OEF","Organisation Environmental Footprint"],
+  ["KVKK","Turkish Personal Data Protection Law"],["AGV/AMR","Automated guided vehicle / Autonomous mobile robot"],
+  ["MVP","Minimum Viable Product"],["TCO","Total cost of ownership"],["ISO/IEC 42001","AI management system standard"],["FCILT","Chartered Fellow, CILT"]]},
+ {h:"Pièges classiques à l'examen",list:[
+  "CBAM = émissions <b>de production</b> des biens importés, PAS une taxe sur les émissions de transport.",
+  "Fatigue du chauffeur = état <b>physique</b> → minimal. Émotion (colère, tristesse) → <b>interdit</b>.",
+  "Acheter une IA en SaaS ne décharge pas : le <b>deployer</b> a ses propres obligations.",
+  "Amendes : le montant le <b>plus élevé</b> s'applique… sauf PME : le <b>plus bas</b>.",
+  "Les dates high-risk ont bougé (2027/2028) mais les interdictions, l'AI literacy et la transparence s'appliquent <b>déjà</b>.",
+  "Ethics = <b>étude systématique</b> ; morality = croyances/pratiques réelles.",
+  "MVP ≠ petite version du produit : son but est de <b>réduire l'incertitude</b>.",
+  "« Green » ne suffit pas : bénéfices <b>mesurables et vérifiables</b>.",
+  "Rail/mer souvent moins émetteurs par t-km, mais <b>aucun mode ne gagne toujours</b>."
+ ]},
+ {h:"Les listes à connaître par cœur",list:[
+  "<b>Crisis rule</b> : Open & truthful → Prioritise most affected → Apologise → Resolve.",
+  "<b>Ethical decision mgmt</b> : Identify → Plan → Act → Review & monitor → Repeat.",
+  "<b>3 pillars</b> : Planet · Performance · People.",
+  "<b>Roadmap IA</b> : Inventory & classify → Contracts → Oversight loop → AI literacy → Governance.",
+  "<b>Problem filter</b> : Problem → Frequency → Pain → Willingness to pay.",
+  "<b>MVP loop</b> : Assumption → Smallest test → Evidence → Next move.",
+  "<b>Founder</b> : Doer (1) → Delegator (10) → System designer (100).",
+  "<b>Same problem</b> : Solve → Find cause → Build system."
+ ]}
 ];
 
-/* ======================= HELPERS ======================= */
+/* ============ QUIZ (option 0 = correct, shuffled at runtime) ============ */
+const T = {ai:"Digitalization & AI",eth:"Ethics",sus:"Sustainability",ent:"Entrepreneurship 0→1"};
+const TC = {ai:"--c1",eth:"--c2",sus:"--c3",ent:"--c4"};
+const Q = [
+["ai","Where was the concept of Industry 4.0 first introduced?",["Hannover Fair, 2011","World Economic Forum, Davos 2016","MIT conference, 1956","European Commission, 2021"],"Industry 4.0 was introduced at the Hannover Fair in 2011."],
+["ai","Industry 4.0 is characterized by…",["Cyber-physical systems and real-time technologies","Steam power and mechanization","Widespread electricity","Computers and information technology"],"1.0 steam, 2.0 electricity, 3.0 computers/IT, 4.0 cyber-physical systems + real time."],
+["ai","What was the 'AI winter' of the 1980s?",["A period of disillusion after unrealistic expectations led to failures","A period when computer vision was invented","The launch of Industry 4.0","A ban on AI research in Europe"],"Misplaced optimism + failures + criticism in the mid/late 1980s = AI winter."],
+["ai","Which element is a 'cradle to grave' assessment across the value chain?",["LCA – Life Cycle Assessment","LCC – Life Cycle Cost","OEF – Organisation Environmental Footprint","DPP – Digital Product Passport"],"LCA = cradle to grave. LCC adds environmental costs; OEF = organisation's operations."],
+["ai","The Organisation Environmental Footprint (OEF) measures…",["The environmental effects of the organisation's general operations","The carbon footprint of one product only","Life-cycle costs including CO₂","Emissions of imported goods"],"PEF = product/service; OEF = whole organisation."],
+["ai","According to Taşkın, data security issues in traceability are mostly solved by combining…",["Blockchain and IoT","QR codes and barcodes","NLP and chatbots","ABC and XYZ classification"],"Labels (RFID, NFC, QR…) → IoT → blockchain (decentralized, immutable, secure)."],
+["ai","In warehouses, AI enables dynamic classification of goods, replacing…",["ABC and XYZ classification","FIFO and LIFO","Kanban","EOQ models"],"AI classifies goods dynamically instead of traditional ABC/XYZ."],
+["ai","A digital twin in the value chain allows…",["A dynamic simulation that can warn or stop the system before obstacles arise","Replacing all human workers","Calculating CBAM taxes automatically","Classifying AI risk tiers"],"AI predictions are sent as signals to the real system to anticipate problems."],
+["ai","When did the EU AI Act (Regulation (EU) 2024/1689) enter into force?",["1 August 2024","2 February 2025","27 July 2026","2 December 2027"],"In force 1 Aug 2024; the Digital Omnibus (2026/1744) entered into force 27 July 2026."],
+["ai","What is the role of most logistics firms under the AI Act?",["Deployer","Provider","Importer","Notified body"],"Deployers use AI under their own authority (TMS, WMS, driver monitoring…)."],
+["ai","A logistics firm puts its own name on a high-risk AI system it bought. It becomes…",["A provider (Art. 25)","Still only a deployer","A distributor","Exempt from the Act"],"Name on it, substantial modification or repurposing for high-risk → provider (Art. 25)."],
+["ai","In-cab cameras inferring a driver's anger or sadness (non-medical) are…",["Prohibited","High-risk","Limited risk","Minimal risk"],"Emotion recognition at the workplace is banned since 2 Feb 2025 (Art. 5(1)(f))."],
+["ai","Fatigue and lane-departure alerts based on eyelid closure are classified as…",["Minimal risk — fatigue is a physical state, not an emotion","Prohibited — it is emotion recognition","High-risk — it evaluates drivers","Limited risk — transparency duty"],"Calibrate cameras to physical-safety signals only."],
+["ai","Telematics scores used to reward, discipline or dismiss drivers are…",["High-risk (Annex III, point 4)","Minimal risk","Prohibited","Limited risk"],"Workforce evaluation = high-risk, applies from 2 Dec 2027."],
+["ai","A chatbot in customer service or customs support falls under…",["Limited risk: must disclose that people deal with AI","Minimal risk: no duties","High-risk: conformity assessment","Prohibited"],"Transparency duties (Art. 50) since 2 Aug 2026."],
+["ai","Demand forecasting and route optimisation are typically…",["Minimal risk — no new duties, but GDPR still applies","High-risk","Limited risk","Prohibited"],"Voluntary codes of conduct; other laws still apply."],
+["ai","After the Digital Omnibus, stand-alone high-risk AI (Annex III) rules apply from…",["2 December 2027","2 August 2026","2 August 2028","2 February 2025"],"2 Dec 2027 for Annex III; 2 Aug 2028 for AI embedded in regulated products (Annex I)."],
+["ai","Maximum fine for prohibited AI practices?",["€35M or 7% of worldwide annual turnover","€20M or 4%","€15M or 3%","€7.5M or 1%"],"€20M/4% is the GDPR maximum; €15M/3% other obligations; €7.5M/1% misleading info."],
+["ai","For SMEs, the AI Act fine is…",["Whichever is lower (fixed amount or % of turnover)","Whichever is higher","Always the fixed amount","Always zero"],"Normally the higher one; for SMEs the lower one."],
+["ai","How long must deployers of high-risk AI keep automatically generated logs?",["At least six months","At least one month","At least five years","No obligation"],"Art. 26 deployer duty."],
+["ai","Which article requires human oversight for high-risk systems?",["Art. 14","Art. 4","Art. 50","Art. 25"],"Art. 4 = AI literacy, Art. 50 = transparency, Art. 25 = becoming provider."],
+["ai","The AI literacy duty (Art. 4) applies since…",["2 February 2025","2 August 2026","2 December 2027","1 August 2024"],"Applied together with the bans on prohibited practices."],
+["ai","A Türkiye-based 3PL can fall under the AI Act when…",["Its AI outputs are used for EU shipments, customers or staff","Only if its HQ is in the EU","Never — it is outside the EU","Only if it has more than 250 employees"],"Extraterritorial scope, Art. 2(1)."],
+["ai","The EU Machinery Regulation (robots, AGVs, AMRs) applies from…",["20 January 2027","1 June 2026","2 August 2025","9 December 2026"],"9 Dec 2026 is the Product Liability Directive."],
+["ai","Which voluntary standard is cited for an AI management system?",["ISO/IEC 42001","EN ISO 14083","ISO 9001","ISO 14001"],"ISO 14083 is for transport emissions accounting."],
+["ai","What is the first step of the 5-step roadmap for logistics firms?",["Inventory & classify every AI system","Invest in AI literacy","Institutionalise governance","Build the oversight loop"],"Inventory & classify → Revise contracts → Oversight loop → AI literacy → Governance."],
+["ai","Which area is described as the 'high-risk hotspot' in logistics?",["Algorithmic workforce management","Dynamic B2B pricing","Traceability with RFID","Demand forecasting"],"Recruitment, task allocation, performance monitoring."],
+["ai","Since when does the Data Act give access to IoT and telematics data?",["September 2025","January 2027","August 2024","December 2027"],"Part of the regulatory web around logistics AI."],
+
+["eth","The word 'ethics' traces back to…",["Ta Ethika, the title of Aristotle's work","Plato's Republic","A Latin legal code","Merriam-Webster's dictionary"],"Ethics = moral philosophy / science of morals."],
+["eth","What is the difference between ethics and morality?",["Ethics = systematic study of moral principles; morality = actual beliefs and practices","They are exactly the same","Morality is the study, ethics the practice","Ethics only concerns law"],"Often used interchangeably but subtly different."],
+["eth","Which quote does the course attribute to Albert Einstein?",["'Relativity applies to physics, not ethics!'","'Winning is good as long as you remain honest.'","'It is easy to be good.'","'Dare to say no.'"],"Ethics is not relative to time and place."],
+["eth","Unlike social customs and conventions, ethics…",["Is not subject to change according to time and place","Changes in every culture","Only applies in crises","Is defined by each company"],"Ethics gives a stable foundation for morality."],
+["eth","When immediate action is needed and no expert is available, the general rule is:",["Be open & truthful, prioritise those most affected, apologise, resolve the problem","Wait for lawyers, say nothing","Blame the supplier, then fix","Fix silently without communicating"],"Same 4 points in the final thought slide."],
+["eth","The Ethical Decision Management process is:",["Identify right course → plan → act → review & monitor → repeat","Plan → act → apologise → forget","Act → review → identify → plan","Audit → fine → train"],"The stance of a decisive leader."],
+["eth","KVKK, cited under data management & privacy, is…",["The Turkish Personal Data Protection Law","An EU AI regulation","A carbon tax","A tourism code"],"Principle 5: data security, KVKK compliance, confidentiality agreements."],
+["eth","Whistleblower protection belongs to which principle?",["Preventing corruption and bribery","Environmental responsibility","Customer focus","Fair pricing"],"With clear anti-bribery policies and training programmes."],
+["eth","Non-discrimination (gender, ethnicity, nationality) belongs to…",["Fairness","Transparency & integrity","Data privacy","Social responsibility"],"With fair selection of providers and fair pricing."],
+["eth","Ethics audits, feedback mechanisms and continuous training belong to…",["Accountability & continuous improvement","Customer focus","Employee safety","Environmental responsibility"],"Principle 8."],
+["eth","'Ethical use of AI and data' in logistics means…",["Routing, delivery or inventory algorithms must not cause unintended bias or harm","Using AI as much as possible","Never using AI","Hiding how customer data is used"],"Plus digital transparency and ethical assessment."],
+["eth","The case study in Part 2 is the Global Code of Ethics for Tourism. How many articles?",["10","5","7","12"],"From 'mutual understanding' (1) to 'implementation of the Code' (10)."],
+["eth","Use of local resources, community support and disaster relief belong to…",["Social responsibility & community engagement","Fairness","Accountability","Transparency"],"Principle 6."],
+
+["sus","What share of EU-27 GHG emissions came from transport in 2023?",["31%","72.9%","15%","50%"],"And 72.9% of transport emissions come from road (EEA)."],
+["sus","What does CBAM focus on?",["Embedded emissions from the production of imported goods covered","A tax on transport emissions of every shipment","Emissions of EU ports","AI systems in logistics"],"Classic trap: CBAM is NOT a general transport tax."],
+["sus","CBAM's definitive phase began on…",["1 January 2026","4 March 2026","1 June 2026","14 July 2021"],"14 July 2021 = adoption (Taşkın); 2023 = start of implementation."],
+["sus","CountEmissionsEU (in force 1 June 2026) is aligned with…",["EN ISO 14083:2023","ISO/IEC 42001","ISO 9001","GDPR"],"Common methodology → comparable emissions data across modes."],
+["sus","1,000 km, 100 tonnes, 6,000 kg CO₂e. Carbon intensity?",["0.06 kg CO₂e/tonne-km","0.08 kg CO₂e/tonne-km","6 kg CO₂e/tonne-km","0.6 kg CO₂e/tonne-km"],"100,000 t-km; 6,000 / 100,000 = 0.06 (vs 0.08 before = −25%)."],
+["sus","The empty-mile ratio is calculated as…",["Empty km / total km × 100","Used capacity / total capacity × 100","kg CO₂e / tonne-km","On-time / total deliveries × 100"],"Second option is the vehicle load factor."],
+["sus","The three pillars of sustainable logistics in the course are…",["Planet, Performance, People","Profit, Price, Product","Road, Rail, Sea","Predict, Optimize, Monitor"],"Predict/Optimize/Monitor = AI uses."],
+["sus","A 'rebound effect' of AI in logistics is…",["More small deliveries and data-processing energy that offset gains","Lower emissions per tonne-km","Better load consolidation","Fewer empty miles"],"Judge technology by net outcomes."],
+["sus","Which is NOT one of the factors deciding the real outcome of an electric fleet?",["The brand reputation of the truck maker","Electricity source","Battery lifespan","Total cost of ownership"],"4 factors: electricity source, manufacturing emissions, battery lifespan, TCO."],
+["sus","The EU Ports Strategy was announced on…",["4 March 2026","1 January 2026","30 March 2026","1 June 2026"],"Electrification, flow optimization, shorter waiting times, rail/road links, renewables."],
+["sus","What is the unit of analysis in sustainable logistics?",["The whole logistics chain","A single vehicle","A single warehouse","The customer only"],"Factory → Transport → Hub/Port → Customer."],
+["sus","Which is a limit of multimodal transport?",["Inadequate transshipment facilities","Less long-distance road freight","Less congestion","More options to cut carbon"],"Also: additional handling, delays, infrastructure limitations."],
+["sus","Collecting, sorting, repairing and reselling/recycling returns is…",["Reverse logistics","Modal shift","Load consolidation","Carbon intensity"],"A key part of the circular economy."],
+["sus","Which of these is the BEST statement about transport modes?",["No single mode wins every shipment — compare door-to-door","Rail is always the greenest","Road is always the cheapest","Sea is always the slowest and worst"],"Depends on distance, cargo, load factor, transshipment, energy."],
+["sus","Sustainable transport state-aid rules were adopted on 16 March 2026 and applied from…",["30 March 2026","1 June 2026","1 January 2027","4 March 2026"],"Rail, inland waterways and sustainable multimodal transport."],
+
+["ent","'Where can I safely keep my things for a while?' is an example of…",["A problem (customer's perspective)","An idea (our perspective)","An MVP","A business model"],"'Let's start a storage company' = the idea."],
+["ent","The problem-filter sequence in the course is:",["Problem → Frequency → Pain → Willingness to pay","Idea → Product → Market → Price","Pain → Problem → Price → Frequency","Customer → Offer → Need → Pay"],"Who has it? How often? Will they pay?"],
+["ent","What is the job of an MVP?",["To reduce uncertainty","To be a smaller version of the final product","To be low quality and cheap","To impress investors"],"Assumption → Smallest test → Evidence → Next move."],
+["ent","The market-oriented approach follows…",["Need → Customer → Offer","Capability → Product → Market","Product → Price → Promotion","Idea → Funding → Launch"],"Product-oriented = Capability → Product → Market."],
+["ent","For the storage company, what is the customer really buying?",["Trust, peace of mind and less uncertainty","Square metres of storage","The cheapest price","The brand logo"],"Customers buy the outcome, not the service."],
+["ent","At the 100-person stage, the founder acts as…",["System designer","Doer","Delegator","Investor"],"1 = doer, 10 = delegator, 100 = system designer."],
+["ent","The third time the same problem reaches the founder, they should…",["Build a system","Solve it","Find the cause","Ignore it"],"1st solve, 2nd find cause, 3rd build a system."],
+["ent","What does the first customer give you that is even more valuable than revenue?",["Evidence","Compliments","Investor interest","A brand"],"The first customer turns assumptions into evidence."],
+["ent","According to the course, price follows…",["Perceived value","Production cost","Competitor prices","Market size"],"Trust, convenience, communication, speed, assurance, experience."],
+["ent","Questions 1–5 of the checklist (Problem, Customer, Market, Value, MVP) check…",["Whether the opportunity is real","Unit economics and cash","Whether the team can execute","Go-to-market"],"6–10 = repeatability, economics, execution (PMF, model, GTM, unit economics, team)."],
+["ent","In Case 2, a customer is 35% of revenue but harms operations. The key lesson is…",["A customer can be economically valuable and operationally destructive; money changing doesn't change the underlying problem","Always keep the biggest customer","Always fire difficult customers","Only finance should decide"],"'The money changed. Did the underlying problem change?'"],
+["ent","Big decisions in business are rarely 'good vs bad'; they are…",["Trade-offs","Mistakes","Formulas","Legal issues"],"Growth↔Control, Speed↔Quality, Capital↔Independence, Today↔Long term."],
+["ent","Principle 07 says:",["Start with the market by default, unless the business calls for product/tech-led discovery","Always start with the product","Never sell before perfection","Grow at any cost"],"Market-first often lowers risk."],
+["ent","'If one does not know to which port one is sailing, no wind is favorable' is from…",["Seneca the Younger","Arthur C. Clarke","Zig Ziglar","Aristotle"],"Clarke = limits of the possible; Ziglar = start to be great."],
+["ent","In Case 1, the investor wants how much of the company?",["40%","35%","30%","20%"],"40% for a potential 3× in 2 years, with board influence."]
+];
+
+/* ============ MIND MAP RENDER ============ */
 const $=s=>document.querySelector(s);
-const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-let known=new Set(store.get("mkt-known",[]));
-const ALL=[];BR.forEach(b=>b.nodes.forEach(n=>{n.b=b;ALL.push(n)}));
-const strip=h=>h.replace(/<[^>]+>/g," ").replace(/&amp;/g,"&").replace(/\s+/g," ");
-ALL.forEach(n=>n.txt=(n.t+" "+strip(n.h)).toLowerCase());
-
-/* ======================= TABS ======================= */
-function show(view){
-  const isMap=view!=="quiz";
-  $("#view-map").hidden=!isMap;$("#view-quiz").hidden=isMap;
-  $("#tab-map").setAttribute("aria-selected",isMap);$("#tab-quiz").setAttribute("aria-selected",!isMap);
-  if(isMap)requestAnimationFrame(layout);else closeDrawer();
+function esc(s){return s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function nodeHTML(n){
+  const [l,note,kids]=n;
+  const has=kids&&kids.length;
+  let h=`<li class="n ${has?'has':'leaf'}" data-txt="${esc((l+' '+(note||'')).toLowerCase())}"><div class="lbl"><span class="car">${has?'▶':''}</span><span><span class="t">${esc(l)}</span>${note?`<span class="note">${esc(note)}</span>`:''}</span></div>`;
+  if(has)h+=`<ul>${kids.map(nodeHTML).join('')}</ul>`;
+  return h+'</li>';
 }
-$("#tab-map").onclick=()=>{location.hash="map";};
-$("#tab-quiz").onclick=()=>{location.hash="quiz";};
-window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
-
-/* ======================= MAP RENDER ======================= */
-function render(){
-  const L=$("#sideL"),R=$("#sideR");
-  BR.forEach(b=>{
-    const row=document.createElement("div");row.className="br-row";row.dataset.b=b.id;
-    row.style.setProperty("--bc",`var(--${b.c})`);row.style.setProperty("--bt",`var(--${b.c}-t)`);
-    const bn=document.createElement("button");bn.className="br-node";bn.setAttribute("aria-expanded","true");
-    bn.innerHTML=`<span class="wk">${b.week}</span><span class="bt">${b.name}</span><span class="cnt">${b.nodes.length} topics · click to fold</span>`;
-    bn.onclick=()=>{row.classList.toggle("collapsed");bn.setAttribute("aria-expanded",!row.classList.contains("collapsed"));layout();};
-    const kids=document.createElement("div");kids.className="kids";
-    b.nodes.forEach(n=>{
-      const k=document.createElement("button");k.className="leaf";k.dataset.id=n.id;
-      k.innerHTML=`<span class="imp i${n.imp}"><i></i><i></i><i></i></span><span class="lt">${n.t}</span><span class="ok">✓</span>`;
-      k.onclick=()=>openNode(n);n.el=k;kids.append(k);
-    });
-    row.append(bn,kids);(b.side==="L"?L:R).append(row);b.row=row;
+$('#branches').innerHTML=MAP.map(b=>`<div class="branch" style="--bc:var(${b.color})"><h2>${esc(b.title)}</h2><div class="who">${esc(b.who)}</div><ul class="tree">${b.nodes.map(nodeHTML).join('')}</ul></div>`).join('');
+document.querySelectorAll('.branch>ul.tree>li.has').forEach(li=>li.classList.add('open'));
+$('#branches').addEventListener('click',e=>{const l=e.target.closest('.has>.lbl');if(l)l.parentElement.classList.toggle('open')});
+$('#openAll').onclick=()=>document.querySelectorAll('li.has').forEach(l=>l.classList.add('open'));
+$('#closeAll').onclick=()=>document.querySelectorAll('li.has').forEach(l=>l.classList.remove('open'));
+const origHTML=new Map();
+document.querySelectorAll('.lbl > span:last-child').forEach(s=>origHTML.set(s,s.innerHTML));
+$('#search').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  origHTML.forEach((h,s)=>s.innerHTML=h);
+  const all=[...document.querySelectorAll('li.n')];
+  if(!q){all.forEach(l=>l.classList.remove('hide'));return}
+  all.forEach(l=>l.classList.add('hide'));
+  all.forEach(l=>{
+    if(l.dataset.txt.includes(q)){
+      l.classList.remove('hide');
+      l.querySelectorAll('li.n').forEach(c=>c.classList.remove('hide'));
+      let p=l.parentElement.closest('li.n');
+      while(p){p.classList.remove('hide');p.classList.add('open');p=p.parentElement.closest('li.n')}
+      const s=l.querySelector(':scope>.lbl>span:last-child');
+      const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      s.querySelectorAll('.t,.note').forEach(x=>x.innerHTML=x.innerHTML.replace(re,'<mark class="hl">$1</mark>'));
+    }
   });
-  refreshKnown();
-}
-function refreshKnown(){
-  ALL.forEach(n=>n.el&&n.el.classList.toggle("known",known.has(n.id)));
-  $("#prog").textContent=`${known.size} / ${ALL.length} topics marked as known`;
-}
-let mode="two";
-function layout(){
-  const mm=$("#mm");if($("#view-map").hidden)return;
-  const w=$(".mm-scroll").clientWidth;
-  const m=w>=1180?"two":(w>=760?"one":"outline");
-  if(m!==mode){mm.classList.remove(mode);mm.classList.add(m);mode=m;}
-  drawLines();
-}
-function drawLines(){
-  const svg=$("#lines"),mm=$("#mm");
-  if(mode==="outline"){svg.innerHTML="";return;}
-  const W=mm.getBoundingClientRect();
-  svg.setAttribute("width",mm.offsetWidth);svg.setAttribute("height",mm.offsetHeight);
-  const root=$(".root").getBoundingClientRect();
-  const rel=r=>({l:r.left-W.left,r:r.right-W.left,cy:r.top-W.top+r.height/2,cx:r.left-W.left+r.width/2});
-  const R=rel(root);let p="";
-  const curve=(x1,y1,x2,y2,col,wd,op)=>{const dx=(x2-x1)/2;return `<path d="M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}" fill="none" style="stroke:var(--${col})" stroke-width="${wd}" stroke-linecap="round" opacity="${op}"/>`;};
-  BR.forEach(b=>{
-    const bnR=rel(b.row.querySelector(".br-node").getBoundingClientRect());
-    const left=bnR.cx<R.cx;
-    p+=left?curve(R.l,R.cy,bnR.r,bnR.cy,b.c,3,.9):curve(R.r,R.cy,bnR.l,bnR.cy,b.c,3,.9);
-    if(b.row.classList.contains("collapsed"))return;
-    b.nodes.forEach(n=>{const k=rel(n.el.getBoundingClientRect());
-      p+=left?curve(bnR.l,bnR.cy,k.r,k.cy,b.c,1.5,.55):curve(bnR.r,bnR.cy,k.l,k.cy,b.c,1.5,.55);});
-  });
-  svg.innerHTML=p;
-}
-window.addEventListener("resize",layout);
-if(window.ResizeObserver)new ResizeObserver(()=>drawLines()).observe($("#mm"));
-if(document.fonts)document.fonts.ready.then(layout);
+});
 
-/* filters */
-let minImp=1;
-function applyFilter(){
-  const q=$("#q").value.trim().toLowerCase();
-  BR.forEach(b=>{let any=false;b.nodes.forEach(n=>{
-    const okImp=n.imp>=minImp, okQ=!q||n.txt.includes(q);
-    n.el.classList.toggle("dim",!(okImp&&okQ));n.el.classList.toggle("hit",!!q&&okQ&&okImp);if(okImp&&okQ)any=true;});
-    b.row.classList.toggle("dim",!any);
-    if(q&&any)b.row.classList.remove("collapsed");
-  });drawLines();
-}
-$("#q").addEventListener("input",applyFilter);
-document.querySelectorAll("#impf .chip").forEach(c=>c.onclick=()=>{
-  document.querySelectorAll("#impf .chip").forEach(x=>x.setAttribute("aria-pressed","false"));
-  c.setAttribute("aria-pressed","true");minImp=+c.dataset.imp;applyFilter();});
-$("#toggleAll").onclick=()=>{const anyOpen=BR.some(b=>!b.row.classList.contains("collapsed"));
-  BR.forEach(b=>b.row.classList.toggle("collapsed",anyOpen));$("#toggleAll").textContent=anyOpen?"Expand all":"Collapse all";layout();};
+/* ============ CHEAT RENDER ============ */
+$('#cheatGrid').innerHTML=CHEAT.map(c=>`<div class="box"><h3>${c.h}</h3>${c.rows?`<table>${c.rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table>`:`<ul class="trap">${c.list.map(x=>`<li>${x}</li>`).join('')}</ul>`}</div>`).join('');
 
-/* drawer */
-let cur=null;
-function openNode(n){
-  cur=n;document.querySelectorAll(".leaf.active").forEach(e=>e.classList.remove("active"));n.el.classList.add("active");
-  const d=$("#drawer");d.style.setProperty("--bc",`var(--${n.b.c})`);d.style.setProperty("--bt",`var(--${n.b.c}-t)`);
-  $("#drHead").innerHTML=`<div class="dr-meta"><span>${n.b.name}</span><span class="imp i${n.imp}"><i></i><i></i><i></i></span><span>${IMPNAME[n.imp]}</span></div><h3>${n.t}</h3>`;
-  $("#drBody").innerHTML=n.h;$("#drBody").scrollTop=0;
-  const sib=n.b.nodes,i=sib.indexOf(n);
-  $("#drFoot").innerHTML=`<div style="display:flex;gap:8px"><button class="btn" id="prev" ${i?"":"disabled"}>← Prev</button><button class="btn" id="next" ${i<sib.length-1?"":"disabled"}>Next →</button></div><button class="btn ${known.has(n.id)?"":"primary"}" id="kn">${known.has(n.id)?"Known ✓ (undo)":"Mark as known"}</button>`;
-  $("#prev").onclick=()=>openNode(sib[i-1]);$("#next").onclick=()=>openNode(sib[i+1]);
-  $("#kn").onclick=()=>{known.has(n.id)?known.delete(n.id):known.add(n.id);store.set("mkt-known",[...known]);refreshKnown();openNode(n);};
-  d.hidden=false;$("#scrim").hidden=false;
-}
-function openTraps(){
-  cur=null;const d=$("#drawer");d.style.setProperty("--bc","var(--warn)");d.style.setProperty("--bt","var(--warn-t)");
-  $("#drHead").innerHTML=`<div class="dr-meta"><span>Last-minute revision</span></div><h3>Every exam trap in one list</h3>`;
-  let h="";BR.forEach(b=>{const t=[];b.nodes.forEach(n=>{const m=n.h.match(/<div class="trap">([\s\S]*?)<\/div>/g);if(m)m.forEach(x=>t.push(`<div class="trap"><b>${n.t}:</b> ${x.replace(/<\/?div[^>]*>/g,"")}</div>`));});
-    if(t.length)h+=`<h4 style="color:var(--${b.c})">${b.name}</h4>`+t.join("");});
-  $("#drBody").innerHTML=h;$("#drBody").scrollTop=0;$("#drFoot").innerHTML=`<span class="progress">Read this list right before the exam.</span>`;
-  d.hidden=false;$("#scrim").hidden=false;
-}
-$("#traps").onclick=openTraps;
-function closeDrawer(){$("#drawer").hidden=true;$("#scrim").hidden=true;document.querySelectorAll(".leaf.active").forEach(e=>e.classList.remove("active"));}
-$("#drx").onclick=closeDrawer;$("#scrim").onclick=closeDrawer;
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrawer();});
+/* ============ TABS ============ */
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===t.dataset.v));
+  window.scrollTo(0,0);
+});
 
-/* ======================= QUIZ ======================= */
-const qs={topic:"all",size:"all",pool:[],i:0,score:0,ans:[]};
-const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
-function setup(){
-  const counts={};Q.forEach(q=>counts[q.t]=(counts[q.t]||0)+1);
-  const best=store.get("mkt-best",null);
-  $("#qz").innerHTML=`<div class="qz-setup">
-   <div><h2>Hard quiz — ${Q.length} exam-style questions</h2><p style="margin:6px 0 0;color:var(--muted)">Distractors are built from the slides' own wording, so near-misses are wrong. Every answer comes with the reason and the trap.</p></div>
-   <div class="row"><span class="lbl">Topic</span><div class="chips" id="qtopic">
-     <button class="chip" data-t="all" aria-pressed="true">All topics (${Q.length})</button>
-     ${Object.keys(TOPICS).map(t=>`<button class="chip" data-t="${t}" aria-pressed="false">${TOPICS[t]} (${counts[t]||0})</button>`).join("")}
-   </div></div>
-   <div class="row"><span class="lbl">Length</span><div class="chips" id="qsize">
-     <button class="chip" data-s="all" aria-pressed="true">Every question</button>
-     <button class="chip" data-s="20" aria-pressed="false">Exam sprint · 20 random</button>
-     <button class="chip" data-s="10" aria-pressed="false">Quick 10</button>
-   </div></div>
-   <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button class="btn primary" id="go" style="padding:11px 22px;font-size:15px">Start quiz</button>
-   ${best!==null?`<span class="score">Best full-quiz score: ${best}%</span>`:""}</div></div>`;
-  const pick=(sel,key,attr)=>document.querySelectorAll(sel+" .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(sel+" .chip").forEach(x=>x.setAttribute("aria-pressed","false"));c.setAttribute("aria-pressed","true");qs[key]=c.dataset[attr];});
-  pick("#qtopic","topic","t");pick("#qsize","size","s");qs.topic="all";qs.size="all";
-  $("#go").onclick=()=>start();
+/* ============ QUIZ ============ */
+let topic='all',deck=[],idx=0,answers=[];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function chips(){
+  const counts={all:Q.length};Q.forEach(q=>counts[q[0]]=(counts[q[0]]||0)+1);
+  const opts=[['all','Tous']].concat(Object.entries(T));
+  $('#topicChips').innerHTML=opts.map(([k,v])=>`<button class="chip ${k===topic?'on':''}" data-k="${k}">${v} (${counts[k]})</button>`).join('');
+  $('#topicChips').querySelectorAll('.chip').forEach(c=>c.onclick=()=>{topic=c.dataset.k;start()});
 }
 function start(list){
-  let pool=list||Q.filter(q=>qs.topic==="all"||q.t===qs.topic);
-  pool=shuffle(pool);if(!list&&qs.size!=="all")pool=pool.slice(0,+qs.size);
-  qs.pool=pool.map(q=>{const order=shuffle(q.o.map((_,k)=>k));return {...q,order};});
-  qs.i=0;qs.score=0;qs.ans=[];qs.full=!list&&qs.topic==="all"&&qs.size==="all";renderQ();
+  chips();
+  const base=list||Q.filter(q=>topic==='all'||q[0]===topic);
+  deck=shuffle(base).map(q=>({q,order:shuffle([0,1,2,3])}));
+  idx=0;answers=new Array(deck.length).fill(null);render();
 }
-function renderQ(){
-  const q=qs.pool[qs.i],n=qs.pool.length;
-  $("#qz").innerHTML=`<div class="qcard" style="--bc:var(--${TOPC[q.t]});--bt:var(--${TOPC[q.t]}-t)">
-   <div class="qtop"><span class="qtag">${TOPICS[q.t]}</span><span class="score">Q ${qs.i+1} / ${n} · score ${qs.score}</span></div>
-   <div class="bar"><i style="width:${qs.i/n*100}%"></i></div>
-   <p class="qtext">${q.q}</p>
-   <div class="opts">${q.order.map((k,j)=>`<button class="opt" data-k="${k}"><span class="l">${"ABCDE"[j]}</span><span>${q.o[k]}</span></button>`).join("")}</div>
-   <div id="fb"></div>
-   <div class="qnav"><button class="btn" id="quit">End quiz</button><button class="btn primary" id="nx" hidden>${qs.i<n-1?"Next question →":"See results"}</button></div></div>`;
-  document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>answer(+b.dataset.k));
-  $("#quit").onclick=results;$("#nx").onclick=()=>{qs.i++;qs.i<n?renderQ():results();};
-  window.scrollTo({top:$("#qz").offsetTop-10,behavior:"smooth"});
-}
-function answer(k){
-  const q=qs.pool[qs.i],ok=k===q.a;if(ok)qs.score++;qs.ans.push({q,k,ok});
-  document.querySelectorAll(".opt").forEach(b=>{b.disabled=true;const kk=+b.dataset.k;if(kk===q.a)b.classList.add("right");else if(kk===k)b.classList.add("wrong");});
-  $("#fb").innerHTML=`<div class="expl ${ok?"ok":"ko"}"><strong>${ok?"Correct":"Not quite — correct answer: "+q.o[q.a]}</strong>${q.x}</div>`;
-  $("#nx").hidden=false;$("#nx").focus();
+function render(){
+  if(idx>=deck.length)return results();
+  const {q,order}=deck[idx],a=answers[idx];
+  const done=answers.filter(x=>x!==null).length,good=answers.filter(x=>x===0).length;
+  $('#quizBox').innerHTML=`<div class="qcard">
+   <div class="qmeta"><span>Question ${idx+1} / ${deck.length}</span><span>Score : ${good} / ${done}</span></div>
+   <div class="bar"><i style="width:${idx/deck.length*100}%"></i></div>
+   <span class="tag" style="background:var(${TC[q[0]]})">${T[q[0]]}</span>
+   <div class="qtext" style="margin-top:10px">${esc(q[1])}</div>
+   ${order.map(o=>`<button class="opt ${a!==null?(o===0?'good':(o===a?'bad':'')):''}" data-o="${o}" ${a!==null?'disabled':''}>${esc(q[2][o])}</button>`).join('')}
+   <div class="expl ${a!==null?'show':''}" style="border-color:var(${a===0?'--ok':'--ko'})"><b>${a===0?'✓ Correct':'✗ Réponse : '+esc(q[2][0])}</b><br>${esc(q[3])}</div>
+   <div class="nav"><button class="btn" id="prev" ${idx===0?'disabled':''}>← Précédent</button>
+   <button class="primary" id="next" ${a===null?'style="opacity:.4" disabled':''}>${idx===deck.length-1?'Voir le résultat':'Suivant →'}</button></div></div>`;
+  $('#quizBox').querySelectorAll('.opt').forEach(b=>b.onclick=()=>{answers[idx]=+b.dataset.o;render()});
+  $('#prev').onclick=()=>{idx--;render()};
+  $('#next').onclick=()=>{idx++;render()};
 }
 function results(){
-  const a=qs.ans,n=a.length;
-  if(!n){setup();return;}
-  const pct=Math.round(qs.score/n*100);
-  if(qs.full&&n===qs.pool.length){const b=store.get("mkt-best",0);if(pct>b)store.set("mkt-best",pct);}
-  const by={};a.forEach(x=>{by[x.q.t]=by[x.q.t]||[0,0];by[x.q.t][1]++;if(x.ok)by[x.q.t][0]++;});
-  const miss=a.filter(x=>!x.ok);
-  const verdict=pct>=85?"Exam-ready on this set.":pct>=65?"Solid, but review the misses below.":"Go back to the map for the red topics, then retry.";
-  $("#qz").innerHTML=`<div class="qcard res"><span class="lbl">Result</span><div class="big">${pct}%</div><p style="margin:6px 0 0">${qs.score} / ${n} correct. ${verdict}</p>
-   <div class="topicbars">${Object.keys(by).map(t=>{const [g,m]=by[t];return `<div class="tbar" style="--bc:var(--${TOPC[t]})"><span>${TOPICS[t]}</span><span class="t"><i style="width:${g/m*100}%"></i></span><span class="n">${g}/${m}</span></div>`}).join("")}</div>
-   <div style="display:flex;gap:8px;flex-wrap:wrap">${miss.length?`<button class="btn primary" id="retry">Retry the ${miss.length} missed</button>`:""}<button class="btn" id="again">New quiz</button></div>
-   ${miss.length?`<h3 style="margin:20px 0 6px;font-size:18px">Review your misses</h3>`+miss.map(x=>`<div class="miss"><div class="mq">${x.q.q}</div><div>Your answer: ${x.q.o[x.k]}</div><div class="ma">Correct: ${x.q.o[x.q.a]}</div><div style="color:var(--muted);margin-top:4px">${x.q.x}</div></div>`).join(""):""}</div>`;
-  if(miss.length)$("#retry").onclick=()=>start(miss.map(x=>{const {order,...r}=x.q;return r;}));
-  $("#again").onclick=setup;
+  const good=answers.filter(x=>x===0).length,pct=Math.round(good/deck.length*100);
+  const by={};deck.forEach((d,i)=>{const k=d.q[0];by[k]=by[k]||[0,0];by[k][1]++;if(answers[i]===0)by[k][0]++});
+  const wrong=deck.filter((d,i)=>answers[i]!==0).map(d=>d.q);
+  $('#quizBox').innerHTML=`<div class="qcard"><div style="text-align:center;color:var(--muted)">Résultat</div>
+   <div class="score">${good} / ${deck.length} · ${pct}%</div>
+   <p style="text-align:center">${pct>=85?'Excellent, tu es prêt.':pct>=65?'Bien — revois les erreurs ci-dessous.':'Repasse sur la mind map pour les thèmes faibles, puis refais les erreurs.'}</p>
+   <table class="res">${Object.entries(by).map(([k,v])=>`<tr><td><span class="tag" style="background:var(${TC[k]})">${T[k]}</span></td><td>${v[0]} / ${v[1]}</td></tr>`).join('')}</table>
+   ${wrong.length?`<h3 style="margin:18px 0 6px;font-size:15px">À revoir</h3><ul class="trap">${wrong.map(q=>`<li><b>${esc(q[1])}</b><br>→ ${esc(q[2][0])}</li>`).join('')}</ul>`:''}
+   <div class="nav">${wrong.length?'<button class="primary" id="redo">Refaire uniquement les erreurs</button>':'<span></span>'}<button class="btn" id="again">Tout recommencer</button></div></div>`;
+  if(wrong.length)$('#redo').onclick=()=>start(wrong);
+  $('#again').onclick=()=>start();
 }
-
-/* boot */
-render();setup();show(location.hash.slice(1)||"map");layout();
+$('#restart').onclick=()=>start();
+start();
 </script>
 </body>
 </html>
